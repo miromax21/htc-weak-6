@@ -9,12 +9,27 @@
 import UIKit
 
 class ViewController: UIViewController {
-
+    
+    @IBOutlet weak var tableView: UITableView!
     override func viewDidLoad() {
-        super.viewDidLoad()
-        // Do any additional setup after loading the view.
+        DataModelFunctions.getQuestionsData(url: APP_CONSTANTS.GITHUB_URL) {
+            for project in DataModel.data!.items{
+                self.tableView.reloadData()
+            }
+        }
     }
-
-
 }
-
+extension ViewController:UITableViewDataSource, UITableViewDelegate{
+    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+       return DataModel.data?.items.count ?? 0
+    }
+    
+    func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+        let cell = UITableViewCell()
+        let model = DataModel.data?.items[indexPath.row]
+        cell.textLabel?.text = "\(model?.question_id)" ?? ""
+        return cell
+    }
+    
+    
+}

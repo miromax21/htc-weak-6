@@ -7,11 +7,16 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		017256659E445F55945D35D9 /* Pods_htc_weak_6.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = E8D59DCD06E6C12F33189957 /* Pods_htc_weak_6.framework */; };
 		1B3855DA22787DFD0017CE00 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1B3855D922787DFD0017CE00 /* AppDelegate.swift */; };
 		1B3855DC22787DFD0017CE00 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1B3855DB22787DFD0017CE00 /* ViewController.swift */; };
 		1B3855DF22787DFD0017CE00 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 1B3855DD22787DFD0017CE00 /* Main.storyboard */; };
 		1B3855E122787DFF0017CE00 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 1B3855E022787DFF0017CE00 /* Assets.xcassets */; };
 		1B3855E422787DFF0017CE00 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 1B3855E222787DFF0017CE00 /* LaunchScreen.storyboard */; };
+		1B3855F52278852C0017CE00 /* environments.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1B3855F42278852C0017CE00 /* environments.swift */; };
+		1B3855FB227887BA0017CE00 /* QuestionModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1B3855FA227887BA0017CE00 /* QuestionModel.swift */; };
+		1B3855FD227888030017CE00 /* DataModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1B3855FC227888030017CE00 /* DataModel.swift */; };
+		1B3855FF227888310017CE00 /* DataFunctions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1B3855FE227888310017CE00 /* DataFunctions.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -22,6 +27,13 @@
 		1B3855E022787DFF0017CE00 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		1B3855E322787DFF0017CE00 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		1B3855E522787DFF0017CE00 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		1B3855F42278852C0017CE00 /* environments.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = environments.swift; sourceTree = "<group>"; };
+		1B3855FA227887BA0017CE00 /* QuestionModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = QuestionModel.swift; sourceTree = "<group>"; };
+		1B3855FC227888030017CE00 /* DataModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DataModel.swift; sourceTree = "<group>"; };
+		1B3855FE227888310017CE00 /* DataFunctions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DataFunctions.swift; sourceTree = "<group>"; };
+		489A07E710CBAF86CEEFE244 /* Pods-htc-weak-6.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-htc-weak-6.debug.xcconfig"; path = "Target Support Files/Pods-htc-weak-6/Pods-htc-weak-6.debug.xcconfig"; sourceTree = "<group>"; };
+		A8E278F792E99E854DE1673F /* Pods-htc-weak-6.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-htc-weak-6.release.xcconfig"; path = "Target Support Files/Pods-htc-weak-6/Pods-htc-weak-6.release.xcconfig"; sourceTree = "<group>"; };
+		E8D59DCD06E6C12F33189957 /* Pods_htc_weak_6.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_htc_weak_6.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -29,6 +41,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				017256659E445F55945D35D9 /* Pods_htc_weak_6.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -40,6 +53,8 @@
 			children = (
 				1B3855D822787DFD0017CE00 /* htc-weak-6 */,
 				1B3855D722787DFD0017CE00 /* Products */,
+				AC67BAFFA275DF69D47E690E /* Pods */,
+				E6F4214ED8A1C62F2779B50A /* Frameworks */,
 			);
 			sourceTree = "<group>";
 		};
@@ -54,14 +69,43 @@
 		1B3855D822787DFD0017CE00 /* htc-weak-6 */ = {
 			isa = PBXGroup;
 			children = (
+				1B3855F92278879B0017CE00 /* Model */,
 				1B3855D922787DFD0017CE00 /* AppDelegate.swift */,
 				1B3855DB22787DFD0017CE00 /* ViewController.swift */,
 				1B3855DD22787DFD0017CE00 /* Main.storyboard */,
 				1B3855E022787DFF0017CE00 /* Assets.xcassets */,
 				1B3855E222787DFF0017CE00 /* LaunchScreen.storyboard */,
 				1B3855E522787DFF0017CE00 /* Info.plist */,
+				1B3855F42278852C0017CE00 /* environments.swift */,
 			);
 			path = "htc-weak-6";
+			sourceTree = "<group>";
+		};
+		1B3855F92278879B0017CE00 /* Model */ = {
+			isa = PBXGroup;
+			children = (
+				1B3855FA227887BA0017CE00 /* QuestionModel.swift */,
+				1B3855FC227888030017CE00 /* DataModel.swift */,
+				1B3855FE227888310017CE00 /* DataFunctions.swift */,
+			);
+			path = Model;
+			sourceTree = "<group>";
+		};
+		AC67BAFFA275DF69D47E690E /* Pods */ = {
+			isa = PBXGroup;
+			children = (
+				489A07E710CBAF86CEEFE244 /* Pods-htc-weak-6.debug.xcconfig */,
+				A8E278F792E99E854DE1673F /* Pods-htc-weak-6.release.xcconfig */,
+			);
+			path = Pods;
+			sourceTree = "<group>";
+		};
+		E6F4214ED8A1C62F2779B50A /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				E8D59DCD06E6C12F33189957 /* Pods_htc_weak_6.framework */,
+			);
+			name = Frameworks;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -71,9 +115,11 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = 1B3855E822787DFF0017CE00 /* Build configuration list for PBXNativeTarget "htc-weak-6" */;
 			buildPhases = (
+				67FB1207DE89BB1BD993988D /* [CP] Check Pods Manifest.lock */,
 				1B3855D222787DFD0017CE00 /* Sources */,
 				1B3855D322787DFD0017CE00 /* Frameworks */,
 				1B3855D422787DFD0017CE00 /* Resources */,
+				D14A80155869AE17D0C786CB /* [CP] Embed Pods Frameworks */,
 			);
 			buildRules = (
 			);
@@ -130,13 +176,66 @@
 		};
 /* End PBXResourcesBuildPhase section */
 
+/* Begin PBXShellScriptBuildPhase section */
+		67FB1207DE89BB1BD993988D /* [CP] Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+			);
+			inputPaths = (
+				"${PODS_PODFILE_DIR_PATH}/Podfile.lock",
+				"${PODS_ROOT}/Manifest.lock",
+			);
+			name = "[CP] Check Pods Manifest.lock";
+			outputFileListPaths = (
+			);
+			outputPaths = (
+				"$(DERIVED_FILE_DIR)/Pods-htc-weak-6-checkManifestLockResult.txt",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
+			showEnvVarsInLog = 0;
+		};
+		D14A80155869AE17D0C786CB /* [CP] Embed Pods Frameworks */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+			);
+			inputPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-htc-weak-6/Pods-htc-weak-6-frameworks.sh",
+				"${BUILT_PRODUCTS_DIR}/Alamofire/Alamofire.framework",
+				"${BUILT_PRODUCTS_DIR}/SwiftyJSON/SwiftyJSON.framework",
+			);
+			name = "[CP] Embed Pods Frameworks";
+			outputFileListPaths = (
+			);
+			outputPaths = (
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Alamofire.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/SwiftyJSON.framework",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-htc-weak-6/Pods-htc-weak-6-frameworks.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+/* End PBXShellScriptBuildPhase section */
+
 /* Begin PBXSourcesBuildPhase section */
 		1B3855D222787DFD0017CE00 /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				1B3855FD227888030017CE00 /* DataModel.swift in Sources */,
 				1B3855DC22787DFD0017CE00 /* ViewController.swift in Sources */,
+				1B3855F52278852C0017CE00 /* environments.swift in Sources */,
+				1B3855FF227888310017CE00 /* DataFunctions.swift in Sources */,
 				1B3855DA22787DFD0017CE00 /* AppDelegate.swift in Sources */,
+				1B3855FB227887BA0017CE00 /* QuestionModel.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -280,6 +379,7 @@
 		};
 		1B3855E922787DFF0017CE00 /* Debug */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 489A07E710CBAF86CEEFE244 /* Pods-htc-weak-6.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
@@ -298,6 +398,7 @@
 		};
 		1B3855EA22787DFF0017CE00 /* Release */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = A8E278F792E99E854DE1673F /* Pods-htc-weak-6.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
