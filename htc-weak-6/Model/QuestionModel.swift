@@ -7,16 +7,15 @@
 //
 
 import Foundation
-import SwiftyJSON
 
-struct ServerData: Codable {
+struct ServerDataModel: Codable {
     var has_more: Bool
     var quota_max: Int
     var quota_remaining: Int
-    var items: [Items]
+    var items: [ItemsModel]
 }
-struct Items:Codable {
-    var owner:Owner
+struct ItemsModel:Codable {
+    var owner:ItemsOwnerModel
     var is_accepted:Bool
     var score:Int
     var last_activity_date:Int
@@ -26,7 +25,7 @@ struct Items:Codable {
 }
 
 
-struct Owner : Codable{
+struct ItemsOwnerModel : Codable{
     var reputation: Int
     var user_id: Int
     var user_type: String
@@ -34,21 +33,3 @@ struct Owner : Codable{
     var display_name: String
     var link: String
 }
-
-
-struct QuestionModel:Codable {
-    
-    var user_type : String
-}
-//
-//protocol JSONDecdable {
-//    init?(JSON:Any)
-//}
-//extension QuestionModel: JSONDecdable{
-//    
-//    init?(JSON: Any) {
-//        guard let JSON = JSON as? [String:Any] else { return nil}
-//        guard let text = JSON["text"] as? String else {return nil}
-//        self.text = text
-//    }
-//}

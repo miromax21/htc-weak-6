@@ -17,6 +17,8 @@
 		1B3855FB227887BA0017CE00 /* QuestionModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1B3855FA227887BA0017CE00 /* QuestionModel.swift */; };
 		1B3855FD227888030017CE00 /* DataModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1B3855FC227888030017CE00 /* DataModel.swift */; };
 		1B3855FF227888310017CE00 /* DataFunctions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1B3855FE227888310017CE00 /* DataFunctions.swift */; };
+		1B5BB0A8227DFE25003A3CC8 /* SetTagViewController.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 1B5BB0A7227DFE25003A3CC8 /* SetTagViewController.storyboard */; };
+		1B5BB0AA227DFE3E003A3CC8 /* SetTagViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1B5BB0A9227DFE3E003A3CC8 /* SetTagViewController.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -31,6 +33,8 @@
 		1B3855FA227887BA0017CE00 /* QuestionModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = QuestionModel.swift; sourceTree = "<group>"; };
 		1B3855FC227888030017CE00 /* DataModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DataModel.swift; sourceTree = "<group>"; };
 		1B3855FE227888310017CE00 /* DataFunctions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DataFunctions.swift; sourceTree = "<group>"; };
+		1B5BB0A7227DFE25003A3CC8 /* SetTagViewController.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = SetTagViewController.storyboard; sourceTree = "<group>"; };
+		1B5BB0A9227DFE3E003A3CC8 /* SetTagViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SetTagViewController.swift; sourceTree = "<group>"; };
 		489A07E710CBAF86CEEFE244 /* Pods-htc-weak-6.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-htc-weak-6.debug.xcconfig"; path = "Target Support Files/Pods-htc-weak-6/Pods-htc-weak-6.debug.xcconfig"; sourceTree = "<group>"; };
 		A8E278F792E99E854DE1673F /* Pods-htc-weak-6.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-htc-weak-6.release.xcconfig"; path = "Target Support Files/Pods-htc-weak-6/Pods-htc-weak-6.release.xcconfig"; sourceTree = "<group>"; };
 		E8D59DCD06E6C12F33189957 /* Pods_htc_weak_6.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_htc_weak_6.framework; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -69,6 +73,7 @@
 		1B3855D822787DFD0017CE00 /* htc-weak-6 */ = {
 			isa = PBXGroup;
 			children = (
+				1B5BB0A6227DFE06003A3CC8 /* popup */,
 				1B3855F92278879B0017CE00 /* Model */,
 				1B3855D922787DFD0017CE00 /* AppDelegate.swift */,
 				1B3855DB22787DFD0017CE00 /* ViewController.swift */,
@@ -89,6 +94,15 @@
 				1B3855FE227888310017CE00 /* DataFunctions.swift */,
 			);
 			path = Model;
+			sourceTree = "<group>";
+		};
+		1B5BB0A6227DFE06003A3CC8 /* popup */ = {
+			isa = PBXGroup;
+			children = (
+				1B5BB0A7227DFE25003A3CC8 /* SetTagViewController.storyboard */,
+				1B5BB0A9227DFE3E003A3CC8 /* SetTagViewController.swift */,
+			);
+			path = popup;
 			sourceTree = "<group>";
 		};
 		AC67BAFFA275DF69D47E690E /* Pods */ = {
@@ -168,6 +182,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				1B5BB0A8227DFE25003A3CC8 /* SetTagViewController.storyboard in Resources */,
 				1B3855E422787DFF0017CE00 /* LaunchScreen.storyboard in Resources */,
 				1B3855E122787DFF0017CE00 /* Assets.xcassets in Resources */,
 				1B3855DF22787DFD0017CE00 /* Main.storyboard in Resources */,
@@ -234,6 +249,7 @@
 				1B3855DC22787DFD0017CE00 /* ViewController.swift in Sources */,
 				1B3855F52278852C0017CE00 /* environments.swift in Sources */,
 				1B3855FF227888310017CE00 /* DataFunctions.swift in Sources */,
+				1B5BB0AA227DFE3E003A3CC8 /* SetTagViewController.swift in Sources */,
 				1B3855DA22787DFD0017CE00 /* AppDelegate.swift in Sources */,
 				1B3855FB227887BA0017CE00 /* QuestionModel.swift in Sources */,
 			);

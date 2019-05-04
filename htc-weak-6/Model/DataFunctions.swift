@@ -10,11 +10,16 @@ import Foundation
 import Alamofire
 import SwiftyJSON
 class DataModelFunctions {
-    static func getQuestionsData(url:String, completion: @escaping () -> ()){
+    static func getQuestionsData(url:String, completion: @escaping (Bool) -> ()){
         DispatchQueue.global(qos: .userInteractive).async{
             Alamofire.request(url).responseJSON { response in
-                DataModel.data = try? JSONDecoder().decode(ServerData.self, from: response.data!)
-                completion()
+                
+                guard response.result.isSuccess,  let responceData = response.data else{
+                    completion(false)
+                    return
+                }
+                DataModel.data = try? JSONDecoder().decode(ServerDataModel.self, from: responceData)
+                completion(true)
             }
         }
     }

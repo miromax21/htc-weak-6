@@ -8,5 +8,5 @@
 
 import Foundation
 class DataModel {
-    static var data:ServerData?
+    static var data:ServerDataModel?
 }

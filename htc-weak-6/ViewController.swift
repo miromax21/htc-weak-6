@@ -12,22 +12,40 @@ class ViewController: UIViewController {
     
     @IBOutlet weak var tableView: UITableView!
     override func viewDidLoad() {
-        DataModelFunctions.getQuestionsData(url: APP_CONSTANTS.GITHUB_URL) {
-            for project in DataModel.data!.items{
+        tableView.isEditing = false
+        let bbItem = UIBarButtonItem(title: "+", style: .done, target: self, action: #selector(clickButton))
+        self.navigationItem.rightBarButtonItem = bbItem
+        DataModelFunctions.getQuestionsData(url: APP_CONSTANTS.GITHUB_URL) {sucsess in
+            if (sucsess){
                 self.tableView.reloadData()
             }
         }
     }
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        // Get the new view controller using segue.destinationViewController.
+        // Pass the selected object to the new view controller.
+        if segue.identifier == "setTagSeque" {
+            let vc : SetTagViewController = segue.destination as! SetTagViewController
+            vc.delegate = self
+        }
+    }
+    @objc func clickButton()  {
+        self.tableView.isEditing = !self.tableView.isEditing
+    }
 }
-extension ViewController:UITableViewDataSource, UITableViewDelegate{
+extension ViewController:UITableViewDataSource, UITableViewDelegate,SatTagDelegate{
+    func setTag(tag: String) {
+        print(tag)
+    }
+
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
        return DataModel.data?.items.count ?? 0
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = UITableViewCell()
-        let model = DataModel.data?.items[indexPath.row]
-        cell.textLabel?.text = "\(model?.question_id)" ?? ""
+        let model = DataModel.data!.items[indexPath.row]
+        cell.textLabel?.text = "\(Date(timeIntervalSince1970: TimeInterval(model.creation_date)))" //"\(model.question_id)"
         return cell
     }
     
