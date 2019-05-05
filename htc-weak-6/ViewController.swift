@@ -10,6 +10,7 @@ import UIKit
 
 class ViewController: UIViewController {
     let queryTypeArray: [String] = ["swift", "ios", "xcode", "cocoa-touch", "iphone"]
+    var questionIndex : Int = 0;
     @IBOutlet weak var tableView: UITableView!
     override func viewDidLoad() {
         tableView.isEditing = false
@@ -33,6 +34,11 @@ class ViewController: UIViewController {
             vc.delegate = self
             vc.pickerData = queryTypeArray
         }
+//        else if  segue.identifier == "ShowDetailsController" {
+//            let storyboard = UIStoryboard(name: String(describing: ShowDetailsController.self), bundle: nil)
+//            let vc = storyboard.instantiateInitialViewController() as! ShowDetailsController
+//            navigationController?.pushViewController(vc, animated: true)
+//        }
     }
     @objc func clickButton()  {
         self.tableView.isEditing = !self.tableView.isEditing
@@ -53,6 +59,23 @@ extension ViewController:UITableViewDataSource, UITableViewDelegate,SatTagDelega
         cell.textLabel?.text = "\(Date(timeIntervalSince1970: TimeInterval(model.creation_date)))"
         return cell
     }
-    
+    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        var vc  = ShowDetailsController.getInstance() as! ShowDetailsController
+        present(vc, animated: true)
+//        let storyboard = UIStoryboard(name: String(describing: ShowDetailsController.self), bundle: nil)
+//        let vc = storyboard.instantiateInitialViewController() as! ShowDetailsController
+//        let storyBoard : UIStoryboard = UIStoryboard(name: "Main", bundle:nil)
+//
+//        let nextViewController = storyBoard.instantiateViewController(withIdentifier: "ShowDetailsController") as! ShowDetailsController
+//        navigationController?.pushViewController(nextViewController, animated: true)
+////        let storyboard = UIStoryboard(name: String(describing: "Main"), bundle: nil)
+//        let vc = storyboard.instantiateInitialViewController() as! ShowDetailsController
+//       // let trip = Data.tripModels[indexPath.row]
+//      //  vc.tripId = trip.id
+//        navigationController?.pushViewController(vc, animated: true)
+        
+//        self.questionIndex = indexPath.row
+//        self.performSegue(withIdentifier: "ShowDetailsController", sender: self)
+    }
     
 }

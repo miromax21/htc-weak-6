@@ -16,15 +16,14 @@ class SetTagViewController: UIViewController {
     @IBOutlet weak var setTagButton: UIButton!
     var delegate : SatTagDelegate?
     var pickerData: [String] = [String]()
-    var tag: String = ""
+    private var tag: String = ""
     override func viewDidLoad() {
+        super.viewDidLoad()
         self.pickerView.delegate = self
         self.pickerView.dataSource = self
     }
     @IBAction func SetTag(_ sender: Any) {
-        if delegate != nil {
-            delegate?.setTag(tag: tag)
-        }
+        delegate?.setTag(tag: tag)
         dismiss(animated: true)
     }
 }
@@ -37,13 +36,14 @@ extension SetTagViewController: UIPickerViewDelegate, UIPickerViewDataSource{
     func pickerView(_ pickerView: UIPickerView, numberOfRowsInComponent component: Int) -> Int {
         return pickerData.count
     }
-
+    
     func pickerView(_ pickerView: UIPickerView, titleForRow row: Int, forComponent component: Int) -> String? {
         return pickerData[row]
     }
     func pickerView(_ pickerView: UIPickerView, didSelectRow row: Int, inComponent component: Int) {
         self.tag  = pickerData[row]
     }
+    
     
     
 }

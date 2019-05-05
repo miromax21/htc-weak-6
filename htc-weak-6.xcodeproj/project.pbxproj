@@ -21,6 +21,9 @@
 		1B5BB0AA227DFE3E003A3CC8 /* SetTagViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1B5BB0A9227DFE3E003A3CC8 /* SetTagViewController.swift */; };
 		1B815A3E227ED396007ED3B2 /* PopupView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1B815A3D227ED396007ED3B2 /* PopupView.swift */; };
 		1B815A40227ED948007ED3B2 /* AppButtons.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1B815A3F227ED948007ED3B2 /* AppButtons.swift */; };
+		1B815A43227EE123007ED3B2 /* UIViewControllerExtentions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1B815A42227EE123007ED3B2 /* UIViewControllerExtentions.swift */; };
+		1B815A47227EE1CB007ED3B2 /* ShowDetailsController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1B815A46227EE1CB007ED3B2 /* ShowDetailsController.swift */; };
+		1B815A4B227EF7D8007ED3B2 /* ShowDetailsController.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 1B815A4A227EE242007ED3B2 /* ShowDetailsController.storyboard */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -39,6 +42,9 @@
 		1B5BB0A9227DFE3E003A3CC8 /* SetTagViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SetTagViewController.swift; sourceTree = "<group>"; };
 		1B815A3D227ED396007ED3B2 /* PopupView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PopupView.swift; sourceTree = "<group>"; };
 		1B815A3F227ED948007ED3B2 /* AppButtons.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppButtons.swift; sourceTree = "<group>"; };
+		1B815A42227EE123007ED3B2 /* UIViewControllerExtentions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIViewControllerExtentions.swift; sourceTree = "<group>"; };
+		1B815A46227EE1CB007ED3B2 /* ShowDetailsController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ShowDetailsController.swift; sourceTree = "<group>"; };
+		1B815A4A227EE242007ED3B2 /* ShowDetailsController.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = ShowDetailsController.storyboard; path = "/Users/maximmironov/Library/Autosave Information/htc-weak-6/htc-weak-6/Views/ShowDetails/ShowDetailsController.storyboard"; sourceTree = "<absolute>"; };
 		489A07E710CBAF86CEEFE244 /* Pods-htc-weak-6.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-htc-weak-6.debug.xcconfig"; path = "Target Support Files/Pods-htc-weak-6/Pods-htc-weak-6.debug.xcconfig"; sourceTree = "<group>"; };
 		A8E278F792E99E854DE1673F /* Pods-htc-weak-6.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-htc-weak-6.release.xcconfig"; path = "Target Support Files/Pods-htc-weak-6/Pods-htc-weak-6.release.xcconfig"; sourceTree = "<group>"; };
 		E8D59DCD06E6C12F33189957 /* Pods_htc_weak_6.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_htc_weak_6.framework; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -78,8 +84,8 @@
 			isa = PBXGroup;
 			children = (
 				1B815A3B227ED365007ED3B2 /* Resources */,
-				1B5BB0A6227DFE06003A3CC8 /* popup */,
 				1B3855F92278879B0017CE00 /* Model */,
+				1B815A44227EE16D007ED3B2 /* Views */,
 				1B3855D922787DFD0017CE00 /* AppDelegate.swift */,
 				1B3855DB22787DFD0017CE00 /* ViewController.swift */,
 				1B3855DD22787DFD0017CE00 /* Main.storyboard */,
@@ -101,18 +107,19 @@
 			path = Model;
 			sourceTree = "<group>";
 		};
-		1B5BB0A6227DFE06003A3CC8 /* popup */ = {
+		1B5BB0A6227DFE06003A3CC8 /* SetTag */ = {
 			isa = PBXGroup;
 			children = (
 				1B5BB0A7227DFE25003A3CC8 /* SetTagViewController.storyboard */,
 				1B5BB0A9227DFE3E003A3CC8 /* SetTagViewController.swift */,
 			);
-			path = popup;
+			path = SetTag;
 			sourceTree = "<group>";
 		};
 		1B815A3B227ED365007ED3B2 /* Resources */ = {
 			isa = PBXGroup;
 			children = (
+				1B815A41227EE0ED007ED3B2 /* Extensions */,
 				1B815A3C227ED382007ED3B2 /* CustomControls */,
 			);
 			path = Resources;
@@ -125,6 +132,32 @@
 				1B815A3F227ED948007ED3B2 /* AppButtons.swift */,
 			);
 			path = CustomControls;
+			sourceTree = "<group>";
+		};
+		1B815A41227EE0ED007ED3B2 /* Extensions */ = {
+			isa = PBXGroup;
+			children = (
+				1B815A42227EE123007ED3B2 /* UIViewControllerExtentions.swift */,
+			);
+			path = Extensions;
+			sourceTree = "<group>";
+		};
+		1B815A44227EE16D007ED3B2 /* Views */ = {
+			isa = PBXGroup;
+			children = (
+				1B815A45227EE1B1007ED3B2 /* ShowDetails */,
+				1B5BB0A6227DFE06003A3CC8 /* SetTag */,
+			);
+			path = Views;
+			sourceTree = "<group>";
+		};
+		1B815A45227EE1B1007ED3B2 /* ShowDetails */ = {
+			isa = PBXGroup;
+			children = (
+				1B815A46227EE1CB007ED3B2 /* ShowDetailsController.swift */,
+				1B815A4A227EE242007ED3B2 /* ShowDetailsController.storyboard */,
+			);
+			path = ShowDetails;
 			sourceTree = "<group>";
 		};
 		AC67BAFFA275DF69D47E690E /* Pods */ = {
@@ -208,6 +241,7 @@
 				1B3855E422787DFF0017CE00 /* LaunchScreen.storyboard in Resources */,
 				1B3855E122787DFF0017CE00 /* Assets.xcassets in Resources */,
 				1B3855DF22787DFD0017CE00 /* Main.storyboard in Resources */,
+				1B815A4B227EF7D8007ED3B2 /* ShowDetailsController.storyboard in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -267,11 +301,13 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				1B815A43227EE123007ED3B2 /* UIViewControllerExtentions.swift in Sources */,
 				1B3855FD227888030017CE00 /* DataModel.swift in Sources */,
 				1B815A40227ED948007ED3B2 /* AppButtons.swift in Sources */,
 				1B815A3E227ED396007ED3B2 /* PopupView.swift in Sources */,
 				1B3855DC22787DFD0017CE00 /* ViewController.swift in Sources */,
 				1B3855F52278852C0017CE00 /* environments.swift in Sources */,
+				1B815A47227EE1CB007ED3B2 /* ShowDetailsController.swift in Sources */,
 				1B3855FF227888310017CE00 /* DataFunctions.swift in Sources */,
 				1B5BB0AA227DFE3E003A3CC8 /* SetTagViewController.swift in Sources */,
 				1B3855DA22787DFD0017CE00 /* AppDelegate.swift in Sources */,
