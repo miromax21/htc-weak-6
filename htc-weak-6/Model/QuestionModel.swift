@@ -16,20 +16,24 @@ struct ServerDataModel: Codable {
 }
 struct ItemsModel:Codable {
     var owner:ItemsOwnerModel
-    var is_accepted:Bool
-    var score:Int
-    var last_activity_date:Int
-    var creation_date:Int
-    var answer_id:Int
-    var question_id:Int
+    var is_answered: Bool
+    var answer_count: Int
+    var score: Int
+    var title: String
+  //  var link:String
+//    var last_activity_date:Int
+//    var creation_date:Int
+//    var answer_id:Int
+//    var question_id:Int
 }
 
 
 struct ItemsOwnerModel : Codable{
-    var reputation: Int
-    var user_id: Int
-    var user_type: String
-    var profile_image: String
+   // var reputation: Int
+    //var user_id: Int
     var display_name: String
+//    var user_type: String
+//    var profile_image: String
+//    var display_name: String
     var link: String
 }

@@ -24,6 +24,7 @@
 		1B815A43227EE123007ED3B2 /* UIViewControllerExtentions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1B815A42227EE123007ED3B2 /* UIViewControllerExtentions.swift */; };
 		1B815A47227EE1CB007ED3B2 /* ShowDetailsController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1B815A46227EE1CB007ED3B2 /* ShowDetailsController.swift */; };
 		1B815A4B227EF7D8007ED3B2 /* ShowDetailsController.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 1B815A4A227EE242007ED3B2 /* ShowDetailsController.storyboard */; };
+		1B815A4E227F22FC007ED3B2 /* QuestionTableviewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1B815A4D227F22FC007ED3B2 /* QuestionTableviewCell.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -45,6 +46,7 @@
 		1B815A42227EE123007ED3B2 /* UIViewControllerExtentions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIViewControllerExtentions.swift; sourceTree = "<group>"; };
 		1B815A46227EE1CB007ED3B2 /* ShowDetailsController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ShowDetailsController.swift; sourceTree = "<group>"; };
 		1B815A4A227EE242007ED3B2 /* ShowDetailsController.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = ShowDetailsController.storyboard; path = "/Users/maximmironov/Library/Autosave Information/htc-weak-6/htc-weak-6/Views/ShowDetails/ShowDetailsController.storyboard"; sourceTree = "<absolute>"; };
+		1B815A4D227F22FC007ED3B2 /* QuestionTableviewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = QuestionTableviewCell.swift; sourceTree = "<group>"; };
 		489A07E710CBAF86CEEFE244 /* Pods-htc-weak-6.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-htc-weak-6.debug.xcconfig"; path = "Target Support Files/Pods-htc-weak-6/Pods-htc-weak-6.debug.xcconfig"; sourceTree = "<group>"; };
 		A8E278F792E99E854DE1673F /* Pods-htc-weak-6.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-htc-weak-6.release.xcconfig"; path = "Target Support Files/Pods-htc-weak-6/Pods-htc-weak-6.release.xcconfig"; sourceTree = "<group>"; };
 		E8D59DCD06E6C12F33189957 /* Pods_htc_weak_6.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_htc_weak_6.framework; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -87,7 +89,6 @@
 				1B3855F92278879B0017CE00 /* Model */,
 				1B815A44227EE16D007ED3B2 /* Views */,
 				1B3855D922787DFD0017CE00 /* AppDelegate.swift */,
-				1B3855DB22787DFD0017CE00 /* ViewController.swift */,
 				1B3855DD22787DFD0017CE00 /* Main.storyboard */,
 				1B3855E022787DFF0017CE00 /* Assets.xcassets */,
 				1B3855E222787DFF0017CE00 /* LaunchScreen.storyboard */,
@@ -145,6 +146,7 @@
 		1B815A44227EE16D007ED3B2 /* Views */ = {
 			isa = PBXGroup;
 			children = (
+				1B815A4C227F22B1007ED3B2 /* QuestionTableview */,
 				1B815A45227EE1B1007ED3B2 /* ShowDetails */,
 				1B5BB0A6227DFE06003A3CC8 /* SetTag */,
 			);
@@ -158,6 +160,15 @@
 				1B815A4A227EE242007ED3B2 /* ShowDetailsController.storyboard */,
 			);
 			path = ShowDetails;
+			sourceTree = "<group>";
+		};
+		1B815A4C227F22B1007ED3B2 /* QuestionTableview */ = {
+			isa = PBXGroup;
+			children = (
+				1B3855DB22787DFD0017CE00 /* ViewController.swift */,
+				1B815A4D227F22FC007ED3B2 /* QuestionTableviewCell.swift */,
+			);
+			path = QuestionTableview;
 			sourceTree = "<group>";
 		};
 		AC67BAFFA275DF69D47E690E /* Pods */ = {
@@ -310,6 +321,7 @@
 				1B815A47227EE1CB007ED3B2 /* ShowDetailsController.swift in Sources */,
 				1B3855FF227888310017CE00 /* DataFunctions.swift in Sources */,
 				1B5BB0AA227DFE3E003A3CC8 /* SetTagViewController.swift in Sources */,
+				1B815A4E227F22FC007ED3B2 /* QuestionTableviewCell.swift in Sources */,
 				1B3855DA22787DFD0017CE00 /* AppDelegate.swift in Sources */,
 				1B3855FB227887BA0017CE00 /* QuestionModel.swift in Sources */,
 			);

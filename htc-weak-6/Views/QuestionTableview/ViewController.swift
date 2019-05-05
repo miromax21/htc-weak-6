@@ -19,7 +19,7 @@ class ViewController: UIViewController {
         loadData(queryParam: "")
     }
     func loadData(queryParam:String)  {
-        let param = queryParam == "" ? queryParam : "&\(queryParam)"
+        let param = queryParam == "&tagged=ios" ? queryParam : "&tagged=\(queryParam)"
         DataModelFunctions.getQuestionsData(url: APP_CONSTANTS.GITHUB_URL + param) {sucsess in
             if (sucsess){
                 self.tableView.reloadData()
@@ -27,18 +27,11 @@ class ViewController: UIViewController {
         }
     }
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        // Get the new view controller using segue.destinationViewController.
-        // Pass the selected object to the new view controller.
         if segue.identifier == "setTagSeque" {
             let vc : SetTagViewController = segue.destination as! SetTagViewController
             vc.delegate = self
             vc.pickerData = queryTypeArray
         }
-//        else if  segue.identifier == "ShowDetailsController" {
-//            let storyboard = UIStoryboard(name: String(describing: ShowDetailsController.self), bundle: nil)
-//            let vc = storyboard.instantiateInitialViewController() as! ShowDetailsController
-//            navigationController?.pushViewController(vc, animated: true)
-//        }
     }
     @objc func clickButton()  {
         self.tableView.isEditing = !self.tableView.isEditing
@@ -54,28 +47,17 @@ extension ViewController:UITableViewDataSource, UITableViewDelegate,SatTagDelega
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let cell = UITableViewCell()
-        let model = DataModel.data!.items[indexPath.row]
-        cell.textLabel?.text = "\(Date(timeIntervalSince1970: TimeInterval(model.creation_date)))"
+        let cell = tableView.dequeueReusableCell(withIdentifier: "cell") as! QuestionTableviewCell
+        cell.initCell(param: "dasdadadadasdasdadaddasdadadadasdasdadaddasdadadadasdasdadaddasdadadadasdasdadaddasdadadadasdasdadaddasdadadadasdasdadaddasdadadadasdasdadaddasdadadadasdasdadaddasdadadadasdasdadaddasdadadadasdasdadad")
         return cell
+//        let cell = UITableViewCell()
+//        let model = DataModel.data!.items[indexPath.row]
+//        cell.textLabel?.text = "\(Date(timeIntervalSince1970: TimeInterval(model.creation_date)))"
+//        return cell
     }
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        var vc  = ShowDetailsController.getInstance() as! ShowDetailsController
+        let vc  = ShowDetailsController.getInstance() as! ShowDetailsController
         present(vc, animated: true)
-//        let storyboard = UIStoryboard(name: String(describing: ShowDetailsController.self), bundle: nil)
-//        let vc = storyboard.instantiateInitialViewController() as! ShowDetailsController
-//        let storyBoard : UIStoryboard = UIStoryboard(name: "Main", bundle:nil)
-//
-//        let nextViewController = storyBoard.instantiateViewController(withIdentifier: "ShowDetailsController") as! ShowDetailsController
-//        navigationController?.pushViewController(nextViewController, animated: true)
-////        let storyboard = UIStoryboard(name: String(describing: "Main"), bundle: nil)
-//        let vc = storyboard.instantiateInitialViewController() as! ShowDetailsController
-//       // let trip = Data.tripModels[indexPath.row]
-//      //  vc.tripId = trip.id
-//        navigationController?.pushViewController(vc, animated: true)
-        
-//        self.questionIndex = indexPath.row
-//        self.performSegue(withIdentifier: "ShowDetailsController", sender: self)
     }
     
 }
