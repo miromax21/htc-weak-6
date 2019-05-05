@@ -9,31 +9,21 @@
 import Foundation
 
 struct ServerDataModel: Codable {
-    var has_more: Bool
-    var quota_max: Int
-    var quota_remaining: Int
-    var items: [ItemsModel]
+//    var has_more: Bool
+//    var quota_max: Int
+//    var quota_remaining: Int
+    var items: [ItemModel]
 }
-struct ItemsModel:Codable {
-    var owner:ItemsOwnerModel
+struct ItemModel:Codable {
+    var owner:ItemOwnerModel
     var is_answered: Bool
     var answer_count: Int
     var score: Int
     var title: String
-  //  var link:String
-//    var last_activity_date:Int
-//    var creation_date:Int
-//    var answer_id:Int
-//    var question_id:Int
+    var last_edit_date: Int?
+    var creation_date: Int
 }
-
-
-struct ItemsOwnerModel : Codable{
-   // var reputation: Int
-    //var user_id: Int
+struct ItemOwnerModel : Codable{
     var display_name: String
-//    var user_type: String
-//    var profile_image: String
-//    var display_name: String
     var link: String
 }

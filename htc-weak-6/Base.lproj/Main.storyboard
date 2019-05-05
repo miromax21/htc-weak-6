@@ -102,6 +102,9 @@
                                             </constraints>
                                         </tableViewCellContentView>
                                         <connections>
+                                            <outlet property="answersCount" destination="rEf-fi-VN5" id="BPw-ss-Mdp"/>
+                                            <outlet property="author" destination="AtN-UA-NO5" id="xIO-ia-31K"/>
+                                            <outlet property="editDate" destination="uPQ-d4-GVX" id="fOo-Bb-8gx"/>
                                             <outlet property="question" destination="LJ5-07-DVu" id="hGJ-xr-lqo"/>
                                         </connections>
                                     </tableViewCell>
@@ -135,7 +138,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1079.7101449275362" y="79.6875"/>
+            <point key="canvasLocation" x="1275" y="63"/>
         </scene>
         <!--SetTagViewController-->
         <scene sceneID="NHK-0M-szM">

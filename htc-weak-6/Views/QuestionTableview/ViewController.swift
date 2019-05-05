@@ -48,7 +48,8 @@ extension ViewController:UITableViewDataSource, UITableViewDelegate,SatTagDelega
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "cell") as! QuestionTableviewCell
-        cell.initCell(param: "dasdadadadasdasdadaddasdadadadasdasdadaddasdadadadasdasdadaddasdadadadasdasdadaddasdadadadasdasdadaddasdadadadasdasdadaddasdadadadasdasdadaddasdadadadasdasdadaddasdadadadasdasdadaddasdadadadasdasdadad")
+        let model = DataModel.data?.items[indexPath.row]
+        cell.initCell(param:model!)
         return cell
 //        let cell = UITableViewCell()
 //        let model = DataModel.data!.items[indexPath.row]
