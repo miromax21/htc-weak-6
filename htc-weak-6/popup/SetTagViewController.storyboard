@@ -13,32 +13,49 @@
         <!--Set Tag View Controller-->
         <scene sceneID="Az7-vn-ann">
             <objects>
-                <viewController storyboardIdentifier="SetTagViewController" id="7j2-P3-d8C" customClass="SetTagViewController" customModule="htc_weak_6" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="SetTagViewController" modalTransitionStyle="crossDissolve" modalPresentationStyle="overCurrentContext" id="7j2-P3-d8C" customClass="SetTagViewController" customModule="htc_weak_6" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="sAY-bQ-bve">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
-                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES" flexibleMaxY="YES"/>
                         <subviews>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="hPe-zz-Ojr">
-                                <rect key="frame" x="20" y="191" width="374" height="21"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                <nil key="textColor"/>
-                                <nil key="highlightedColor"/>
-                            </label>
-                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="m4G-73-BbP">
-                                <rect key="frame" x="184" y="283" width="46" height="30"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <state key="normal" title="Button"/>
-                                <connections>
-                                    <action selector="SetTag:" destination="7j2-P3-d8C" eventType="touchUpInside" id="QUV-f3-cVD"/>
-                                </connections>
-                            </button>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="MYU-lK-R2v" customClass="PopupUIView" customModule="htc_weak_6" customModuleProvider="target">
+                                <rect key="frame" x="20" y="66" width="374" height="227"/>
+                                <subviews>
+                                    <pickerView contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="XVs-mP-23C">
+                                        <rect key="frame" x="27" y="-44" width="320" height="216"/>
+                                    </pickerView>
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="hbV-Qh-es7" customClass="FormButton" customModule="htc_weak_6" customModuleProvider="target">
+                                        <rect key="frame" x="122" y="180" width="130" height="30"/>
+                                        <constraints>
+                                            <constraint firstAttribute="width" constant="130" id="c6A-XR-N2l"/>
+                                        </constraints>
+                                        <state key="normal" title="set "/>
+                                        <connections>
+                                            <action selector="SetTag:" destination="7j2-P3-d8C" eventType="touchUpInside" id="QUp-SG-UxI"/>
+                                        </connections>
+                                    </button>
+                                </subviews>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <constraints>
+                                    <constraint firstItem="hbV-Qh-es7" firstAttribute="top" secondItem="XVs-mP-23C" secondAttribute="bottom" constant="8" symbolic="YES" id="0mw-e3-XB3"/>
+                                    <constraint firstAttribute="bottom" secondItem="hbV-Qh-es7" secondAttribute="bottom" constant="17" id="6Oh-XQ-Qd6"/>
+                                    <constraint firstItem="hbV-Qh-es7" firstAttribute="centerX" secondItem="XVs-mP-23C" secondAttribute="centerX" id="hJV-wP-8rF"/>
+                                    <constraint firstItem="hbV-Qh-es7" firstAttribute="centerX" secondItem="MYU-lK-R2v" secondAttribute="centerX" id="nov-gb-nKY"/>
+                                </constraints>
+                            </view>
                         </subviews>
-                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <color key="backgroundColor" red="0.44296470207253891" green="0.44296470207253891" blue="0.44296470207253891" alpha="0.48850132042253519" colorSpace="custom" customColorSpace="sRGB"/>
+                        <constraints>
+                            <constraint firstItem="MYU-lK-R2v" firstAttribute="top" secondItem="a0x-c7-OcX" secondAttribute="top" constant="22" id="5qy-zL-Bnn"/>
+                            <constraint firstItem="a0x-c7-OcX" firstAttribute="bottom" secondItem="MYU-lK-R2v" secondAttribute="bottom" constant="569" id="CwC-vZ-BHx"/>
+                            <constraint firstItem="MYU-lK-R2v" firstAttribute="leading" secondItem="sAY-bQ-bve" secondAttribute="leadingMargin" id="dYz-lf-hIP"/>
+                            <constraint firstItem="MYU-lK-R2v" firstAttribute="trailing" secondItem="sAY-bQ-bve" secondAttribute="trailingMargin" id="y6n-yR-X7h"/>
+                        </constraints>
                         <viewLayoutGuide key="safeArea" id="a0x-c7-OcX"/>
                     </view>
                     <connections>
-                        <outlet property="set" destination="m4G-73-BbP" id="4vH-v0-fb0"/>
+                        <outlet property="pickerView" destination="XVs-mP-23C" id="kw3-sk-Lzy"/>
+                        <outlet property="setTagButton" destination="hbV-Qh-es7" id="bF2-aQ-129"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="DB5-M0-cOT" userLabel="First Responder" sceneMemberID="firstResponder"/>
