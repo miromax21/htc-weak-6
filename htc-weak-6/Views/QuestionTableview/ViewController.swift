@@ -31,6 +31,9 @@ class ViewController: UIViewController {
             let vc : SetTagViewController = segue.destination as! SetTagViewController
             vc.delegate = self
             vc.pickerData = queryTypeArray
+        }else if segue.identifier == "ShowDetailsController-seque"{
+            let vc : ShowDetailsController = segue.destination as! ShowDetailsController
+            vc.questionIndes = self.questionIndex
         }
     }
     @objc func clickButton()  {
@@ -39,7 +42,7 @@ class ViewController: UIViewController {
 }
 extension ViewController:UITableViewDataSource, UITableViewDelegate,SatTagDelegate{
     func setTag(tag: String) {
-        print(tag)
+       loadData(queryParam: tag)
     }
 
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
@@ -47,18 +50,13 @@ extension ViewController:UITableViewDataSource, UITableViewDelegate,SatTagDelega
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let cell = tableView.dequeueReusableCell(withIdentifier: "cell") as! QuestionTableviewCell
+        let cell = tableView.dequeueReusableCell(withIdentifier: QuestionTableviewCell.identifier) as! QuestionTableviewCell
         let model = DataModel.data?.items[indexPath.row]
         cell.initCell(param:model!)
         return cell
-//        let cell = UITableViewCell()
-//        let model = DataModel.data!.items[indexPath.row]
-//        cell.textLabel?.text = "\(Date(timeIntervalSince1970: TimeInterval(model.creation_date)))"
-//        return cell
     }
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        let vc  = ShowDetailsController.getInstance() as! ShowDetailsController
-        present(vc, animated: true)
+        self.performSegue(withIdentifier: "ShowDetailsController-seque", sender: nil)
     }
     
 }
