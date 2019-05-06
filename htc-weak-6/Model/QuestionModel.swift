@@ -22,8 +22,14 @@ struct ItemModel:Codable {
     var title: String
     var last_edit_date: Int?
     var creation_date: Int
+    var question_id:Int
+    var answers: [Answer]?
+}
+struct Answer:Codable  {
+    var title: String
 }
 struct ItemOwnerModel : Codable{
     var display_name: String
     var link: String
+
 }

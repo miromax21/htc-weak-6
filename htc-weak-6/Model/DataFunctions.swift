@@ -23,4 +23,18 @@ class DataModelFunctions {
             }
         }
     }
+    
+    static func getAnswerData(url:String, completion: @escaping (Any) -> ()){
+        DispatchQueue.global(qos: .userInteractive).async{
+            Alamofire.request(url).responseJSON { response in
+                
+                guard response.result.isSuccess,  let responceData = response.data else{
+                    completion(false)
+                    return
+                }
+                completion(true)
+            }
+        }
+    }
+
 }

@@ -19,11 +19,14 @@ class ViewController: UIViewController {
         loadData(queryParam: "")
     }
     func loadData(queryParam:String)  {
+        let activityIndicator = ActivityIndicator(view:tableView, navigationController:nil,tabBarController: nil)
+        activityIndicator.showActivityIndicator()
         let param = queryParam == "&tagged=ios" ? queryParam : "&tagged=\(queryParam)"
         DataModelFunctions.getQuestionsData(url: APP_CONSTANTS.GITHUB_URL + param) {sucsess in
             if (sucsess){
                 self.tableView.reloadData()
             }
+            activityIndicator.stopActivityIndicator()
         }
     }
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
@@ -33,6 +36,7 @@ class ViewController: UIViewController {
             vc.pickerData = queryTypeArray
         }else if segue.identifier == "ShowDetailsController-seque"{
             let vc : ShowDetailsController = segue.destination as! ShowDetailsController
+            vc.answers = DataModel.data?.items[self.questionIndex].answers ?? []
             vc.questionIndes = self.questionIndex
         }
     }
@@ -56,6 +60,7 @@ extension ViewController:UITableViewDataSource, UITableViewDelegate,SatTagDelega
         return cell
     }
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        self.questionIndex = indexPath.row
         self.performSegue(withIdentifier: "ShowDetailsController-seque", sender: nil)
     }
     

@@ -30,7 +30,7 @@
                                             <autoresizingMask key="autoresizingMask" flexibleMaxY="YES"/>
                                             <subviews>
                                                 <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="xiV-nK-Hbn" userLabel="Left View">
-                                                    <rect key="frame" x="372" y="0.0" width="42" height="45"/>
+                                                    <rect key="frame" x="367" y="5" width="42" height="45"/>
                                                     <subviews>
                                                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="uPQ-d4-GVX">
                                                             <rect key="frame" x="0.0" y="0.0" width="42" height="20"/>
@@ -38,7 +38,7 @@
                                                             <nil key="textColor"/>
                                                             <nil key="highlightedColor"/>
                                                         </label>
-                                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="rEf-fi-VN5">
+                                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="rEf-fi-VN5">
                                                             <rect key="frame" x="0.0" y="25" width="42" height="20"/>
                                                             <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                                             <nil key="textColor"/>
@@ -48,13 +48,15 @@
                                                     <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                     <constraints>
                                                         <constraint firstItem="rEf-fi-VN5" firstAttribute="width" secondItem="uPQ-d4-GVX" secondAttribute="width" id="3QQ-fw-rMb"/>
-                                                        <constraint firstItem="rEf-fi-VN5" firstAttribute="leading" secondItem="uPQ-d4-GVX" secondAttribute="leading" id="Gc3-Nz-p5R"/>
+                                                        <constraint firstItem="rEf-fi-VN5" firstAttribute="leading" relation="greaterThanOrEqual" secondItem="uPQ-d4-GVX" secondAttribute="leading" id="Gc3-Nz-p5R"/>
                                                         <constraint firstItem="uPQ-d4-GVX" firstAttribute="leading" secondItem="xiV-nK-Hbn" secondAttribute="leading" id="SfK-SD-ndQ"/>
                                                         <constraint firstAttribute="bottom" secondItem="rEf-fi-VN5" secondAttribute="bottom" id="THF-8Z-Zlj"/>
                                                         <constraint firstItem="rEf-fi-VN5" firstAttribute="top" secondItem="uPQ-d4-GVX" secondAttribute="bottom" constant="5" id="VpZ-ca-bzw"/>
                                                         <constraint firstAttribute="trailing" secondItem="uPQ-d4-GVX" secondAttribute="trailing" id="r2l-ME-vtJ"/>
+                                                        <constraint firstAttribute="trailing" secondItem="rEf-fi-VN5" secondAttribute="trailing" id="sTo-2g-8ik"/>
                                                         <constraint firstItem="uPQ-d4-GVX" firstAttribute="top" secondItem="xiV-nK-Hbn" secondAttribute="top" id="yrX-Fg-kPX"/>
                                                     </constraints>
+                                                    <edgeInsets key="layoutMargins" top="5" left="0.0" bottom="5" right="0.0"/>
                                                 </view>
                                                 <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="1Su-j5-ur1" userLabel="lableView">
                                                     <rect key="frame" x="5" y="55" width="404" height="68.5"/>
@@ -75,7 +77,7 @@
                                                     </constraints>
                                                 </view>
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="AtN-UA-NO5">
-                                                    <rect key="frame" x="5" y="5" width="362" height="45"/>
+                                                    <rect key="frame" x="5" y="5" width="357" height="45"/>
                                                     <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                                     <nil key="textColor"/>
                                                     <nil key="highlightedColor"/>
@@ -83,17 +85,18 @@
                                             </subviews>
                                             <constraints>
                                                 <constraint firstItem="AtN-UA-NO5" firstAttribute="top" secondItem="FtB-Ip-jPi" secondAttribute="top" constant="5" id="2Xl-j0-sD4"/>
+                                                <constraint firstAttribute="trailing" secondItem="xiV-nK-Hbn" secondAttribute="trailing" constant="5" id="5uK-HH-pQ9"/>
                                                 <constraint firstAttribute="bottom" secondItem="1Su-j5-ur1" secondAttribute="bottom" constant="5" id="CbU-6H-G9Z"/>
+                                                <constraint firstItem="1Su-j5-ur1" firstAttribute="top" secondItem="xiV-nK-Hbn" secondAttribute="bottom" constant="5" id="FGt-Ie-PAi"/>
                                                 <constraint firstItem="1Su-j5-ur1" firstAttribute="top" secondItem="AtN-UA-NO5" secondAttribute="bottom" constant="5" id="GC0-Ny-xw1"/>
-                                                <constraint firstAttribute="trailing" secondItem="xiV-nK-Hbn" secondAttribute="trailing" id="NXL-AQ-5ky"/>
                                                 <constraint firstAttribute="trailing" secondItem="1Su-j5-ur1" secondAttribute="trailing" constant="5" id="Ond-3Q-zyd"/>
                                                 <constraint firstItem="AtN-UA-NO5" firstAttribute="top" secondItem="FtB-Ip-jPi" secondAttribute="top" constant="5" id="Orb-ZL-C0h"/>
                                                 <constraint firstItem="1Su-j5-ur1" firstAttribute="top" secondItem="AtN-UA-NO5" secondAttribute="bottom" constant="5" id="SyT-Vp-XiJ"/>
                                                 <constraint firstItem="AtN-UA-NO5" firstAttribute="leading" secondItem="FtB-Ip-jPi" secondAttribute="leading" constant="5" id="UEf-7q-TP4"/>
+                                                <constraint firstItem="xiV-nK-Hbn" firstAttribute="top" secondItem="FtB-Ip-jPi" secondAttribute="top" constant="5" id="Uui-EG-nGz"/>
                                                 <constraint firstItem="xiV-nK-Hbn" firstAttribute="leading" secondItem="AtN-UA-NO5" secondAttribute="trailing" constant="5" id="b0A-fK-FDt"/>
                                                 <constraint firstItem="1Su-j5-ur1" firstAttribute="leading" secondItem="FtB-Ip-jPi" secondAttribute="leading" constant="5" id="bDn-9P-HVS"/>
                                                 <constraint firstItem="AtN-UA-NO5" firstAttribute="height" secondItem="xiV-nK-Hbn" secondAttribute="height" id="haM-a9-Jze"/>
-                                                <constraint firstItem="xiV-nK-Hbn" firstAttribute="top" secondItem="FtB-Ip-jPi" secondAttribute="top" id="onk-q0-OpK"/>
                                             </constraints>
                                         </tableViewCellContentView>
                                         <connections>
@@ -168,7 +171,7 @@
                 </navigationController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="eCY-Wu-gMp" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="377" y="80"/>
+            <point key="canvasLocation" x="512" y="39"/>
         </scene>
     </scenes>
 </document>

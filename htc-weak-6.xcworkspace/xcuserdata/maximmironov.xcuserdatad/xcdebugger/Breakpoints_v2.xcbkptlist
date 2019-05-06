@@ -74,7 +74,7 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "htc-weak-6/Model/DataFunctions.swift"
-            timestampString = "578823597.910231"
+            timestampString = "578835182.6953321"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
             startingLineNumber = "21"
@@ -90,7 +90,7 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "htc-weak-6/Model/DataFunctions.swift"
-            timestampString = "578823597.910355"
+            timestampString = "578835182.695415"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
             startingLineNumber = "22"
@@ -106,11 +106,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "htc-weak-6/Views/ShowDetails/ShowDetailsController.swift"
-            timestampString = "578824256.167606"
+            timestampString = "578835182.695485"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "13"
-            endingLineNumber = "13"
+            startingLineNumber = "15"
+            endingLineNumber = "15"
             landmarkName = "viewDidLoad()"
             landmarkType = "7">
          </BreakpointContent>
@@ -122,7 +122,7 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "htc-weak-6/Model/DataFunctions.swift"
-            timestampString = "578823597.910498"
+            timestampString = "578835182.69556"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
             startingLineNumber = "17"
@@ -138,27 +138,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "htc-weak-6/Views/QuestionTableview/ViewController.swift"
-            timestampString = "578824256.167709"
+            timestampString = "578835182.695627"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "25"
-            endingLineNumber = "25"
-            landmarkName = "loadData(queryParam:)"
-            landmarkType = "7">
-         </BreakpointContent>
-      </BreakpointProxy>
-      <BreakpointProxy
-         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
-         <BreakpointContent
-            shouldBeEnabled = "No"
-            ignoreCount = "0"
-            continueAfterRunningActions = "No"
-            filePath = "htc-weak-6/Views/QuestionTableview/ViewController.swift"
-            timestampString = "578824256.167775"
-            startingColumnNumber = "9223372036854775807"
-            endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "24"
-            endingLineNumber = "24"
+            startingLineNumber = "27"
+            endingLineNumber = "27"
             landmarkName = "loadData(queryParam:)"
             landmarkType = "7">
          </BreakpointContent>
@@ -170,11 +154,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "htc-weak-6/Model/QuestionModel.swift"
-            timestampString = "578817529.187207"
+            timestampString = "578835182.6960829"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "25"
-            endingLineNumber = "25"
+            startingLineNumber = "27"
+            endingLineNumber = "27"
             landmarkName = "ItemModel"
             landmarkType = "14">
          </BreakpointContent>
@@ -186,60 +170,28 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "htc-weak-6/Views/QuestionTableview/ViewController.swift"
-            timestampString = "578824256.167864"
+            timestampString = "578835182.696148"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "23"
-            endingLineNumber = "23"
-            landmarkName = "loadData(queryParam:)"
+            startingLineNumber = "38"
+            endingLineNumber = "38"
+            landmarkName = "prepare(for:sender:)"
             landmarkType = "7">
-            <Locations>
-               <Location
-                  shouldBeEnabled = "No"
-                  ignoreCount = "0"
-                  continueAfterRunningActions = "No"
-                  symbolName = "htc_weak_6.ViewController.loadData(queryParam: Swift.String) -&gt; ()"
-                  moduleName = "htc-weak-6"
-                  usesParentBreakpointCondition = "Yes"
-                  urlString = "file:///Users/maximmironov/Library/Autosave%20Information/htc-weak-6/htc-weak-6/Views/QuestionTableview/ViewController.swift"
-                  timestampString = "578766752.7583719"
-                  startingColumnNumber = "9223372036854775807"
-                  endingColumnNumber = "9223372036854775807"
-                  startingLineNumber = "23"
-                  endingLineNumber = "23"
-                  offsetFromSymbolStart = "597">
-               </Location>
-               <Location
-                  shouldBeEnabled = "No"
-                  ignoreCount = "0"
-                  continueAfterRunningActions = "No"
-                  symbolName = "closure #1 (Swift.Bool) -&gt; () in htc_weak_6.ViewController.loadData(queryParam: Swift.String) -&gt; ()"
-                  moduleName = "htc-weak-6"
-                  usesParentBreakpointCondition = "Yes"
-                  urlString = "file:///Users/maximmironov/Library/Autosave%20Information/htc-weak-6/htc-weak-6/Views/QuestionTableview/ViewController.swift"
-                  timestampString = "578766752.762491"
-                  startingColumnNumber = "9223372036854775807"
-                  endingColumnNumber = "9223372036854775807"
-                  startingLineNumber = "24"
-                  endingLineNumber = "24"
-                  offsetFromSymbolStart = "99">
-               </Location>
-            </Locations>
          </BreakpointContent>
       </BreakpointProxy>
       <BreakpointProxy
          BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
          <BreakpointContent
-            shouldBeEnabled = "No"
+            shouldBeEnabled = "Yes"
             ignoreCount = "0"
             continueAfterRunningActions = "No"
-            filePath = "htc-weak-6/Views/QuestionTableview/ViewController.swift"
-            timestampString = "578824256.1679519"
+            filePath = "htc-weak-6/Model/DataFunctions.swift"
+            timestampString = "578835182.6964869"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
             startingLineNumber = "35"
             endingLineNumber = "35"
-            landmarkName = "prepare(for:sender:)"
+            landmarkName = "getAnswerData(url:completion:)"
             landmarkType = "7">
          </BreakpointContent>
       </BreakpointProxy>
