@@ -20,6 +20,7 @@
 		1B5BB0A8227DFE25003A3CC8 /* SetTagViewController.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 1B5BB0A7227DFE25003A3CC8 /* SetTagViewController.storyboard */; };
 		1B5BB0AA227DFE3E003A3CC8 /* SetTagViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1B5BB0A9227DFE3E003A3CC8 /* SetTagViewController.swift */; };
 		1B65583B22800FAA00D9E372 /* UITableViewCellExtention.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1B65583A22800FAA00D9E372 /* UITableViewCellExtention.swift */; };
+		1B65583D228027BE00D9E372 /* DateExtensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1B65583C228027BE00D9E372 /* DateExtensions.swift */; };
 		1B815A3E227ED396007ED3B2 /* PopupView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1B815A3D227ED396007ED3B2 /* PopupView.swift */; };
 		1B815A40227ED948007ED3B2 /* AppButtons.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1B815A3F227ED948007ED3B2 /* AppButtons.swift */; };
 		1B815A43227EE123007ED3B2 /* UIViewControllerExtentions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1B815A42227EE123007ED3B2 /* UIViewControllerExtentions.swift */; };
@@ -43,6 +44,7 @@
 		1B5BB0A7227DFE25003A3CC8 /* SetTagViewController.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = SetTagViewController.storyboard; sourceTree = "<group>"; };
 		1B5BB0A9227DFE3E003A3CC8 /* SetTagViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SetTagViewController.swift; sourceTree = "<group>"; };
 		1B65583A22800FAA00D9E372 /* UITableViewCellExtention.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UITableViewCellExtention.swift; sourceTree = "<group>"; };
+		1B65583C228027BE00D9E372 /* DateExtensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DateExtensions.swift; sourceTree = "<group>"; };
 		1B815A3D227ED396007ED3B2 /* PopupView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PopupView.swift; sourceTree = "<group>"; };
 		1B815A3F227ED948007ED3B2 /* AppButtons.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppButtons.swift; sourceTree = "<group>"; };
 		1B815A42227EE123007ED3B2 /* UIViewControllerExtentions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIViewControllerExtentions.swift; sourceTree = "<group>"; };
@@ -142,6 +144,7 @@
 			children = (
 				1B815A42227EE123007ED3B2 /* UIViewControllerExtentions.swift */,
 				1B65583A22800FAA00D9E372 /* UITableViewCellExtention.swift */,
+				1B65583C228027BE00D9E372 /* DateExtensions.swift */,
 			);
 			path = Extensions;
 			sourceTree = "<group>";
@@ -322,6 +325,7 @@
 				1B3855DC22787DFD0017CE00 /* ViewController.swift in Sources */,
 				1B3855F52278852C0017CE00 /* environments.swift in Sources */,
 				1B65583B22800FAA00D9E372 /* UITableViewCellExtention.swift in Sources */,
+				1B65583D228027BE00D9E372 /* DateExtensions.swift in Sources */,
 				1B815A47227EE1CB007ED3B2 /* ShowDetailsController.swift in Sources */,
 				1B3855FF227888310017CE00 /* DataFunctions.swift in Sources */,
 				1B5BB0AA227DFE3E003A3CC8 /* SetTagViewController.swift in Sources */,

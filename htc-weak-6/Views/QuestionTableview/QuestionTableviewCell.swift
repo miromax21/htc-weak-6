@@ -17,6 +17,6 @@ class QuestionTableviewCell: UITableViewCell {
         question.text  = param.title
         author.text = param.owner.display_name
         answersCount.text = "\(param.answer_count)"
-        editDate.text = (param.last_edit_date != nil) ? "\(Date.init(timeIntervalSince1970: TimeInterval(param.last_edit_date!)))" : "\(Date.init(timeIntervalSince1970: TimeInterval(param.creation_date)))"
+        editDate.text = (param.last_edit_date != nil) ? "\(Date.init(timeIntervalSince1970: TimeInterval(param.last_edit_date!)).mediumDate())" : "\(Date.init(timeIntervalSince1970: TimeInterval(param.creation_date)).mediumDate())"
     }
 }
