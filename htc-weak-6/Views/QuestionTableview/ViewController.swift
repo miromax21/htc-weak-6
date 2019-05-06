@@ -36,7 +36,7 @@ class ViewController: UIViewController {
             vc.pickerData = queryTypeArray
         }else if segue.identifier == "ShowDetailsController-seque"{
             let vc : ShowDetailsController = segue.destination as! ShowDetailsController
-            vc.answers = DataModel.data?.items[self.questionIndex].answers ?? []
+        //    vc.answers = DataModel.data?.items[self.questionIndex].answers ?? []
             vc.questionIndes = self.questionIndex
         }
     }
