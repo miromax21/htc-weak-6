@@ -19,10 +19,10 @@ class ViewController: UIViewController {
         loadData(queryParam: "")
     }
     func loadData(queryParam:String)  {
-        let activityIndicator = ActivityIndicator(view:tableView, navigationController:nil,tabBarController: nil)
+        let activityIndicator = ActivityIndicator(view:tableView)
+        let queryParam = (queryParam == "") ? queryTypeArray[0] : queryParam
         activityIndicator.showActivityIndicator()
-        let param = queryParam == "&tagged=ios" ? queryParam : "&tagged=\(queryParam)"
-        DataModelFunctions.getQuestionsData(url: APP_CONSTANTS.GITHUB_URL + param) {sucsess in
+        DataModelFunctions.getQuestionsData(url: APP_CONSTANTS.GITHUB_URL + "&tagged=\(queryParam)") {sucsess in
             if (sucsess){
                 self.tableView.reloadData()
             }
@@ -30,13 +30,12 @@ class ViewController: UIViewController {
         }
     }
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        if segue.identifier == "setTagSeque" {
+        if segue.identifier == "SetTagViewControllerSeque" {
             let vc : SetTagViewController = segue.destination as! SetTagViewController
             vc.delegate = self
             vc.pickerData = queryTypeArray
-        }else if segue.identifier == "ShowDetailsController-seque"{
+        }else if segue.identifier == "ShowDetailsControllerSeque"{
             let vc : ShowDetailsController = segue.destination as! ShowDetailsController
-        //    vc.answers = DataModel.data?.items[self.questionIndex].answers ?? []
             vc.questionIndes = self.questionIndex
         }
     }
@@ -45,8 +44,8 @@ class ViewController: UIViewController {
     }
 }
 extension ViewController:UITableViewDataSource, UITableViewDelegate,SatTagDelegate{
-    func setTag(tag: String) {
-       loadData(queryParam: tag)
+    func setTag(tagId: Int) {
+        loadData(queryParam: queryTypeArray[tagId])
     }
 
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
@@ -61,7 +60,7 @@ extension ViewController:UITableViewDataSource, UITableViewDelegate,SatTagDelega
     }
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         self.questionIndex = indexPath.row
-        self.performSegue(withIdentifier: "ShowDetailsController-seque", sender: nil)
+        self.performSegue(withIdentifier: "ShowDetailsControllerSeque", sender: nil)
     }
     
 }

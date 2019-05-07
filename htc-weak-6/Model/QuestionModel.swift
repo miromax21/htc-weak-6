@@ -9,9 +9,6 @@
 import Foundation
 
 struct ServerDataModel: Codable {
-//    var has_more: Bool
-//    var quota_max: Int
-//    var quota_remaining: Int
     var items: [ItemModel]
 }
 struct ItemModel:Codable {
@@ -29,7 +26,7 @@ struct Answer:Codable  {
     var title: String
 }
 struct ItemOwnerModel : Codable{
-    var display_name: String
-    var link: String
+    var display_name: String?
+    var link: String?
 
 }

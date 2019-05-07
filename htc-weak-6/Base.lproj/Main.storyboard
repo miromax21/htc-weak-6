@@ -29,6 +29,12 @@
                                             <rect key="frame" x="0.0" y="0.0" width="414" height="128.5"/>
                                             <autoresizingMask key="autoresizingMask" flexibleMaxY="YES"/>
                                             <subviews>
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="AtN-UA-NO5">
+                                                    <rect key="frame" x="5" y="5" width="357" height="45"/>
+                                                    <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                                    <nil key="textColor"/>
+                                                    <nil key="highlightedColor"/>
+                                                </label>
                                                 <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="xiV-nK-Hbn" userLabel="Left View">
                                                     <rect key="frame" x="367" y="5" width="42" height="45"/>
                                                     <subviews>
@@ -76,12 +82,6 @@
                                                         <constraint firstItem="LJ5-07-DVu" firstAttribute="top" secondItem="1Su-j5-ur1" secondAttribute="top" constant="5" id="vae-LO-1Pc"/>
                                                     </constraints>
                                                 </view>
-                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="AtN-UA-NO5">
-                                                    <rect key="frame" x="5" y="5" width="357" height="45"/>
-                                                    <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                                    <nil key="textColor"/>
-                                                    <nil key="highlightedColor"/>
-                                                </label>
                                             </subviews>
                                             <constraints>
                                                 <constraint firstItem="AtN-UA-NO5" firstAttribute="top" secondItem="FtB-Ip-jPi" secondAttribute="top" constant="5" id="2Xl-j0-sD4"/>
@@ -126,13 +126,13 @@
                         <barButtonItem key="leftBarButtonItem" title="Tag" id="ybc-Cr-ajS">
                             <color key="tintColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                             <connections>
-                                <segue destination="2Ti-tI-5kF" kind="presentation" identifier="setTagSeque" id="NZv-py-r6h"/>
+                                <segue destination="2Ti-tI-5kF" kind="presentation" identifier="SetTagViewControllerSeque" id="NZv-py-r6h"/>
                             </connections>
                         </barButtonItem>
                     </navigationItem>
                     <connections>
                         <outlet property="tableView" destination="sKe-5c-S8o" id="VhU-bk-hvj"/>
-                        <segue destination="XCX-ed-E56" kind="showDetail" identifier="ShowDetailsController-seque" id="wjn-m4-Prc"/>
+                        <segue destination="XCX-ed-E56" kind="showDetail" identifier="ShowDetailsControllerSeque" id="wjn-m4-Prc"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
@@ -145,7 +145,7 @@
                 <viewControllerPlaceholder storyboardName="SetTagViewController" id="2Ti-tI-5kF" sceneMemberID="viewController"/>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Ai8-Lh-PrG" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1921" y="-201"/>
+            <point key="canvasLocation" x="1923" y="-216"/>
         </scene>
         <!--ShowDetailsController-->
         <scene sceneID="ikQ-Yq-l6I">
@@ -153,7 +153,7 @@
                 <viewControllerPlaceholder storyboardName="ShowDetailsController" id="XCX-ed-E56" sceneMemberID="viewController"/>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="23B-kc-6YT" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="2121" y="141"/>
+            <point key="canvasLocation" x="2062" y="60"/>
         </scene>
         <!--Navigation Controller-->
         <scene sceneID="f3r-z8-InF">
