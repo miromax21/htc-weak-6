@@ -14,24 +14,38 @@ protocol GetQuestionsProtocol{
     func getQuestionsSession(tag: String, completion: @escaping ([ItemModel]) -> ())
 }
 class URLSessionApiSrevice:GetQuestionsProtocol {
-    func getQuestionsSession(tag: String, completion: @escaping ([ItemModel]) -> ()) {
-        print("sd")
-    }
-    
     let githubUrl = "https://api.stackexchange.com/2.2/questions?order=desc&sort=activity&site=stackoverflow&filter=!0WJ3YL7KJOsP46r755kycqqs8"
-//    static func getQuestionsData(url:String, completion: @escaping (Bool) -> ()){
-//        DispatchQueue.global(qos: .userInteractive).async{
-//            Alamofire.request(url).responseJSON { response in
-//
-//                guard response.result.isSuccess,  let responceData = response.data else{
-//                    completion(false)
-//                    return
-//                }
-//                DataModel.data = try? JSONDecoder().decode(ServerDataModel.self, from: responceData)
-//                completion(true)
-//            }
-//        }
-//    }
+    let defaultSession = URLSession(configuration: .default)
+    var dataTask: URLSessionDataTask?
+    func getQuestionsSession(tag: String, completion: @escaping ([ItemModel]) -> ()) {
+        dataTask?.cancel()
+        DispatchQueue.global(qos: .userInitiated).async {
+            let url = URL(string: self.githubUrl + "&tagged=\(tag)")!
+            self.dataTask = self.defaultSession.dataTask(with: url) { data, response, error in
+                    defer { self.dataTask = nil }
+                    if let error = error {
+                        DispatchQueue.main.async {
+                            completion([ItemModel]())
+                        }
+                        print(error)
+                        return
+                    }
+                    else if let data = data, let response = response as? HTTPURLResponse, response.statusCode == 200 {
+                        let serverDataModel = try? JSONDecoder().decode(ServerDataModel.self, from: data)
+                        guard serverDataModel != nil, let items = serverDataModel?.items else{
+                            DispatchQueue.main.async {
+                                completion([ItemModel]())
+                            }
+                            return
+                        }
+                        DispatchQueue.main.async {
+                            completion(items)
+                        }
+                    }
+                }
+            self.dataTask?.resume()
+        }
+    }
 
     func getQuestionsAlamofire(tag: String, completion: @escaping ([ItemModel]) -> ()){
         DispatchQueue.global(qos: .userInteractive).async{
@@ -41,11 +55,11 @@ class URLSessionApiSrevice:GetQuestionsProtocol {
                     return
                 }
                 let data = try? JSONDecoder().decode(ServerDataModel.self, from: responceData)
-                if data == nil{
-                    completion([ItemModel]())
-                }else{
-                    completion(data!.items)
+                guard data != nil, let items = data?.items else{
+                     completion([ItemModel]())
+                     return
                 }
+                completion(items)
             }
         }
     }

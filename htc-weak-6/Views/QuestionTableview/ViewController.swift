@@ -16,6 +16,7 @@ class ViewController: UIViewController {
     
     let queryTypeArray: [String] = ["swift", "ios", "xcode", "cocoa-touch", "iphone"]
     var questionIndex : Int = 0;
+    @IBOutlet weak var activityIndicator: UIActivityIndicatorView!
     @IBOutlet weak var tableView: UITableView!
     var items = [ItemModel]()
     override func viewDidLoad() {
@@ -24,23 +25,22 @@ class ViewController: UIViewController {
         let bbItem = UIBarButtonItem(title: "+", style: .done, target: self, action: #selector(clickButton))
         self.navigationItem.rightBarButtonItem = bbItem
         loadData(tag: "swift")
+        self.activityIndicator.hidesWhenStopped = true
     }
     
     func loadData(tag: String)  {
-        let activityIndicator = ActivityIndicator(view: tableView)
-        activityIndicator.showActivityIndicator()
         let urlSesion = URLSessionApiSrevice()
-        urlSesion.getQuestionsAlamofire(tag: tag) { (data) in
+        self.activityIndicator.startAnimating()
+        self.tableView.alpha = 0
+        urlSesion.getQuestionsSession(tag: tag) { (data) in
+     //   urlSesion.getQuestionsAlamofire(tag: tag) { (data) in
             self.items = data
             self.tableView.reloadData()
-            activityIndicator.stopActivityIndicator()
+            self.activityIndicator.stopAnimating()
+            UIView.animate(withDuration: 1.5, animations: {
+                self.tableView.alpha = 1
+            })
         }
-//        DataModelFunctions.getQuestionsData(url: APP_CONSTANTS.GITHUB_URL + "&tagged=\(queryParam)") {sucsess in
-//            if (sucsess){
-//                self.tableView.reloadData()
-//            }
-//            activityIndicator.stopActivityIndicator()
-//        }
     }
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {

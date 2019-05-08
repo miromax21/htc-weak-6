@@ -112,13 +112,18 @@
                                     <outlet property="delegate" destination="BYZ-38-t0r" id="3L5-4y-iDv"/>
                                 </connections>
                             </tableView>
+                            <activityIndicatorView opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" style="gray" translatesAutoresizingMaskIntoConstraints="NO" id="v2u-Fx-ijd">
+                                <rect key="frame" x="197" y="465" width="20" height="20"/>
+                            </activityIndicatorView>
                         </subviews>
                         <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                         <constraints>
                             <constraint firstItem="sKe-5c-S8o" firstAttribute="leading" secondItem="8bC-Xf-vdC" secondAttribute="leading" id="2qi-Y6-Si7"/>
                             <constraint firstItem="sKe-5c-S8o" firstAttribute="trailing" secondItem="6Tk-OE-BBY" secondAttribute="trailing" id="L5o-kf-GHP"/>
                             <constraint firstAttribute="bottom" secondItem="sKe-5c-S8o" secondAttribute="bottom" id="MgR-V2-jj4"/>
+                            <constraint firstItem="v2u-Fx-ijd" firstAttribute="centerX" secondItem="6Tk-OE-BBY" secondAttribute="centerX" id="Tmf-bX-O2H"/>
                             <constraint firstItem="sKe-5c-S8o" firstAttribute="top" secondItem="6Tk-OE-BBY" secondAttribute="top" id="Wf4-IO-cUK"/>
+                            <constraint firstItem="v2u-Fx-ijd" firstAttribute="centerY" secondItem="6Tk-OE-BBY" secondAttribute="centerY" id="XbU-NB-zJ8"/>
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="6Tk-OE-BBY"/>
                     </view>
@@ -131,6 +136,7 @@
                         </barButtonItem>
                     </navigationItem>
                     <connections>
+                        <outlet property="activityIndicator" destination="v2u-Fx-ijd" id="QXY-Ig-USG"/>
                         <outlet property="tableView" destination="sKe-5c-S8o" id="VhU-bk-hvj"/>
                     </connections>
                 </viewController>
@@ -152,7 +158,7 @@
                 <viewControllerPlaceholder storyboardName="ShowDetailsController" id="XCX-ed-E56" sceneMemberID="viewController"/>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="23B-kc-6YT" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="2062" y="60"/>
+            <point key="canvasLocation" x="2094" y="147"/>
         </scene>
         <!--Navigation Controller-->
         <scene sceneID="f3r-z8-InF">

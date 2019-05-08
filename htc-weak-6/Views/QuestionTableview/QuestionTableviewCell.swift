@@ -16,8 +16,8 @@ class QuestionTableviewCell: UITableViewCell {
     
     func initCell(param:ItemModel) {
         question.text  = param.title
-        author.text = param.owner.display_name
-        answersCount.text = "\(param.answer_count)"
-        editDate.text = (param.last_edit_date != nil) ? "\(Date.init(timeIntervalSince1970: TimeInterval(param.last_edit_date!)).mediumDate())" : "\(Date.init(timeIntervalSince1970: TimeInterval(param.creation_date)).mediumDate())"
+        author.text = param.owner.displayName
+        answersCount.text = "\(param.answerCount)"
+        editDate.text = (param.lastEditDate != nil) ? "\(Date.init(timeIntervalSince1970: TimeInterval(param.lastEditDate!)).mediumDate())" : "\(Date.init(timeIntervalSince1970: TimeInterval(param.creationDate)).mediumDate())"
     }
 }
