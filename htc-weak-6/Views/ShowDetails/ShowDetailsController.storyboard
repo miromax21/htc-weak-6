@@ -13,7 +13,7 @@
         <!--Show Details Controller-->
         <scene sceneID="HxX-Ky-Kjp">
             <objects>
-                <viewController storyboardIdentifier="ShowDetailsController" useStoryboardIdentifierAsRestorationIdentifier="YES" id="sOu-ed-TQT" customClass="ShowDetailsController" customModule="htc_weak_6" sceneMemberID="viewController">
+                <viewController restorationIdentifier="ShowDetailsController" storyboardIdentifier="ShowDetailsController" id="sOu-ed-TQT" customClass="ShowDetailsController" customModule="htc_weak_6" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="anc-Yl-EYW">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -69,11 +69,12 @@
                     <navigationItem key="navigationItem" id="mcw-Yi-3Ji"/>
                     <connections>
                         <outlet property="detailTable" destination="Uma-li-nCc" id="1p1-IK-SQk"/>
+                        <outlet property="navBar" destination="yfF-G7-oON" id="WVQ-De-sOq"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="cd2-cN-XdS" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="2060.8695652173915" y="-139.28571428571428"/>
+            <point key="canvasLocation" x="1081" y="-217"/>
         </scene>
     </scenes>
 </document>

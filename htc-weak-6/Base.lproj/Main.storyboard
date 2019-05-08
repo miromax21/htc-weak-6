@@ -132,7 +132,6 @@
                     </navigationItem>
                     <connections>
                         <outlet property="tableView" destination="sKe-5c-S8o" id="VhU-bk-hvj"/>
-                        <segue destination="XCX-ed-E56" kind="showDetail" identifier="ShowDetailsControllerSeque" id="wjn-m4-Prc"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>

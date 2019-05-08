@@ -10,14 +10,26 @@ import UIKit
 class ShowDetailsController: UIViewController {
     var questionIndes:Int?
     var answers:[Answer]? = [Answer]()
+    @IBOutlet weak var navBar: UINavigationBar!
     @IBOutlet weak var detailTable: UITableView!
     override func viewDidLoad() {
         super.viewDidLoad()
-        if let index = questionIndes, let question = DataModel.data?.items[index]{
-            navigationItem.title = question.title
-            answers = question.answers
-        }
+//        if let index = questionIndes, let question = DataModel.data?.items[index]{
+//         //   self.navBar.topItem?.title = question.title
+//            answers = question.answers
+//        }
     }
+//    func setParams(items:[Answer]?)  {
+//        if items == nil{
+//            self.answers = [Answer]()
+//        }
+//        else{
+//            self.answers = items
+//        }
+//
+//        self.answers = items ?? [Answer]()
+//        detailTable.reloadData()
+//    }
     @IBAction func goBack(_ sender: Any) {
         dismiss(animated: true, completion: nil)
     }

@@ -8,6 +8,7 @@
 
 import UIKit
 class QuestionTableviewCell: UITableViewCell {
+    
     @IBOutlet weak var question: UILabel!
     @IBOutlet weak var author: UILabel!
     @IBOutlet weak var answersCount: UILabel!
