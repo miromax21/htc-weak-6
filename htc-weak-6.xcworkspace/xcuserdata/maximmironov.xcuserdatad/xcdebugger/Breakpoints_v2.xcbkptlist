@@ -106,7 +106,7 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "htc-weak-6/Views/ShowDetails/ShowDetailsController.swift"
-            timestampString = "579001319.396029"
+            timestampString = "579004173.06517"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
             startingLineNumber = "21"
@@ -138,7 +138,7 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "htc-weak-6/Views/QuestionTableview/ViewController.swift"
-            timestampString = "579001319.396167"
+            timestampString = "579004173.065274"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
             startingLineNumber = "30"
@@ -154,7 +154,7 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "htc-weak-6/Model/QuestionModel.swift"
-            timestampString = "579001319.396257"
+            timestampString = "579004173.065758"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
             startingLineNumber = "15"
@@ -170,11 +170,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "htc-weak-6/Views/QuestionTableview/ViewController.swift"
-            timestampString = "579001319.396322"
+            timestampString = "579004173.065823"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "44"
-            endingLineNumber = "44"
+            startingLineNumber = "45"
+            endingLineNumber = "45"
             landmarkName = "loadData(tag:)"
             landmarkType = "7">
          </BreakpointContent>
@@ -186,13 +186,13 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "htc-weak-6/Views/QuestionTableview/ViewController.swift"
-            timestampString = "579001319.3963979"
+            timestampString = "579004173.0661941"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "70"
-            endingLineNumber = "70"
-            landmarkName = "ViewController"
-            landmarkType = "21">
+            startingLineNumber = "72"
+            endingLineNumber = "72"
+            landmarkName = "tableView(_:cellForRowAt:)"
+            landmarkType = "7">
          </BreakpointContent>
       </BreakpointProxy>
       <BreakpointProxy
@@ -202,13 +202,13 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "htc-weak-6/Views/ShowDetails/ShowDetailsController.swift"
-            timestampString = "579001319.396472"
+            timestampString = "579004173.066555"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
             startingLineNumber = "16"
             endingLineNumber = "16"
-            landmarkName = "viewDidLoad()"
-            landmarkType = "7">
+            landmarkName = "ShowDetailsController"
+            landmarkType = "3">
          </BreakpointContent>
       </BreakpointProxy>
       <BreakpointProxy
@@ -218,11 +218,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "htc-weak-6/Views/QuestionTableview/ViewController.swift"
-            timestampString = "579001319.39656"
+            timestampString = "579004173.066626"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "38"
-            endingLineNumber = "38"
+            startingLineNumber = "39"
+            endingLineNumber = "39"
             landmarkName = "loadData(tag:)"
             landmarkType = "7">
          </BreakpointContent>
@@ -234,7 +234,7 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "htc-weak-6/Model/URLSessionApiSrevice.swift"
-            timestampString = "579001319.396623"
+            timestampString = "579004173.066934"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
             startingLineNumber = "24"
@@ -282,7 +282,7 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "htc-weak-6/Model/URLSessionApiSrevice.swift"
-            timestampString = "579001319.397036"
+            timestampString = "579004173.066998"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
             startingLineNumber = "25"
@@ -360,7 +360,7 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "htc-weak-6/Model/URLSessionApiSrevice.swift"
-            timestampString = "579001319.397337"
+            timestampString = "579004173.067058"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
             startingLineNumber = "26"

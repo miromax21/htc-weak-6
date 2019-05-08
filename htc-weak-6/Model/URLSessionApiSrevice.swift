@@ -15,13 +15,15 @@ protocol GetQuestionsProtocol{
 }
 class URLSessionApiSrevice:GetQuestionsProtocol {
     let githubUrl = "https://api.stackexchange.com/2.2/questions?order=desc&sort=activity&site=stackoverflow&filter=!0WJ3YL7KJOsP46r755kycqqs8"
-    let defaultSession = URLSession(configuration: .default)
+    
     var dataTask: URLSessionDataTask?
+    
     func getQuestionsSession(tag: String, completion: @escaping ([ItemModel]) -> ()) {
+        let defaultSession = URLSession(configuration: .default)
         dataTask?.cancel()
         DispatchQueue.global(qos: .userInitiated).async {
             let url = URL(string: self.githubUrl + "&tagged=\(tag)")!
-            self.dataTask = self.defaultSession.dataTask(with: url) { data, response, error in
+            self.dataTask = defaultSession.dataTask(with: url) { data, response, error in
                     defer { self.dataTask = nil }
                     if let error = error {
                         DispatchQueue.main.async {

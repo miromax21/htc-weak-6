@@ -7,6 +7,6 @@
 //
 
 import Foundation
-class DataModel {
-    static var data:ServerDataModel?
-}
+//class DataModel {
+//    static var data:ServerDataModel?
+//}

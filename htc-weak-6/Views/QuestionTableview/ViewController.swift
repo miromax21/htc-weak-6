@@ -5,21 +5,16 @@
 //  Created by maxim mironov on 30/04/2019.
 //  Copyright © 2019 maxim mironov. All rights reserved.
 //
-
-
-
-
-
 import UIKit
 
 class ViewController: UIViewController {
-    
-    let queryTypeArray: [String] = ["swift", "ios", "xcode", "cocoa-touch", "iphone"]
-    var questionIndex : Int = 0;
+
     @IBOutlet weak var activityIndicator: UIActivityIndicatorView!
     @IBOutlet weak var tableView: UITableView!
     var items = [ItemModel]()
+    
     override func viewDidLoad() {
+        
         super.viewDidLoad()
         tableView.isEditing = false
         let bbItem = UIBarButtonItem(title: "+", style: .done, target: self, action: #selector(clickButton))
@@ -31,6 +26,7 @@ class ViewController: UIViewController {
     func loadData(tag: String)  {
         let urlSesion = URLSessionApiSrevice()
         self.activityIndicator.startAnimating()
+        
         self.tableView.alpha = 0
         urlSesion.getQuestionsSession(tag: tag) { (data) in
      //   urlSesion.getQuestionsAlamofire(tag: tag) { (data) in
@@ -47,10 +43,6 @@ class ViewController: UIViewController {
         if segue.identifier == "SetTagViewControllerSeque" {
             let vc : SetTagViewController = segue.destination as! SetTagViewController
             vc.delegate = self
-            vc.pickerData = queryTypeArray
-        }else if segue.identifier == "ShowDetailsControllerSeque"{
-            let vc : ShowDetailsController = segue.destination as! ShowDetailsController
-            vc.questionIndes = self.questionIndex
         }
     }
     

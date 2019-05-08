@@ -11,8 +11,9 @@ import Foundation
 struct ServerDataModel: Codable {
     var items: [ItemModel]
 }
-struct ItemModel:Codable {
-    var owner:ItemOwnerModel
+
+struct ItemModel: Codable {
+    var owner: ItemOwnerModel
   //  var is_answered: Bool
     var answerCount: Int
     var score: Int?
@@ -41,7 +42,7 @@ struct ItemModel:Codable {
 
     }
 }
-struct Answer:Codable  {
+struct Answer: Codable  {
     var title: String
 }
 struct ItemOwnerModel : Codable{

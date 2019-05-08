@@ -8,10 +8,13 @@
 
 import UIKit
 class ShowDetailsController: UIViewController {
+    
     var questionIndes:Int?
     var answers:[Answer]? = [Answer]()
+    
     @IBOutlet weak var navBar: UINavigationBar!
     @IBOutlet weak var detailTable: UITableView!
+    
     override func viewDidLoad() {
         super.viewDidLoad()
 //        if let index = questionIndes, let question = DataModel.data?.items[index]{

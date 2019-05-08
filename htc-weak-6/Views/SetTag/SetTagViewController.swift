@@ -11,16 +11,20 @@ protocol SatTagDelegate {
     func setTag(tag : String)
 }
 class SetTagViewController: UIViewController {
+    
     @IBOutlet weak var pickerView: UIPickerView!
     @IBOutlet weak var setTagButton: UIButton!
+    
     var delegate : SatTagDelegate?
     var pickerData: [String] = ["swift", "ios", "xcode", "cocoa-touch", "iphone"]
     var tag: String = "swift"
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         self.pickerView.delegate = self
         self.pickerView.dataSource = self
     }
+    
     @IBAction func SetTag(_ sender: Any) {
         delegate?.setTag(tag: self.tag)
         dismiss(animated: true)
@@ -28,6 +32,7 @@ class SetTagViewController: UIViewController {
 }
 
 extension SetTagViewController: UIPickerViewDelegate, UIPickerViewDataSource{
+    
     func numberOfComponents(in pickerView: UIPickerView) -> Int {
         return 1
     }
