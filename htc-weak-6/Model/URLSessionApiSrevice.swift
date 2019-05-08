@@ -8,7 +8,6 @@
 
 import Foundation
 import Alamofire
-import SwiftyJSON
 protocol GetQuestionsProtocol{
     func getQuestionsAlamofire(tag: String, completion: @escaping ([ItemModel]) -> ())
     func getQuestionsSession(tag: String, completion: @escaping ([ItemModel]) -> ())
