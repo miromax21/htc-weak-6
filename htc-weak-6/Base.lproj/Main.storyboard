@@ -131,7 +131,7 @@
                         <barButtonItem key="leftBarButtonItem" title="Tag" id="ybc-Cr-ajS">
                             <color key="tintColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                             <connections>
-                                <segue destination="2Ti-tI-5kF" kind="presentation" identifier="SetTagViewControllerSeque" id="NZv-py-r6h"/>
+                                <action selector="goToChangeTag:" destination="BYZ-38-t0r" id="RCx-4j-PNt"/>
                             </connections>
                         </barButtonItem>
                     </navigationItem>
@@ -143,14 +143,6 @@
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="1378.2608695652175" y="38.839285714285715"/>
-        </scene>
-        <!--SetTagViewController-->
-        <scene sceneID="NHK-0M-szM">
-            <objects>
-                <viewControllerPlaceholder storyboardName="SetTagViewController" id="2Ti-tI-5kF" sceneMemberID="viewController"/>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="Ai8-Lh-PrG" userLabel="First Responder" sceneMemberID="firstResponder"/>
-            </objects>
-            <point key="canvasLocation" x="1923" y="-216"/>
         </scene>
         <!--ShowDetailsController-->
         <scene sceneID="ikQ-Yq-l6I">

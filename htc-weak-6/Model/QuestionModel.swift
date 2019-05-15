@@ -20,7 +20,7 @@ struct ItemModel: Codable {
     var lastEditDate: Int?
     var creationDate: Int
 //    var question_id:Int
-//    var answers: [Answer]?
+    var answers: [Answer]?
     
     enum CodingKeys: String, CodingKey {
         case owner
@@ -29,6 +29,7 @@ struct ItemModel: Codable {
         case title
         case lastEditDate = "last_edit_date"
         case creationDate = "creation_date"
+        case answers
     }
     init(from decoder: Decoder) throws {
         let container = try decoder.container(keyedBy: CodingKeys.self)
@@ -38,6 +39,7 @@ struct ItemModel: Codable {
         self.title = try container.decode(String.self, forKey: .title)
         self.lastEditDate = try? container.decode(Int.self, forKey: .lastEditDate)
         self.creationDate = try container.decode(Int.self, forKey: .creationDate)
+        self.answers = try? container.decode([Answer].self, forKey: .answers)
 
     }
 }

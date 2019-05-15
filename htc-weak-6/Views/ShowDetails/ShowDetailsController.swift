@@ -11,12 +11,14 @@ class ShowDetailsController: UIViewController {
     
     var questionIndes:Int?
     var answers:[Answer]? = [Answer]()
+    var aquestionTitle: String? = ""
     var funct : ((String) -> Void)?
     @IBOutlet weak var navBar: UINavigationBar!
     @IBOutlet weak var detailTable: UITableView!
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        self.navigationItem.title = aquestionTitle
 //        if let index = questionIndes, let question = DataModel.data?.items[index]{
 //         //   self.navBar.topItem?.title = question.title
 //            answers = question.answers

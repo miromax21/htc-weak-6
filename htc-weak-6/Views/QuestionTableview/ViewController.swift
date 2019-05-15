@@ -40,15 +40,15 @@ class ViewController: UIViewController {
         }
     }
     
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        if segue.identifier == "SetTagViewControllerSeque" {
-            let vc : SetTagViewController = segue.destination as! SetTagViewController
-            vc.delegate = self
-        }
-    }
     
     @objc func clickButton()  {
         self.tableView.isEditing = !self.tableView.isEditing
+    }
+    @IBAction func goToChangeTag(_ sender: Any) {
+        let storyboard = UIStoryboard(name: String(describing: SetTagViewController.self), bundle: nil)
+        let vc = storyboard.instantiateInitialViewController() as! SetTagViewController
+        vc.delegate = self
+        self.present(vc, animated: true)
     }
 }
 extension ViewController: UITableViewDataSource, UITableViewDelegate, SatTagDelegate {
@@ -64,8 +64,19 @@ extension ViewController: UITableViewDataSource, UITableViewDelegate, SatTagDele
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: QuestionTableviewCell.identifier) as! QuestionTableviewCell
         let model = self.items[indexPath.row]
+        if model.answerCount > 0 {
+            cell.accessoryType = UITableViewCell.AccessoryType.detailDisclosureButton
+        }
         cell.initCell(param:model)
         return cell
+    }
+    func tableView(_ tableView: UITableView, accessoryButtonTappedForRowWith indexPath: IndexPath) {
+        let storyboard = UIStoryboard(name: String(describing: ShowDetailsController.self), bundle: nil)
+        let vc = storyboard.instantiateInitialViewController() as! ShowDetailsController
+        let model = self.items[indexPath.row]
+        vc.answers = model.answers
+        vc.aquestionTitle = model.title
+        self.navigationController?.pushViewController(vc, animated: true)
     }
 //    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
 ////        self.questionIndex = indexPath.row
