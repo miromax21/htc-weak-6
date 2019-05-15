@@ -29,6 +29,9 @@ class SetTagViewController: UIViewController {
         delegate?.setTag(tag: self.tag)
         dismiss(animated: true)
     }
+    @IBAction func Cancel(_ sender: Any) {
+        dismiss(animated: false)
+    }
 }
 
 extension SetTagViewController: UIPickerViewDelegate, UIPickerViewDataSource{

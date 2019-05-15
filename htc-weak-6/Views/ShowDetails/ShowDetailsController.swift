@@ -11,7 +11,7 @@ class ShowDetailsController: UIViewController {
     
     var questionIndes:Int?
     var answers:[Answer]? = [Answer]()
-    
+    var funct : ((String) -> Void)?
     @IBOutlet weak var navBar: UINavigationBar!
     @IBOutlet weak var detailTable: UITableView!
     

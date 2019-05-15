@@ -7,7 +7,6 @@
 //
 
 import Foundation
-
 struct ServerDataModel: Codable {
     var items: [ItemModel]
 }

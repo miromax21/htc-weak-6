@@ -12,24 +12,25 @@ class ViewController: UIViewController {
     @IBOutlet weak var activityIndicator: UIActivityIndicatorView!
     @IBOutlet weak var tableView: UITableView!
     var items = [ItemModel]()
+    var urlSession:GetQuestionsProtocol!
     
     override func viewDidLoad() {
-        
         super.viewDidLoad()
+        activityIndicator.hidesWhenStopped = true
         tableView.isEditing = false
         let bbItem = UIBarButtonItem(title: "+", style: .done, target: self, action: #selector(clickButton))
         self.navigationItem.rightBarButtonItem = bbItem
         loadData(tag: "swift")
-        self.activityIndicator.hidesWhenStopped = true
+        
     }
     
     func loadData(tag: String)  {
-        let urlSesion = URLSessionApiSrevice()
-        self.activityIndicator.startAnimating()
+        self.urlSession = AlamofireApiServices()
+//        self.urlSession = URLSessionApiSrevices()
+        activityIndicator.startAnimating()
         
         self.tableView.alpha = 0
-        urlSesion.getQuestionsSession(tag: tag) { (data) in
-     //   urlSesion.getQuestionsAlamofire(tag: tag) { (data) in
+        self.urlSession.getQuestions(tag: tag) { (data) in
             self.items = data
             self.tableView.reloadData()
             self.activityIndicator.stopAnimating()
@@ -79,5 +80,4 @@ extension ViewController: UITableViewDataSource, UITableViewDelegate, SatTagDele
 //        
 //     //   navigationController?.pushViewController(detailControllerViewController, animated: true)
 //    }
-    
 }
