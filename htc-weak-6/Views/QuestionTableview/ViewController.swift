@@ -78,17 +78,4 @@ extension ViewController: UITableViewDataSource, UITableViewDelegate, SatTagDele
         vc.aquestionTitle = model.title
         self.navigationController?.pushViewController(vc, animated: true)
     }
-//    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-////        self.questionIndex = indexPath.row
-////        self.performSegue(withIdentifier: "ShowDetailsControllerSeque", sender: nil)
-////        let detailControllerViewController = ShowDetailsController()
-////        detailControllerViewController.answers = self.items[indexPath.row].answers
-//       // detailControllerViewController.answers = [Answer]() // self.items[indexPath.row].answers)
-//       // detailControllerViewController.questionIndes = indexPath.row
-//        let detailControllerViewController = UIStoryboard.init(name: "Main", bundle: Bundle.main).instantiateViewController(withIdentifier: "ShowDetailsController") as? ShowDetailsController
-//        detailControllerViewController?.answers = self.items[indexPath.row].answers
-//        self.navigationController?.pushViewController(detailControllerViewController!, animated: true)
-//        
-//     //   navigationController?.pushViewController(detailControllerViewController, animated: true)
-//    }
 }

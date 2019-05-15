@@ -16,25 +16,18 @@ class ShowDetailsController: UIViewController {
     @IBOutlet weak var navBar: UINavigationBar!
     @IBOutlet weak var detailTable: UITableView!
     
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         self.navigationItem.title = aquestionTitle
-//        if let index = questionIndes, let question = DataModel.data?.items[index]{
-//         //   self.navBar.topItem?.title = question.title
-//            answers = question.answers
-//        }
+        self.answers = self.answers?.sorted(by: >)
+ 
     }
-//    func setParams(items:[Answer]?)  {
-//        if items == nil{
-//            self.answers = [Answer]()
-//        }
-//        else{
-//            self.answers = items
-//        }
-//
-//        self.answers = items ?? [Answer]()
-//        detailTable.reloadData()
-//    }
+    
+    override func viewWillAppear(_ animated: Bool) {
+        
+    }
+
     @IBAction func goBack(_ sender: Any) {
         dismiss(animated: true, completion: nil)
     }
@@ -47,11 +40,12 @@ extension ShowDetailsController:UITableViewDataSource, UITableViewDelegate{
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let cell = UITableViewCell()
+        let cell = UITableViewCell(style: .subtitle, reuseIdentifier: "dsd")
         if indexPath.row == 0{
             cell.backgroundColor = .yellow
         }
         cell.textLabel?.text = answers?[indexPath.row].title
+        cell.detailTextLabel?.text = "reputation: \(answers![indexPath.row].owner.reputation)"  // String( answers?[indexPath.row].owner.reputation) Strib
         return cell
     }
     

@@ -45,12 +45,34 @@ struct ItemModel: Codable {
 }
 struct Answer: Codable  {
     var title: String
+    var owner: ItemOwnerModel
 }
 struct ItemOwnerModel : Codable{
     var displayName: String?
     var link: String?
+    var reputation: Int
+
     enum CodingKeys : String, CodingKey {
         case displayName = "display_name"
         case link
+        case reputation
     }
+    init(from decoder: Decoder) throws {
+        let container = try decoder.container(keyedBy: CodingKeys.self)
+        self.displayName = try? container.decode(String.self, forKey: CodingKeys.displayName)
+        self.link = try? container.decode(String.self, forKey: CodingKeys.link)
+        self.reputation = try container.decode(Int.self, forKey: CodingKeys.reputation)
+    }
+}
+
+extension Answer:Comparable{
+    static func < (lhs: Answer, rhs: Answer) -> Bool {
+        return lhs.owner.reputation < rhs.owner.reputation
+    }
+    
+    static func == (lhs: Answer, rhs: Answer) -> Bool {
+        return lhs.owner.reputation  == rhs.owner.reputation
+    }
+    
+    
 }
