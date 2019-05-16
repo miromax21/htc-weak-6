@@ -20,7 +20,12 @@ class AlamofireApiServices : GetQuestionsProtocol {
                     completion([ItemModel]())
                     return
                 }
-                let data = try? JSONDecoder().decode(ServerDataModel.self, from: responceData)
+                var data: ServerDataModel? = nil
+                do {
+                    data = try JSONDecoder().decode(ServerDataModel.self, from: responceData)
+                } catch {
+                    print(error)
+                }
                 guard data != nil, let items = data?.items else{
                     completion([ItemModel]())
                     return

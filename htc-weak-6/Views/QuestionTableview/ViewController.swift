@@ -16,12 +16,12 @@ class ViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        self.isEditing = true
         activityIndicator.hidesWhenStopped = true
         tableView.isEditing = false
         let bbItem = UIBarButtonItem(title: "+", style: .done, target: self, action: #selector(clickButton))
         self.navigationItem.rightBarButtonItem = bbItem
         loadData(tag: "swift")
-        
     }
     
     func loadData(tag: String)  {
@@ -37,6 +37,7 @@ class ViewController: UIViewController {
             UIView.animate(withDuration: 1.5, animations: {
                 self.tableView.alpha = 1
             })
+            self.navigationItem.title = tag
         }
     }
     
@@ -67,7 +68,7 @@ extension ViewController: UITableViewDataSource, UITableViewDelegate, SatTagDele
         if model.answerCount > 0 {
             cell.accessoryType = UITableViewCell.AccessoryType.detailDisclosureButton
         }
-        cell.initCell(param:model)
+        cell.configureCell(param:model)
         return cell
     }
     func tableView(_ tableView: UITableView, accessoryButtonTappedForRowWith indexPath: IndexPath) {

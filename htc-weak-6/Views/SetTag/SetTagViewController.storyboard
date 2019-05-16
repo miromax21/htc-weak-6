@@ -19,16 +19,16 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES" flexibleMaxY="YES"/>
                         <subviews>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="MYU-lK-R2v" customClass="PopupUIView" customModule="htc_weak_6" customModuleProvider="target">
-                                <rect key="frame" x="20" y="66" width="374" height="227"/>
+                                <rect key="frame" x="15" y="66" width="384" height="227"/>
                                 <subviews>
                                     <pickerView contentMode="scaleToFill" verticalCompressionResistancePriority="751" translatesAutoresizingMaskIntoConstraints="NO" id="XVs-mP-23C">
-                                        <rect key="frame" x="5" y="5" width="364" height="155"/>
+                                        <rect key="frame" x="5" y="5" width="374" height="155"/>
                                         <constraints>
                                             <constraint firstAttribute="height" constant="155" id="lG5-lP-AgX"/>
                                         </constraints>
                                     </pickerView>
-                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="hbV-Qh-es7" customClass="FormButton" customModule="htc_weak_6" customModuleProvider="target">
-                                        <rect key="frame" x="239" y="168" width="130" height="54"/>
+                                    <button opaque="NO" contentMode="scaleToFill" misplaced="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="hbV-Qh-es7" customClass="FormButton" customModule="htc_weak_6" customModuleProvider="target">
+                                        <rect key="frame" x="277" y="168" width="130" height="54"/>
                                         <constraints>
                                             <constraint firstAttribute="width" constant="130" id="c6A-XR-N2l"/>
                                         </constraints>
@@ -71,12 +71,9 @@
                         </subviews>
                         <color key="backgroundColor" red="0.44296470207253891" green="0.44296470207253891" blue="0.44296470207253891" alpha="0.48850132042253519" colorSpace="custom" customColorSpace="sRGB"/>
                         <constraints>
-                            <constraint firstItem="a0x-c7-OcX" firstAttribute="bottom" secondItem="MYU-lK-R2v" secondAttribute="bottom" constant="569" id="CwC-vZ-BHx"/>
+                            <constraint firstItem="MYU-lK-R2v" firstAttribute="leading" secondItem="a0x-c7-OcX" secondAttribute="leading" constant="15" id="LQG-fu-byy"/>
+                            <constraint firstItem="a0x-c7-OcX" firstAttribute="trailing" secondItem="MYU-lK-R2v" secondAttribute="trailing" constant="15" id="SZu-cU-beB"/>
                             <constraint firstItem="MYU-lK-R2v" firstAttribute="top" secondItem="a0x-c7-OcX" secondAttribute="top" constant="22" id="bg7-qk-wPP"/>
-                            <constraint firstItem="MYU-lK-R2v" firstAttribute="leading" secondItem="sAY-bQ-bve" secondAttribute="leadingMargin" id="dYz-lf-hIP"/>
-                            <constraint firstItem="a0x-c7-OcX" firstAttribute="trailing" secondItem="MYU-lK-R2v" secondAttribute="trailing" constant="20" id="rrg-v2-mtv"/>
-                            <constraint firstItem="MYU-lK-R2v" firstAttribute="trailing" secondItem="sAY-bQ-bve" secondAttribute="trailingMargin" id="y6n-yR-X7h"/>
-                            <constraint firstItem="MYU-lK-R2v" firstAttribute="leading" secondItem="a0x-c7-OcX" secondAttribute="leading" constant="20" id="ze2-pY-p8g"/>
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="a0x-c7-OcX"/>
                     </view>

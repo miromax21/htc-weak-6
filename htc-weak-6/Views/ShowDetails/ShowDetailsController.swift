@@ -21,7 +21,6 @@ class ShowDetailsController: UIViewController {
         super.viewDidLoad()
         self.navigationItem.title = aquestionTitle
         self.answers = self.answers?.sorted(by: >)
- 
     }
     
     override func viewWillAppear(_ animated: Bool) {

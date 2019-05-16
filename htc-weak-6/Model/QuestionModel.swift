@@ -50,7 +50,7 @@ struct Answer: Codable  {
 struct ItemOwnerModel : Codable{
     var displayName: String?
     var link: String?
-    var reputation: Int
+    var reputation: Int?
 
     enum CodingKeys : String, CodingKey {
         case displayName = "display_name"
@@ -67,7 +67,11 @@ struct ItemOwnerModel : Codable{
 
 extension Answer:Comparable{
     static func < (lhs: Answer, rhs: Answer) -> Bool {
-        return lhs.owner.reputation < rhs.owner.reputation
+        guard let lhsReputation = lhs.owner.reputation, let rhsReputation = rhs.owner.reputation else{
+            return false
+        }
+        return lhsReputation > rhsReputation
+        
     }
     
     static func == (lhs: Answer, rhs: Answer) -> Bool {
