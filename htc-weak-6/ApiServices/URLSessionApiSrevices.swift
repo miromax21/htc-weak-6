@@ -14,11 +14,11 @@ class URLSessionApiSrevices: GetQuestionsProtocol {
     
     var dataTask: URLSessionDataTask?
     
-    func getQuestions(tag: String, completion: @escaping ([ItemModel]) -> ()) {
+    func getQuestions(tag: String, fromPage: Int, pagesCount: Int, completion: @escaping ([ItemModel]) -> ()) {
         let defaultSession = URLSession(configuration: .default)
         dataTask?.cancel()
         DispatchQueue.global(qos: .userInitiated).async {
-            let url = URL(string: self.githubUrl + "&tagged=\(tag)")!
+            let url = URL(string: self.githubUrl + "&tagged=\(tag)&page=\(fromPage)&pagesize=\(pagesCount)")!
             self.dataTask = defaultSession.dataTask(with: url) { data, response, error in
                 defer { self.dataTask = nil }
                 if let error = error {

@@ -13,9 +13,9 @@ class ShowDetailsController: UIViewController {
     var answers:[Answer]? = [Answer]()
     var aquestionTitle: String? = ""
     var funct : ((String) -> Void)?
+    
     @IBOutlet weak var navBar: UINavigationBar!
     @IBOutlet weak var detailTable: UITableView!
-    
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -44,7 +44,7 @@ extension ShowDetailsController:UITableViewDataSource, UITableViewDelegate{
             cell.backgroundColor = .yellow
         }
         cell.textLabel?.text = answers?[indexPath.row].title
-        cell.detailTextLabel?.text = "reputation: \(answers![indexPath.row].owner.reputation)"  // String( answers?[indexPath.row].owner.reputation) Strib
+        cell.detailTextLabel?.text = "reputation: \(String(describing: answers![indexPath.row].owner.reputation))"
         return cell
     }
     

@@ -127,14 +127,7 @@
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="6Tk-OE-BBY"/>
                     </view>
-                    <navigationItem key="navigationItem" id="y6i-Oy-yRo">
-                        <barButtonItem key="leftBarButtonItem" title="Tag" id="ybc-Cr-ajS">
-                            <color key="tintColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                            <connections>
-                                <action selector="goToChangeTag:" destination="BYZ-38-t0r" id="RCx-4j-PNt"/>
-                            </connections>
-                        </barButtonItem>
-                    </navigationItem>
+                    <navigationItem key="navigationItem" id="y6i-Oy-yRo"/>
                     <connections>
                         <outlet property="activityIndicator" destination="v2u-Fx-ijd" id="QXY-Ig-USG"/>
                         <outlet property="tableView" destination="sKe-5c-S8o" id="VhU-bk-hvj"/>

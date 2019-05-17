@@ -19,18 +19,18 @@ class ViewController: UIViewController {
         self.isEditing = true
         activityIndicator.hidesWhenStopped = true
         tableView.isEditing = false
-        let bbItem = UIBarButtonItem(title: "+", style: .done, target: self, action: #selector(clickButton))
-        self.navigationItem.rightBarButtonItem = bbItem
+        let setTagBarButton = UIBarButtonItem(title: NSLocalizedString("set tag", comment: "set tag bar button item text"), style: .done, target: self, action: #selector(goToSetTag))
+        self.navigationItem.leftBarButtonItem = setTagBarButton
         loadData(tag: "swift")
     }
     
-    func loadData(tag: String)  {
+    func loadData(tag: String, from: Int = 1, count: Int = 10)  {
         self.urlSession = AlamofireApiServices()
 //        self.urlSession = URLSessionApiSrevices()
         activityIndicator.startAnimating()
         
         self.tableView.alpha = 0
-        self.urlSession.getQuestions(tag: tag) { (data) in
+        self.urlSession.getQuestions(tag: tag,fromPage: from, pagesCount: count) { (data) in
             self.items = data
             self.tableView.reloadData()
             self.activityIndicator.stopAnimating()
@@ -41,10 +41,13 @@ class ViewController: UIViewController {
         }
     }
     
-    
-    @objc func clickButton()  {
-        self.tableView.isEditing = !self.tableView.isEditing
+    @objc func goToSetTag()  {
+        let storyboard = UIStoryboard(name: String(describing: SetTagViewController.self), bundle: nil)
+        let vc = storyboard.instantiateInitialViewController() as! SetTagViewController
+        vc.delegate = self
+        self.present(vc, animated: true)
     }
+    
     @IBAction func goToChangeTag(_ sender: Any) {
         let storyboard = UIStoryboard(name: String(describing: SetTagViewController.self), bundle: nil)
         let vc = storyboard.instantiateInitialViewController() as! SetTagViewController
@@ -61,13 +64,11 @@ extension ViewController: UITableViewDataSource, UITableViewDelegate, SatTagDele
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
        return self.items.count
     }
-    
+
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: QuestionTableviewCell.identifier) as! QuestionTableviewCell
         let model = self.items[indexPath.row]
-        if model.answerCount > 0 {
-            cell.accessoryType = UITableViewCell.AccessoryType.detailDisclosureButton
-        }
+        cell.accessoryType = (model.answers != nil)  ? .detailDisclosureButton : .none
         cell.configureCell(param:model)
         return cell
     }
@@ -78,5 +79,11 @@ extension ViewController: UITableViewDataSource, UITableViewDelegate, SatTagDele
         vc.answers = model.answers
         vc.aquestionTitle = model.title
         self.navigationController?.pushViewController(vc, animated: true)
+    }
+    
+    func tableView(_ tableView: UITableView, willDisplay cell: UITableViewCell, forRowAt indexPath: IndexPath) {
+        if indexPath.row == items.count{
+            
+        }
     }
 }

@@ -8,5 +8,5 @@
 
 import Foundation
 protocol GetQuestionsProtocol {
-    func getQuestions(tag: String, completion: @escaping ([ItemModel]) -> ())
+    func getQuestions(tag: String, fromPage: Int, pagesCount:Int, completion: @escaping ([ItemModel]) -> ())
 }

@@ -8,11 +8,11 @@
 
 import Foundation
 struct ServerDataModel: Codable {
-    var items: [ItemModel]
+    var items: [ItemModel]?
 }
 
 struct ItemModel: Codable {
-    var owner: ItemOwnerModel
+    var owner: ItemOwnerModel?
   //  var is_answered: Bool
     var answerCount: Int
     var score: Int?
@@ -20,6 +20,7 @@ struct ItemModel: Codable {
     var lastEditDate: Int?
     var creationDate: Int
 //    var question_id:Int
+    var isAnswered:Bool
     var answers: [Answer]?
     
     enum CodingKeys: String, CodingKey {
@@ -30,17 +31,18 @@ struct ItemModel: Codable {
         case lastEditDate = "last_edit_date"
         case creationDate = "creation_date"
         case answers
+        case isAnswered  = "is_answered"
     }
     init(from decoder: Decoder) throws {
         let container = try decoder.container(keyedBy: CodingKeys.self)
-        self.owner = try container.decode(ItemOwnerModel.self, forKey: .owner)
+        self.owner = try? container.decode(ItemOwnerModel.self, forKey: .owner)
         self.answerCount = try container.decode(Int.self, forKey: .answerCount)
         self.score = try? container.decode(Int.self, forKey: .score)
         self.title = try container.decode(String.self, forKey: .title)
         self.lastEditDate = try? container.decode(Int.self, forKey: .lastEditDate)
         self.creationDate = try container.decode(Int.self, forKey: .creationDate)
         self.answers = try? container.decode([Answer].self, forKey: .answers)
-
+        self.isAnswered = try container.decode(Bool.self, forKey: .isAnswered)
     }
 }
 struct Answer: Codable  {

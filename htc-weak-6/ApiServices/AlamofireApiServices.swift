@@ -11,10 +11,9 @@ import Alamofire
 class AlamofireApiServices : GetQuestionsProtocol {
     
     fileprivate let githubUrl = "https://api.stackexchange.com/2.2/questions?order=desc&sort=activity&site=stackoverflow&filter=!0WJ3YL7KJOsP46r755kycqqs8"
-    
-    func getQuestions(tag: String, completion: @escaping ([ItemModel]) -> ()){
+    func getQuestions(tag: String, fromPage: Int, pagesCount: Int, completion: @escaping ([ItemModel]) -> ()){
         DispatchQueue.global(qos: .background).async{
-            let url = URL(string: self.githubUrl + "&tagged=\(tag)")!
+             let url = URL(string: self.githubUrl + "&tagged=\(tag)&page=\(fromPage)&pagesize=\(pagesCount)")!
             Alamofire.request(url).responseJSON { response in
                 guard response.result.isSuccess,  let responceData = response.data else{
                     completion([ItemModel]())
