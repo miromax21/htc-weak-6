@@ -8,7 +8,7 @@
 
 import UIKit
 protocol SatTagDelegate {
-    func setTag(tag : String)
+    func setTag(tagIndex : Int)
 }
 class SetTagViewController: UIViewController {
     
@@ -16,20 +16,23 @@ class SetTagViewController: UIViewController {
     @IBOutlet weak var setTagButton: UIButton!
     
     var delegate : SatTagDelegate?
-    var pickerData: [String] = ["swift", "ios", "xcode", "cocoa-touch", "iphone"]
-    var tag: String = "swift"
+    var pickerData = [String]()
+    var tagIndex:Int = 0
     
     override func viewDidLoad() {
         super.viewDidLoad()
         self.pickerView.delegate = self
         self.pickerView.dataSource = self
+        
+        let appDelegate = UIApplication.shared.delegate as! ApDelegate
+        self.pickerView.selectRow(appDelegate.tagIndex, inComponent: 0, animated: true)
     }
     
-    @IBAction func SetTag(_ sender: Any) {
-        delegate?.setTag(tag: self.tag)
+    @IBAction func setTag(_ sender: Any) {
         dismiss(animated: true)
+        delegate?.setTag(tagIndex: self.tagIndex)
     }
-    @IBAction func Cancel(_ sender: Any) {
+    @IBAction func cancelPopup(_ sender: Any) {
         dismiss(animated: false)
     }
 }
@@ -48,7 +51,9 @@ extension SetTagViewController: UIPickerViewDelegate, UIPickerViewDataSource{
         return pickerData[row]
     }
     func pickerView(_ pickerView: UIPickerView, didSelectRow row: Int, inComponent component: Int) {
-        self.tag  = pickerData[row]
+        self.tagIndex = row
+        //delegate?.setTag(tagIndex: row)
     }
     
 }
+

@@ -12,32 +12,55 @@ class ViewController: UIViewController {
     @IBOutlet weak var activityIndicator: UIActivityIndicatorView!
     @IBOutlet weak var tableView: UITableView!
     var items = [ItemModel]()
-    var urlSession:GetQuestionsProtocol!
+    var urlSession: GetQuestionsProtocol!
+    var tag: String = "swift"
+    var property = Property()
     
-    override func viewDidLoad() {
-        super.viewDidLoad()
-        self.isEditing = true
-        activityIndicator.hidesWhenStopped = true
-        tableView.isEditing = false
+    
+    fileprivate func addTagButton() {
         let setTagBarButton = UIBarButtonItem(title: NSLocalizedString("set tag", comment: "set tag bar button item text"), style: .done, target: self, action: #selector(goToSetTag))
         self.navigationItem.leftBarButtonItem = setTagBarButton
-        loadData(tag: "swift")
+        self.navigationItem.title = property.tags[0]
     }
     
-    func loadData(tag: String, from: Int = 1, count: Int = 10)  {
+    override func viewDidLoad() {
+        
+        super.viewDidLoad()
+        addTagButton()
         self.urlSession = AlamofireApiServices()
-//        self.urlSession = URLSessionApiSrevices()
+        //        self.urlSession = URLSessionApiSrevices()
+        loadData(tagIndex: nil)
+        
+    }
+    
+    func loadData(tagIndex: Int?, from: Int = 1, count: Int = 50)  {
+        self.items = []
+
         activityIndicator.startAnimating()
         
         self.tableView.alpha = 0
-        self.urlSession.getQuestions(tag: tag,fromPage: from, pagesCount: count) { (data) in
+        self.urlSession.getQuestions(tag: self.property.tags[tagIndex ?? 0],fromPage: self.property.pageNumber, pagesCount: 10) { (data) in
+            let appDelegate = UIApplication.shared.delegate as! ApDelegate
+            appDelegate.tagIndex =  tagIndex ?? 0
             self.items = data
             self.tableView.reloadData()
+            self.navigationItem.title = self.property.tags[appDelegate.tagIndex]
             self.activityIndicator.stopAnimating()
             UIView.animate(withDuration: 1.5, animations: {
                 self.tableView.alpha = 1
             })
-            self.navigationItem.title = tag
+        }
+    }
+    
+    func fetchData(tagIndex: Int?, from: Int = 1, count: Int = 50){
+        let appDelegate = UIApplication.shared.delegate as! ApDelegate
+        self.urlSession.getQuestions(tag: self.property.tags[appDelegate.tagIndex],fromPage: self.property.pageNumber, pagesCount: 10) { (data) in
+            self.items = data
+            let indexPaths = (self.items.count ..< self.items.count + data.count).map { IndexPath(row: $0, section: 0) }
+            self.tableView.beginUpdates()
+            self.tableView.insertRows(at: indexPaths, with: .bottom)
+            self.tableView.endUpdates()
+            
         }
     }
     
@@ -45,45 +68,38 @@ class ViewController: UIViewController {
         let storyboard = UIStoryboard(name: String(describing: SetTagViewController.self), bundle: nil)
         let vc = storyboard.instantiateInitialViewController() as! SetTagViewController
         vc.delegate = self
+        vc.pickerData = self.property.tags
+       // vc.pickerView.selectedRow(inComponent: ApDelegate().tagIndex)
         self.present(vc, animated: true)
-    }
-    
-    @IBAction func goToChangeTag(_ sender: Any) {
-        let storyboard = UIStoryboard(name: String(describing: SetTagViewController.self), bundle: nil)
-        let vc = storyboard.instantiateInitialViewController() as! SetTagViewController
-        vc.delegate = self
-        self.present(vc, animated: true)
+        
     }
 }
-extension ViewController: UITableViewDataSource, UITableViewDelegate, SatTagDelegate {
-    
-    func setTag(tag: String) {
-        loadData(tag: tag)
-    }
+
+// MARK: TableViewDelegate
+
+extension ViewController: UITableViewDataSource, UITableViewDelegate{
 
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
        return self.items.count
     }
-
-    func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let cell = tableView.dequeueReusableCell(withIdentifier: QuestionTableviewCell.identifier) as! QuestionTableviewCell
-        let model = self.items[indexPath.row]
-        cell.accessoryType = (model.answers != nil)  ? .detailDisclosureButton : .none
-        cell.configureCell(param:model)
-        return cell
-    }
-    func tableView(_ tableView: UITableView, accessoryButtonTappedForRowWith indexPath: IndexPath) {
-        let storyboard = UIStoryboard(name: String(describing: ShowDetailsController.self), bundle: nil)
-        let vc = storyboard.instantiateInitialViewController() as! ShowDetailsController
+    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        let vc = ShowDetailsController.getInstance() as! ShowDetailsController
         let model = self.items[indexPath.row]
         vc.answers = model.answers
         vc.aquestionTitle = model.title
         self.navigationController?.pushViewController(vc, animated: true)
     }
+    func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+        let cell = tableView.dequeueReusableCell(withIdentifier: QuestionTableviewCell.identifier) as! QuestionTableviewCell
+        let model = self.items[indexPath.row]
+        cell.configureCell(param:model)
+        return cell
+    }
+}
+
+extension ViewController: SatTagDelegate{
     
-    func tableView(_ tableView: UITableView, willDisplay cell: UITableViewCell, forRowAt indexPath: IndexPath) {
-        if indexPath.row == items.count{
-            
-        }
+    func setTag(tagIndex: Int) {
+        loadData(tagIndex: tagIndex)
     }
 }

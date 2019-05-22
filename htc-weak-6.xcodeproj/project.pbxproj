@@ -24,6 +24,7 @@
 		1B815A47227EE1CB007ED3B2 /* ShowDetailsController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1B815A46227EE1CB007ED3B2 /* ShowDetailsController.swift */; };
 		1B815A4B227EF7D8007ED3B2 /* ShowDetailsController.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 1B815A4A227EE242007ED3B2 /* ShowDetailsController.storyboard */; };
 		1B815A4E227F22FC007ED3B2 /* QuestionTableviewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1B815A4D227F22FC007ED3B2 /* QuestionTableviewCell.swift */; };
+		1B93DB732292F25600DB4082 /* Property.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1B93DB722292F25600DB4082 /* Property.swift */; };
 		1B99C6E2228AF8CA00B7CFB5 /* AlamofireApiServices.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1B99C6E1228AF8CA00B7CFB5 /* AlamofireApiServices.swift */; };
 		1B99C6E4228AF97600B7CFB5 /* URLSessionApiSrevices.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1B99C6E3228AF97600B7CFB5 /* URLSessionApiSrevices.swift */; };
 		1B99C6E7228AFB9D00B7CFB5 /* Protocols.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1B99C6E6228AFB9D00B7CFB5 /* Protocols.swift */; };
@@ -48,6 +49,7 @@
 		1B815A46227EE1CB007ED3B2 /* ShowDetailsController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ShowDetailsController.swift; sourceTree = "<group>"; };
 		1B815A4A227EE242007ED3B2 /* ShowDetailsController.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = ShowDetailsController.storyboard; path = "/Users/maximmironov/Library/Autosave Information/htc-weak-6/htc-weak-6/Views/ShowDetails/ShowDetailsController.storyboard"; sourceTree = "<absolute>"; };
 		1B815A4D227F22FC007ED3B2 /* QuestionTableviewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = QuestionTableviewCell.swift; sourceTree = "<group>"; };
+		1B93DB722292F25600DB4082 /* Property.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Property.swift; sourceTree = "<group>"; };
 		1B99C6E1228AF8CA00B7CFB5 /* AlamofireApiServices.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AlamofireApiServices.swift; sourceTree = "<group>"; };
 		1B99C6E3228AF97600B7CFB5 /* URLSessionApiSrevices.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = URLSessionApiSrevices.swift; sourceTree = "<group>"; };
 		1B99C6E6228AFB9D00B7CFB5 /* Protocols.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Protocols.swift; sourceTree = "<group>"; };
@@ -172,6 +174,7 @@
 			children = (
 				1B3855DB22787DFD0017CE00 /* ViewController.swift */,
 				1B815A4D227F22FC007ED3B2 /* QuestionTableviewCell.swift */,
+				1B93DB722292F25600DB4082 /* Property.swift */,
 			);
 			path = QuestionTableview;
 			sourceTree = "<group>";
@@ -244,6 +247,11 @@
 				TargetAttributes = {
 					1B3855D522787DFD0017CE00 = {
 						CreatedOnToolsVersion = 10.2.1;
+						SystemCapabilities = {
+							com.apple.BackgroundModes = {
+								enabled = 1;
+							};
+						};
 					};
 				};
 			};
@@ -332,6 +340,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				1B93DB732292F25600DB4082 /* Property.swift in Sources */,
 				1B815A43227EE123007ED3B2 /* UIViewControllerExtentions.swift in Sources */,
 				1B99C6E7228AFB9D00B7CFB5 /* Protocols.swift in Sources */,
 				1B815A40227ED948007ED3B2 /* AppButtons.swift in Sources */,

@@ -58,6 +58,7 @@
                                                         <constraint firstItem="uPQ-d4-GVX" firstAttribute="leading" secondItem="xiV-nK-Hbn" secondAttribute="leading" id="SfK-SD-ndQ"/>
                                                         <constraint firstAttribute="bottom" secondItem="rEf-fi-VN5" secondAttribute="bottom" id="THF-8Z-Zlj"/>
                                                         <constraint firstItem="rEf-fi-VN5" firstAttribute="top" secondItem="uPQ-d4-GVX" secondAttribute="bottom" constant="5" id="VpZ-ca-bzw"/>
+                                                        <constraint firstAttribute="width" relation="greaterThanOrEqual" constant="42" id="pUa-QV-E7N"/>
                                                         <constraint firstAttribute="trailing" secondItem="uPQ-d4-GVX" secondAttribute="trailing" id="r2l-ME-vtJ"/>
                                                         <constraint firstAttribute="trailing" secondItem="rEf-fi-VN5" secondAttribute="trailing" id="sTo-2g-8ik"/>
                                                         <constraint firstItem="uPQ-d4-GVX" firstAttribute="top" secondItem="xiV-nK-Hbn" secondAttribute="top" id="yrX-Fg-kPX"/>
@@ -84,6 +85,7 @@
                                                 </view>
                                             </subviews>
                                             <constraints>
+                                                <constraint firstItem="AtN-UA-NO5" firstAttribute="leading" secondItem="FtB-Ip-jPi" secondAttribute="leading" constant="5" id="1cc-3B-lzs"/>
                                                 <constraint firstItem="AtN-UA-NO5" firstAttribute="top" secondItem="FtB-Ip-jPi" secondAttribute="top" constant="5" id="2Xl-j0-sD4"/>
                                                 <constraint firstAttribute="trailing" secondItem="xiV-nK-Hbn" secondAttribute="trailing" constant="5" id="5uK-HH-pQ9"/>
                                                 <constraint firstAttribute="bottom" secondItem="1Su-j5-ur1" secondAttribute="bottom" constant="5" id="CbU-6H-G9Z"/>
@@ -112,7 +114,7 @@
                                     <outlet property="delegate" destination="BYZ-38-t0r" id="3L5-4y-iDv"/>
                                 </connections>
                             </tableView>
-                            <activityIndicatorView opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" style="gray" translatesAutoresizingMaskIntoConstraints="NO" id="v2u-Fx-ijd">
+                            <activityIndicatorView hidden="YES" opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" hidesWhenStopped="YES" style="gray" translatesAutoresizingMaskIntoConstraints="NO" id="v2u-Fx-ijd">
                                 <rect key="frame" x="197" y="465" width="20" height="20"/>
                             </activityIndicatorView>
                         </subviews>
@@ -136,14 +138,6 @@
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="1378.2608695652175" y="38.839285714285715"/>
-        </scene>
-        <!--ShowDetailsController-->
-        <scene sceneID="ikQ-Yq-l6I">
-            <objects>
-                <viewControllerPlaceholder storyboardName="ShowDetailsController" id="XCX-ed-E56" sceneMemberID="viewController"/>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="23B-kc-6YT" userLabel="First Responder" sceneMemberID="firstResponder"/>
-            </objects>
-            <point key="canvasLocation" x="2094" y="147"/>
         </scene>
         <!--Navigation Controller-->
         <scene sceneID="f3r-z8-InF">
