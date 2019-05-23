@@ -10,7 +10,7 @@ import Foundation
 import Alamofire
 class AlamofireApiServices : GetQuestionsProtocol {
     
-    fileprivate let githubUrl = "https://api.stackexchange.com/2.2/questions?order=desc&sort=activity&site=stackoverflow&filter=!0WJ3YL7KJOsP46r755kycqqs8"
+    fileprivate let githubUrl = "https://api.stackexchange.com/2.2/questions?order=desc&sort=activity&site=stackoverflow&filter=!41)ayTHRdCp0rZZJm"
     func getQuestions(tag: String, fromPage: Int, pagesCount: Int, completion: @escaping ([ItemModel]) -> ()){
         DispatchQueue.global(qos: .background).async{
              let url = URL(string: self.githubUrl + "&tagged=\(tag)&page=\(fromPage)&pagesize=\(pagesCount)")!

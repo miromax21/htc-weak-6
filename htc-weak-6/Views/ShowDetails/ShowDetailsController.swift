@@ -17,10 +17,12 @@ class ShowDetailsController: UIViewController {
     @IBOutlet weak var navBar: UINavigationBar!
     @IBOutlet weak var detailTable: UITableView!
     
+    @IBOutlet weak var questionLable: UILabel!
     override func viewDidLoad() {
         super.viewDidLoad()
         self.navigationItem.title = aquestionTitle
-        self.answers = self.answers?.sorted(by: >)
+       // self.answers = self.answers?.sorted(by: >)
+        questionLable.text = aquestionTitle
     }
     
     override func viewWillAppear(_ animated: Bool) {
@@ -43,8 +45,8 @@ extension ShowDetailsController:UITableViewDataSource, UITableViewDelegate{
         if indexPath.row == 0{
             cell.backgroundColor = .yellow
         }
-        cell.textLabel?.text = answers?[indexPath.row].title
-        cell.detailTextLabel?.text = "reputation: \(String(describing: answers![indexPath.row].owner.reputation))"
+        cell.textLabel?.text = answers?[indexPath.row].body
+        cell.textLabel?.numberOfLines = 0
         return cell
     }
     

@@ -46,8 +46,8 @@ struct ItemModel: Codable {
     }
 }
 struct Answer: Codable  {
-    var title: String
-    var owner: ItemOwnerModel
+    var body: String
+//    var owner: ItemOwnerModel
 }
 struct ItemOwnerModel : Codable{
     var displayName: String?
@@ -67,18 +67,3 @@ struct ItemOwnerModel : Codable{
     }
 }
 
-extension Answer:Comparable{
-    static func < (lhs: Answer, rhs: Answer) -> Bool {
-        guard let lhsReputation = lhs.owner.reputation, let rhsReputation = rhs.owner.reputation else{
-            return false
-        }
-        return lhsReputation > rhsReputation
-        
-    }
-    
-    static func == (lhs: Answer, rhs: Answer) -> Bool {
-        return lhs.owner.reputation  == rhs.owner.reputation
-    }
-    
-    
-}
