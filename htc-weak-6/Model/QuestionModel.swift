@@ -46,8 +46,31 @@ struct ItemModel: Codable {
     }
 }
 struct Answer: Codable  {
-    var body: String
-//    var owner: ItemOwnerModel
+    var body: String?
+    
+    enum CodingKeys: String, CodingKey {
+        case body
+    }
+    init(from decoder: Decoder) throws {
+        let container = try decoder.container(keyedBy: CodingKeys.self)
+        self.body = try? container.decode(String.self, forKey: .body)
+        if self.body != nil{
+            htmlToString(htmlStr: &self.body!)
+        }
+    }
+    func htmlToString(htmlStr:inout String){
+        let scanner:Scanner = Scanner(string: htmlStr);
+        var text:NSString? = nil;
+        while scanner.isAtEnd == false {
+            scanner.scanUpTo("<", into: nil);
+            scanner.scanUpTo(">", into: &text);
+            if text!.isEqual(to: "<\\br") {
+                htmlStr = htmlStr.replacingOccurrences(of: "\(text ?? "")>", with: "\n");
+            }else{
+                htmlStr = htmlStr.replacingOccurrences(of: "\(text ?? "")>", with: "");
+            }
+        }
+    }
 }
 struct ItemOwnerModel : Codable{
     var displayName: String?
