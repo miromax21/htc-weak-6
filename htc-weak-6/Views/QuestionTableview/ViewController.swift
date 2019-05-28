@@ -27,10 +27,18 @@ class ViewController: UIViewController {
         
         super.viewDidLoad()
         addTagButton()
+        let swipeRight = UISwipeGestureRecognizer(target: self, action: #selector(swiped))
+        swipeRight.direction = UISwipeGestureRecognizer.Direction.right
+        self.view.addGestureRecognizer(swipeRight)
         self.urlSession = AlamofireApiServices()
         //        self.urlSession = URLSessionApiSrevices()
         loadData(tagIndex: nil)
         
+    }
+    
+    // Example Tabbar 5 pages
+    @objc func swiped(_ gesture: UISwipeGestureRecognizer) {
+        goToSetTag()
     }
     
     func loadData(tagIndex: Int?, from: Int = 1, count: Int = 50)  {

@@ -41,12 +41,16 @@ extension ShowDetailsController:UITableViewDataSource, UITableViewDelegate{
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let cell = UITableViewCell(style: .subtitle, reuseIdentifier: "dsd")
-        if indexPath.row == 0{
-            cell.backgroundColor = .yellow
-        }
-        cell.textLabel?.text = answers?[indexPath.row].body
-        cell.textLabel?.numberOfLines = 0
+        let cell = tableView.dequeueReusableCell(withIdentifier: AnswerTableviewCell.identifier) as! AnswerTableviewCell
+        
+        cell.configureCell(param: answers?[indexPath.row])
+//
+//        let cell = UITableViewCell(style: .subtitle, reuseIdentifier: "dsd")
+//        if indexPath.row == 0{
+//            cell.backgroundColor = .yellow
+//        }
+//        cell.textLabel?.text = answers?[indexPath.row].body
+//        cell.textLabel?.numberOfLines = 0
         return cell
     }
     
