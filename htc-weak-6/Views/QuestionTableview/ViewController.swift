@@ -6,7 +6,7 @@
 //  Copyright © 2019 maxim mironov. All rights reserved.
 //
 import UIKit
-
+import AVFoundation
 class ViewController: UIViewController {
 
     @IBOutlet weak var activityIndicator: UIActivityIndicatorView!
@@ -15,7 +15,7 @@ class ViewController: UIViewController {
     var urlSession: GetQuestionsProtocol!
     var tag: String = "swift"
     var property = Property()
-    
+    var player: AVPlayer?
     
     fileprivate func addTagButton() {
         let setTagBarButton = UIBarButtonItem(title: NSLocalizedString("set tag", comment: "set tag bar button item text"), style: .done, target: self, action: #selector(goToSetTag))
@@ -27,15 +27,35 @@ class ViewController: UIViewController {
         
         super.viewDidLoad()
         addTagButton()
-        let swipeRight = UISwipeGestureRecognizer(target: self, action: #selector(swiped))
-        swipeRight.direction = UISwipeGestureRecognizer.Direction.right
-        self.view.addGestureRecognizer(swipeRight)
+        setGestures()
         self.urlSession = AlamofireApiServices()
         //        self.urlSession = URLSessionApiSrevices()
         loadData(tagIndex: nil)
         
     }
+    func setGestures(){
+        let rightSwipeRecognizer = UISwipeGestureRecognizer(target: self, action: #selector(swiped))
+        rightSwipeRecognizer.direction = UISwipeGestureRecognizer.Direction.right
+        
+        
+        let pinchRecognizer = UIPinchGestureRecognizer()
+        pinchRecognizer.addTarget(self, action: #selector(handlePinchGesture(_:)))
+        
+        self.view.addGestureRecognizer(rightSwipeRecognizer)
+        self.view.addGestureRecognizer(pinchRecognizer)
+    }
     
+    @objc func handlePinchGesture(_ gestureRecognizer: UIPinchGestureRecognizer) {
+        if gestureRecognizer.state == .ended {
+            guard let url = Bundle.main.url(forResource: "rington", withExtension: "mp3") else { return }
+            let playerItem = AVPlayerItem(url: url)
+            player = AVPlayer(playerItem: playerItem)
+            player?.play()
+            let timer = Timer.scheduledTimer(withTimeInterval: 5.0, repeats: false) { timer in
+                 self.player?.pause()
+            }
+        }
+    }
     // Example Tabbar 5 pages
     @objc func swiped(_ gesture: UISwipeGestureRecognizer) {
         goToSetTag()

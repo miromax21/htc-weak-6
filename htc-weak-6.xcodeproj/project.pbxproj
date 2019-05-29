@@ -28,6 +28,8 @@
 		1B99C6E2228AF8CA00B7CFB5 /* AlamofireApiServices.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1B99C6E1228AF8CA00B7CFB5 /* AlamofireApiServices.swift */; };
 		1B99C6E4228AF97600B7CFB5 /* URLSessionApiSrevices.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1B99C6E3228AF97600B7CFB5 /* URLSessionApiSrevices.swift */; };
 		1B99C6E7228AFB9D00B7CFB5 /* Protocols.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1B99C6E6228AFB9D00B7CFB5 /* Protocols.swift */; };
+		1BA13E16229EC7A600887CC9 /* rington.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 1BA13E15229EC7A600887CC9 /* rington.mp3 */; };
+		1BA13E18229ECC0500887CC9 /* rington.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 1BA13E17229EC7AD00887CC9 /* rington.mp3 */; };
 		1BC11D13229D793800DECDCF /* AnswerTableviewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1BC11D12229D793800DECDCF /* AnswerTableviewCell.swift */; };
 /* End PBXBuildFile section */
 
@@ -54,6 +56,8 @@
 		1B99C6E1228AF8CA00B7CFB5 /* AlamofireApiServices.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AlamofireApiServices.swift; sourceTree = "<group>"; };
 		1B99C6E3228AF97600B7CFB5 /* URLSessionApiSrevices.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = URLSessionApiSrevices.swift; sourceTree = "<group>"; };
 		1B99C6E6228AFB9D00B7CFB5 /* Protocols.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Protocols.swift; sourceTree = "<group>"; };
+		1BA13E15229EC7A600887CC9 /* rington.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; name = rington.mp3; path = ../../../../../../Downloads/rington.mp3; sourceTree = "<group>"; };
+		1BA13E17229EC7AD00887CC9 /* rington.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = rington.mp3; sourceTree = "<group>"; };
 		1BC11D12229D793800DECDCF /* AnswerTableviewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AnswerTableviewCell.swift; sourceTree = "<group>"; };
 		489A07E710CBAF86CEEFE244 /* Pods-htc-weak-6.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-htc-weak-6.debug.xcconfig"; path = "Target Support Files/Pods-htc-weak-6/Pods-htc-weak-6.debug.xcconfig"; sourceTree = "<group>"; };
 		A8E278F792E99E854DE1673F /* Pods-htc-weak-6.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-htc-weak-6.release.xcconfig"; path = "Target Support Files/Pods-htc-weak-6/Pods-htc-weak-6.release.xcconfig"; sourceTree = "<group>"; };
@@ -127,6 +131,7 @@
 		1B815A3B227ED365007ED3B2 /* Resources */ = {
 			isa = PBXGroup;
 			children = (
+				1BA13E17229EC7AD00887CC9 /* rington.mp3 */,
 				1B815A41227EE0ED007ED3B2 /* Extensions */,
 				1B815A3C227ED382007ED3B2 /* CustomControls */,
 			);
@@ -136,6 +141,7 @@
 		1B815A3C227ED382007ED3B2 /* CustomControls */ = {
 			isa = PBXGroup;
 			children = (
+				1BA13E15229EC7A600887CC9 /* rington.mp3 */,
 				1B815A3D227ED396007ED3B2 /* PopupView.swift */,
 				1B815A3F227ED948007ED3B2 /* AppButtons.swift */,
 			);
@@ -283,9 +289,11 @@
 			files = (
 				1B5BB0A8227DFE25003A3CC8 /* SetTagViewController.storyboard in Resources */,
 				1B3855E422787DFF0017CE00 /* LaunchScreen.storyboard in Resources */,
+				1BA13E16229EC7A600887CC9 /* rington.mp3 in Resources */,
 				1B3855E122787DFF0017CE00 /* Assets.xcassets in Resources */,
 				1B3855DF22787DFD0017CE00 /* Main.storyboard in Resources */,
 				1B815A4B227EF7D8007ED3B2 /* ShowDetailsController.storyboard in Resources */,
+				1BA13E18229ECC0500887CC9 /* rington.mp3 in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
