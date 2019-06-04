@@ -9,29 +9,37 @@
 import Foundation
 import Alamofire
 class AlamofireApiServices : GetQuestionsProtocol {
+    var tag : String = ""
+    var pageNumber : Int = 1
+    var pageCount:Int
+    var inProces:Bool = false
+    init(tag:String, pageCount: Int = 10) {
+        self.tag = tag
+        self.pageCount = pageCount
+    }
     
     fileprivate let githubUrl = "https://api.stackexchange.com/2.2/questions?order=desc&sort=activity&site=stackoverflow&filter=!41)ayTHRdCp0rZZJm"
-    func getQuestions(tag: String, fromPage: Int, pagesCount: Int, completion: @escaping ([ItemModel]) -> ()){
+    
+    func getQuestions(completion: @escaping ([ItemModel]) -> ()){
+        inProces = true
         DispatchQueue.global(qos: .background).async{
-             let url = URL(string: self.githubUrl + "&tagged=\(tag)&page=\(fromPage)&pagesize=\(pagesCount)")!
+            let url = URL(string: self.githubUrl + "&tagged=\(self.tag)&page=\(self.pageNumber)&pagesize=\(self.pageCount)")!
             Alamofire.request(url).responseJSON { response in
-                guard response.result.isSuccess,  let responceData = response.data else{
-                    completion([ItemModel]())
-                    return
-                }
-                var data: ServerDataModel? = nil
-                do {
-                    data = try JSONDecoder().decode(ServerDataModel.self, from: responceData)
-                } catch {
-                    print(error)
-                }
-                guard data != nil, let items = data?.items else{
-                    completion([ItemModel]())
-                    return
-                }
-                completion(items)
-                
+                self.inProces = false
+                completion(self.convertDataToModel(response: response))
             }
         }
+    }
+    
+    func next(completion: @escaping ([ItemModel]?) -> ()) {
+        guard !inProces else { return }
+        pageNumber += 1
+        return getQuestions(completion: completion)
+    }
+    
+    func convertDataToModel(response:DataResponse<Any>) -> [ItemModel]{
+        guard response.result.isSuccess,  let responceData = response.data else{ return [ItemModel]()}
+        guard  let data = try? JSONDecoder().decode(ServerDataModel.self, from: responceData), let items = data.items else { return [ItemModel]() }
+        return items
     }
 }

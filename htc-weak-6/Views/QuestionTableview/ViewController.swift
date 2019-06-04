@@ -28,8 +28,8 @@ class ViewController: UIViewController {
         super.viewDidLoad()
         addTagButton()
         setGestures()
-        self.urlSession = AlamofireApiServices()
-        //        self.urlSession = URLSessionApiSrevices()
+        self.urlSession = AlamofireApiServices.init(tag: property.tags[0], pageCount: 10)
+        //self.urlSession = URLSessionApiSrevices.init(tag:  property.tags[0], pageCount: 10)
         loadData(tagIndex: nil)
         
     }
@@ -67,30 +67,20 @@ class ViewController: UIViewController {
         activityIndicator.startAnimating()
         
         self.tableView.alpha = 0
-        self.urlSession.getQuestions(tag: self.property.tags[tagIndex ?? 0],fromPage: self.property.pageNumber, pagesCount: 10) { (data) in
+        self.urlSession.getQuestions { [weak self] (data) in
+            guard let strongSelf = self else {return}
             let appDelegate = UIApplication.shared.delegate as! ApDelegate
             appDelegate.tagIndex =  tagIndex ?? 0
-            self.items = data
-            self.tableView.reloadData()
-            self.navigationItem.title = self.property.tags[appDelegate.tagIndex]
-            self.activityIndicator.stopAnimating()
+            strongSelf.items = data
+            strongSelf.tableView.reloadData()
+            strongSelf.navigationItem.title = strongSelf.property.tags[appDelegate.tagIndex]
+            strongSelf.activityIndicator.stopAnimating()
             UIView.animate(withDuration: 1.5, animations: {
-                self.tableView.alpha = 1
+                strongSelf.tableView.alpha = 1
             })
         }
     }
-    
-    func fetchData(tagIndex: Int?, from: Int = 1, count: Int = 50){
-        let appDelegate = UIApplication.shared.delegate as! ApDelegate
-        self.urlSession.getQuestions(tag: self.property.tags[appDelegate.tagIndex],fromPage: self.property.pageNumber, pagesCount: 10) { (data) in
-            self.items = data
-            let indexPaths = (self.items.count ..< self.items.count + data.count).map { IndexPath(row: $0, section: 0) }
-            self.tableView.beginUpdates()
-            self.tableView.insertRows(at: indexPaths, with: .bottom)
-            self.tableView.endUpdates()
-            
-        }
-    }
+
     
     @objc func goToSetTag()  {
         let storyboard = UIStoryboard(name: String(describing: SetTagViewController.self), bundle: nil)
@@ -123,8 +113,34 @@ extension ViewController: UITableViewDataSource, UITableViewDelegate{
         cell.configureCell(param:model)
         return cell
     }
+    
+    func scrollViewDidEndDragging(_ scrollView: UIScrollView, willDecelerate decelerate: Bool) {
+        let maxPosition = scrollView.contentInset.top + scrollView.contentSize.height + scrollView.contentInset.bottom - scrollView.bounds.size.height;
+        let currentPosition = scrollView.contentOffset.y + self.topLayoutGuide.length;
+        
+        if (currentPosition >= maxPosition){
+            self.urlSession.next { (newItems) in
+                guard let newItems = newItems else {return}
+                var addIndex = self.items.count - 1
+                self.items.insert(contentsOf:newItems, at: addIndex)
+        
+                // Better than reload the whole tableview
+                self.tableView.beginUpdates()
+                self.tableView.insertRows(at: [IndexPath(row: addIndex, section: 0)], with: .bottom)
+                self.tableView.endUpdates()
+//                self.tableView.beginUpdates()
+//                self.items.insert(contentsOf:newItems, at: self.items.count)
+//             //   let insertIndexPaths = Array(self.items.count...self.items.count + newItems.count - 1).map {IndexPath(item: $0, section: 0) }
+//                self.tableView.insertRows(at: [IndexPath.init(row: newItems.count, section: 0)], with: .automatic)
+//              //  self.tableView.insertRows(at: insertIndexPaths, with: .automatic)
+//                self.tableView.endUpdates()
+            }
+        }
+    }
+
 }
 
+ 
 extension ViewController: SatTagDelegate{
     
     func setTag(tagIndex: Int) {
