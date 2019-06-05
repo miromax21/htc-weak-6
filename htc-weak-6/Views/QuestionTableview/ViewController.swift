@@ -37,12 +37,15 @@ class ViewController: UIViewController {
         let rightSwipeRecognizer = UISwipeGestureRecognizer(target: self, action: #selector(swiped))
         rightSwipeRecognizer.direction = UISwipeGestureRecognizer.Direction.right
         
+        let downSwipeRecognizer = UISwipeGestureRecognizer(target: self, action: #selector(downSpiped))
+        downSwipeRecognizer.direction = UISwipeGestureRecognizer.Direction.down
         
         let pinchRecognizer = UIPinchGestureRecognizer()
         pinchRecognizer.addTarget(self, action: #selector(handlePinchGesture(_:)))
         
         self.view.addGestureRecognizer(rightSwipeRecognizer)
         self.view.addGestureRecognizer(pinchRecognizer)
+        self.view.addGestureRecognizer(downSwipeRecognizer)
     }
     
     @objc func handlePinchGesture(_ gestureRecognizer: UIPinchGestureRecognizer) {
@@ -51,7 +54,7 @@ class ViewController: UIViewController {
             let playerItem = AVPlayerItem(url: url)
             player = AVPlayer(playerItem: playerItem)
             player?.play()
-            let timer = Timer.scheduledTimer(withTimeInterval: 5.0, repeats: false) { timer in
+            Timer.scheduledTimer(withTimeInterval: 5.0, repeats: false) { timer in
                  self.player?.pause()
             }
         }
@@ -61,13 +64,16 @@ class ViewController: UIViewController {
         goToSetTag()
     }
     
-    func loadData(tagIndex: Int?, from: Int = 1, count: Int = 50)  {
+    @objc func downSpiped(_ gesture: UISwipeGestureRecognizer) {
+        loadData(tagIndex: 0)
+    }
+    
+    func loadData(tagIndex: Int?)  {
         self.items = []
 
         activityIndicator.startAnimating()
-        
         self.tableView.alpha = 0
-        self.urlSession.getQuestions { [weak self] (data) in
+        self.urlSession.getQuestions(tag: self.property.tags[tagIndex ?? 0]) { [weak self] (data) in
             guard let strongSelf = self else {return}
             let appDelegate = UIApplication.shared.delegate as! ApDelegate
             appDelegate.tagIndex =  tagIndex ?? 0
@@ -121,26 +127,18 @@ extension ViewController: UITableViewDataSource, UITableViewDelegate{
         if (currentPosition >= maxPosition){
             self.urlSession.next { (newItems) in
                 guard let newItems = newItems else {return}
-                var addIndex = self.items.count - 1
-                self.items.insert(contentsOf:newItems, at: addIndex)
-        
-                // Better than reload the whole tableview
+                self.items += newItems
+                
+                let indexPaths = (self.items.count - newItems.count ..< self.items.count).map { IndexPath(row: $0, section: 0) }
                 self.tableView.beginUpdates()
-                self.tableView.insertRows(at: [IndexPath(row: addIndex, section: 0)], with: .bottom)
+                self.tableView.insertRows(at: indexPaths, with: .automatic)
                 self.tableView.endUpdates()
-//                self.tableView.beginUpdates()
-//                self.items.insert(contentsOf:newItems, at: self.items.count)
-//             //   let insertIndexPaths = Array(self.items.count...self.items.count + newItems.count - 1).map {IndexPath(item: $0, section: 0) }
-//                self.tableView.insertRows(at: [IndexPath.init(row: newItems.count, section: 0)], with: .automatic)
-//              //  self.tableView.insertRows(at: insertIndexPaths, with: .automatic)
-//                self.tableView.endUpdates()
             }
         }
     }
 
 }
 
- 
 extension ViewController: SatTagDelegate{
     
     func setTag(tagIndex: Int) {

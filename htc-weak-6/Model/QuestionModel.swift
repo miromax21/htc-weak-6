@@ -9,6 +9,7 @@
 import Foundation
 struct ServerDataModel: Codable {
     var items: [ItemModel]?
+    var has_more: Bool
 }
 
 struct ItemModel: Codable {

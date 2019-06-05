@@ -22,12 +22,12 @@ class URLSessionApiSrevices: GetQuestionsProtocol {
         self.pageCount = pageCount
     }
 
-    func getQuestions(completion: @escaping ([ItemModel]) -> ()) {
+    func getQuestions(tag:String, completion: @escaping ([ItemModel]) -> ()) {
         guard !inProces else { return }
         inProces = true
         let defaultSession = URLSession(configuration: .default)
         dataTask?.cancel()
-        let url = URL(string: self.githubUrl + "&tagged=\(self.tag)&page=\(self.pageNumber)&pagesize=\(self.pageCount)")!
+        let url = URL(string: self.githubUrl + "&tagged=\(tag)&page=\(self.pageNumber)&pagesize=\(self.pageCount)")!
         self.dataTask = defaultSession.dataTask(with: url) { data, response, error in
             defer { self.dataTask = nil }
             DispatchQueue.main.async {
