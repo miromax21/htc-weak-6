@@ -36,7 +36,7 @@ struct ItemModel: Codable {
     }
     init(from decoder: Decoder) throws {
         let container = try decoder.container(keyedBy: CodingKeys.self)
-        self.owner = try? container.decode(ItemOwnerModel.self, forKey: .owner)
+        self.owner = try container.decode(ItemOwnerModel.self, forKey: .owner)
         self.answerCount = try container.decode(Int.self, forKey: .answerCount)
         self.score = try? container.decode(Int.self, forKey: .score)
         self.title = try container.decode(String.self, forKey: .title)

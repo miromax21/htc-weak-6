@@ -12,19 +12,24 @@ class ShowDetailsController: UIViewController {
     var questionIndes:Int?
     var answers:[Answer]? = [Answer]()
     var aquestionTitle: String? = ""
+    var authorModel: String? = ""
+    var scores:Int? = 0
+    var dateModel: Int? = 0
     var funct : ((String) -> Void)?
     
-    @IBOutlet weak var navBar: UINavigationBar!
     @IBOutlet weak var detailTable: UITableView!
-    
+    @IBOutlet weak var author: UILabel!
+    @IBOutlet weak var date: UILabel!
+    @IBOutlet weak var votes: UILabel!
     @IBOutlet weak var questionLable: UILabel!
     override func viewDidLoad() {
         super.viewDidLoad()
         self.navigationItem.title = aquestionTitle
-       // self.answers = self.answers?.sorted(by: >)
         questionLable.text = aquestionTitle
+        author.text = authorModel
+        date.text = dateModel != nil ? "\(Date(timeIntervalSince1970: TimeInterval(dateModel!)).mediumDate())" : ""
+        votes.text = scores != nil ? String(describing: scores!) : ""
     }
-    
     override func viewWillAppear(_ animated: Bool) {
         
     }

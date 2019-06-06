@@ -109,7 +109,11 @@ extension ViewController: UITableViewDataSource, UITableViewDelegate{
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         let vc = ShowDetailsController.getInstance() as! ShowDetailsController
         let model = self.items[indexPath.row]
+    
         vc.answers = model.answers
+        vc.authorModel = model.owner?.displayName
+        vc.dateModel = model.creationDate
+        vc.authorModel = model.owner?.displayName
         vc.aquestionTitle = model.title
         self.navigationController?.pushViewController(vc, animated: true)
     }
