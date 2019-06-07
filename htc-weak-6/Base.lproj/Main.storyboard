@@ -104,17 +104,17 @@
                                             <rect key="frame" x="0.0" y="0.0" width="414" height="94.5"/>
                                             <autoresizingMask key="autoresizingMask" flexibleMaxY="YES"/>
                                             <subviews>
-                                                <activityIndicatorView opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" style="gray" translatesAutoresizingMaskIntoConstraints="NO" id="bZL-tt-nI5">
+                                                <activityIndicatorView hidden="YES" opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" hidesWhenStopped="YES" style="gray" translatesAutoresizingMaskIntoConstraints="NO" id="bZL-tt-nI5">
                                                     <rect key="frame" x="197" y="37.5" width="20" height="20"/>
                                                 </activityIndicatorView>
                                             </subviews>
+                                            <color key="backgroundColor" red="1" green="0.99692909190000001" blue="0.18366888410000001" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                             <constraints>
                                                 <constraint firstItem="bZL-tt-nI5" firstAttribute="centerX" secondItem="khp-9e-bDj" secondAttribute="centerX" id="L2s-6W-V3N"/>
                                                 <constraint firstItem="bZL-tt-nI5" firstAttribute="centerY" secondItem="khp-9e-bDj" secondAttribute="centerY" id="h8n-w7-YGw"/>
                                             </constraints>
                                             <edgeInsets key="layoutMargins" top="18" left="8" bottom="8" right="8"/>
                                         </tableViewCellContentView>
-                                        <color key="backgroundColor" red="1" green="0.99692909190000001" blue="0.18366888410000001" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                     </tableViewCell>
                                 </prototypes>
                                 <connections>

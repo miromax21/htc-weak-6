@@ -37,15 +37,20 @@ class ViewController: UIViewController {
         let rightSwipeRecognizer = UISwipeGestureRecognizer(target: self, action: #selector(swiped))
         rightSwipeRecognizer.direction = UISwipeGestureRecognizer.Direction.right
         
-        let downSwipeRecognizer = UISwipeGestureRecognizer(target: self, action: #selector(downSpiped))
-        downSwipeRecognizer.direction = UISwipeGestureRecognizer.Direction.down
+//        let downSwipeRecognizer = UISwipeGestureRecognizer(target: self, action: #selector(downSpiped))
+//        downSwipeRecognizer.direction = UISwipeGestureRecognizer.Direction.down
         
         let pinchRecognizer = UIPinchGestureRecognizer()
         pinchRecognizer.addTarget(self, action: #selector(handlePinchGesture(_:)))
         
         self.view.addGestureRecognizer(rightSwipeRecognizer)
         self.view.addGestureRecognizer(pinchRecognizer)
-        self.view.addGestureRecognizer(downSwipeRecognizer)
+        
+        
+        let refreshControl = UIRefreshControl()
+        refreshControl.attributedTitle = NSAttributedString(string: "Pull to refresh")
+        refreshControl.addTarget(self, action: #selector(refresh), for: .valueChanged)
+        tableView.addSubview(refreshControl)
     }
     
     @objc func handlePinchGesture(_ gestureRecognizer: UIPinchGestureRecognizer) {
@@ -64,7 +69,7 @@ class ViewController: UIViewController {
         goToSetTag()
     }
     
-    @objc func downSpiped(_ gesture: UISwipeGestureRecognizer) {
+    @objc func refresh(_ gesture: UISwipeGestureRecognizer) {
         loadData(tagIndex: 0)
     }
     
@@ -104,7 +109,7 @@ class ViewController: UIViewController {
 extension ViewController: UITableViewDataSource, UITableViewDelegate{
 
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-       return self.items.count + 1
+       return self.items.count
     }
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         let vc = ShowDetailsController.getInstance() as! ShowDetailsController
@@ -115,10 +120,10 @@ extension ViewController: UITableViewDataSource, UITableViewDelegate{
     }
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         
-        if indexPath.row == self.items.count {
-            let cell = tableView.dequeueReusableCell(withIdentifier: "loadingCell", for: indexPath)
-            return cell
-        }
+//        if indexPath.row == self.items.count {
+//            let cell = tableView.dequeueReusableCell(withIdentifier: "loadingCell", for: indexPath)
+//            return cell
+//        }
         
         let cell = tableView.dequeueReusableCell(withIdentifier: QuestionTableviewCell.identifier) as! QuestionTableviewCell
         let model = self.items[indexPath.row]
@@ -129,8 +134,9 @@ extension ViewController: UITableViewDataSource, UITableViewDelegate{
     func scrollViewDidEndDragging(_ scrollView: UIScrollView, willDecelerate decelerate: Bool) {
         let maxPosition = scrollView.contentInset.top + scrollView.contentSize.height + scrollView.contentInset.bottom - scrollView.bounds.size.height;
         let currentPosition = scrollView.contentOffset.y + self.topLayoutGuide.length;
-        activityIndicator.startAnimating()
+        
         if (currentPosition >= maxPosition){
+            activityIndicator.startAnimating()
             self.urlSession.next { (newItems) in
                 guard let newItems = newItems else {return}
                 self.items += newItems
