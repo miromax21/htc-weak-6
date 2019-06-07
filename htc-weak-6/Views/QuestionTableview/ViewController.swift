@@ -104,7 +104,7 @@ class ViewController: UIViewController {
 extension ViewController: UITableViewDataSource, UITableViewDelegate{
 
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-       return self.items.count
+       return self.items.count + 1
     }
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         let vc = ShowDetailsController.getInstance() as! ShowDetailsController
@@ -114,6 +114,12 @@ extension ViewController: UITableViewDataSource, UITableViewDelegate{
         self.navigationController?.pushViewController(vc, animated: true)
     }
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+        
+        if indexPath.row == self.items.count {
+            let cell = tableView.dequeueReusableCell(withIdentifier: "loadingCell", for: indexPath)
+            return cell
+        }
+        
         let cell = tableView.dequeueReusableCell(withIdentifier: QuestionTableviewCell.identifier) as! QuestionTableviewCell
         let model = self.items[indexPath.row]
         cell.configureCell(param:model)

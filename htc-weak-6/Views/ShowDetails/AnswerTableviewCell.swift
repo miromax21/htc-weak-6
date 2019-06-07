@@ -16,9 +16,11 @@ class AnswerTableviewCell: UITableViewCell {
     
     func configureCell(param: Answer?) {
         author.text = param?.owner?.displayName
-        answersCount.text = String(describing: param?.owner?.reputation)
-        editDate.text = param?.creationDate != nil ? "\(Date.init(timeIntervalSinceNow: TimeInterval(param!.creationDate!)).mediumDate())" : ""
+        answersCount.text = param?.owner?.reputation != nil ?   String(describing: param!.owner!.reputation!) : "0"
+        editDate.text = param?.creationDate != nil ? "\(Date.init(timeIntervalSince1970: TimeInterval(param!.creationDate!)).mediumDate())" : ""
         answertext.text = param?.body
+        
+        
     }
     
 }
