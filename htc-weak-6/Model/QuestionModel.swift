@@ -48,12 +48,23 @@ struct ItemModel: Codable {
 }
 struct Answer: Codable  {
     var body: String?
+    var owner: ItemOwnerModel?
+    var creationDate:Int?
     
     enum CodingKeys: String, CodingKey {
         case body
+        case owner
+        case creationDate = "creation_date"
+    }
+    init (body:String?,owner:ItemOwnerModel?,creationDate:Int?){
+        self.body = body
+        self.owner = owner
+        self.creationDate = creationDate
     }
     init(from decoder: Decoder) throws {
         let container = try decoder.container(keyedBy: CodingKeys.self)
+        self.owner = try container.decode(ItemOwnerModel.self, forKey: .owner)
+        self.creationDate = try container.decode(Int.self, forKey: .creationDate)
         self.body = try? container.decode(String.self, forKey: .body)
         if self.body != nil{
             htmlToString(htmlStr: &self.body!)
@@ -77,17 +88,20 @@ struct ItemOwnerModel : Codable{
     var displayName: String?
     var link: String?
     var reputation: Int?
-
+    var isAccepted:Bool?
     enum CodingKeys : String, CodingKey {
         case displayName = "display_name"
         case link
         case reputation
+        case isAccepted = "is_accepted"
     }
+
     init(from decoder: Decoder) throws {
         let container = try decoder.container(keyedBy: CodingKeys.self)
         self.displayName = try? container.decode(String.self, forKey: CodingKeys.displayName)
         self.link = try? container.decode(String.self, forKey: CodingKeys.link)
         self.reputation = try container.decode(Int.self, forKey: CodingKeys.reputation)
+        self.isAccepted = try? container.decode(Bool.self, forKey: CodingKeys.isAccepted)
     }
 }
 

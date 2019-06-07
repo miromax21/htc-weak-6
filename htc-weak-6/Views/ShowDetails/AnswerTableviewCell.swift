@@ -15,9 +15,9 @@ class AnswerTableviewCell: UITableViewCell {
     @IBOutlet weak var answertext: UILabel!
     
     func configureCell(param: Answer?) {
-        author.text = "author"
-        answersCount.text = "3232"
-        editDate.text = "\(Date.init(timeIntervalSinceNow: 22).mediumDate())"
+        author.text = param?.owner?.displayName
+        answersCount.text = String(describing: param?.owner?.reputation)
+        editDate.text = param?.creationDate != nil ? "\(Date.init(timeIntervalSinceNow: TimeInterval(param!.creationDate!)).mediumDate())" : ""
         answertext.text = param?.body
     }
     

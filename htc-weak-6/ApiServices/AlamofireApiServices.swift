@@ -19,7 +19,7 @@ class AlamofireApiServices : GetQuestionsProtocol {
         self.pageCount = pageCount
     }
     
-    fileprivate let githubUrl = "https://api.stackexchange.com/2.2/questions?order=desc&sort=activity&site=stackoverflow&filter=!41)ayTHRdCp0rZZJm"
+    fileprivate let githubUrl = "https://api.stackexchange.com/2.2/questions?order=desc&sort=activity&site=stackoverflow&filter=!7qeDKpT6lDlJdv7Plyc8cHxkdcsS4Pgw(H"
     
     func getQuestions(tag:String, completion: @escaping ([ItemModel]) -> ()){
         self.tag = tag

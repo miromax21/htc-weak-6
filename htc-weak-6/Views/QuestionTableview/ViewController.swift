@@ -109,12 +109,8 @@ extension ViewController: UITableViewDataSource, UITableViewDelegate{
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         let vc = ShowDetailsController.getInstance() as! ShowDetailsController
         let model = self.items[indexPath.row]
+        vc.setUpParms(answers: model.answers, questionTitle: model.title, questionAsFirstAmongAnswers: Answer(body: model.title, owner: model.owner,creationDate: model.creationDate))
     
-        vc.answers = model.answers
-        vc.authorModel = model.owner?.displayName
-        vc.dateModel = model.creationDate
-        vc.authorModel = model.owner?.displayName
-        vc.aquestionTitle = model.title
         self.navigationController?.pushViewController(vc, animated: true)
     }
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
@@ -127,7 +123,7 @@ extension ViewController: UITableViewDataSource, UITableViewDelegate{
     func scrollViewDidEndDragging(_ scrollView: UIScrollView, willDecelerate decelerate: Bool) {
         let maxPosition = scrollView.contentInset.top + scrollView.contentSize.height + scrollView.contentInset.bottom - scrollView.bounds.size.height;
         let currentPosition = scrollView.contentOffset.y + self.topLayoutGuide.length;
-        
+        activityIndicator.startAnimating()
         if (currentPosition >= maxPosition){
             self.urlSession.next { (newItems) in
                 guard let newItems = newItems else {return}
@@ -137,6 +133,7 @@ extension ViewController: UITableViewDataSource, UITableViewDelegate{
                 self.tableView.beginUpdates()
                 self.tableView.insertRows(at: indexPaths, with: .automatic)
                 self.tableView.endUpdates()
+                self.activityIndicator.stopAnimating()
             }
         }
     }

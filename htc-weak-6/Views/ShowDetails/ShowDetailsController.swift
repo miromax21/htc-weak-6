@@ -25,10 +25,13 @@ class ShowDetailsController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         self.navigationItem.title = aquestionTitle
-        questionLable.text = aquestionTitle
-        author.text = authorModel
-        date.text = dateModel != nil ? "\(Date(timeIntervalSince1970: TimeInterval(dateModel!)).mediumDate())" : ""
-        votes.text = scores != nil ? String(describing: scores!) : ""
+    }
+    func setUpParms(answers:[Answer]?, questionTitle: String?, questionAsFirstAmongAnswers:Answer){
+        if answers != nil{
+            self.answers = answers
+        }
+        self.aquestionTitle = questionTitle
+        self.answers!.insert(questionAsFirstAmongAnswers, at: 0)
     }
     override func viewWillAppear(_ animated: Bool) {
         
@@ -47,15 +50,13 @@ extension ShowDetailsController:UITableViewDataSource, UITableViewDelegate{
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: AnswerTableviewCell.identifier) as! AnswerTableviewCell
+        let model = answers?[indexPath.row]
+        cell.configureCell(param: model)
         
-        cell.configureCell(param: answers?[indexPath.row])
-//
-//        let cell = UITableViewCell(style: .subtitle, reuseIdentifier: "dsd")
-//        if indexPath.row == 0{
-//            cell.backgroundColor = .yellow
-//        }
-//        cell.textLabel?.text = answers?[indexPath.row].body
-//        cell.textLabel?.numberOfLines = 0
+        cell.accessoryType = (model?.owner?.isAccepted ?? false) ? .checkmark : .none
+        if indexPath.row == 0{
+            cell.backgroundColor = .yellow
+        }
         return cell
     }
     
