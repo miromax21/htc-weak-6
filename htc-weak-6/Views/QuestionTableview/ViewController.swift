@@ -135,7 +135,7 @@ extension ViewController: UITableViewDataSource, UITableViewDelegate{
         let maxPosition = scrollView.contentInset.top + scrollView.contentSize.height + scrollView.contentInset.bottom - scrollView.bounds.size.height;
         let currentPosition = scrollView.contentOffset.y + self.topLayoutGuide.length;
         
-        if (currentPosition >= maxPosition){
+        if (currentPosition >= maxPosition - 15){
             self.pagingSpinner.startAnimating()
             self.urlSession.next { (newItems) in
                 guard let newItems = newItems else {return}

@@ -12,7 +12,6 @@ class ShowDetailsController: UIViewController {
     var questionIndes:Int?
     var answers:[Answer]? = [Answer]()
     var aquestionTitle: String? = ""
-    var authorModel: String? = ""
     var scores:Int? = 0
     var dateModel: Int? = 0
     var funct : ((String) -> Void)?
@@ -52,7 +51,6 @@ extension ShowDetailsController:UITableViewDataSource, UITableViewDelegate{
         let cell = tableView.dequeueReusableCell(withIdentifier: AnswerTableviewCell.identifier) as! AnswerTableviewCell
         let model = answers?[indexPath.row]
         cell.configureCell(param: model)
-        
         cell.accessoryType = (model?.owner?.isAccepted ?? false) ? .checkmark : .none
         if indexPath.row == 0{
             cell.backgroundColor = .yellow

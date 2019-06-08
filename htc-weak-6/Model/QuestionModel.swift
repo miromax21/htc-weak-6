@@ -10,6 +10,7 @@ import Foundation
 struct ServerDataModel: Codable {
     var items: [ItemModel]?
     var has_more: Bool
+    var total: Int
 }
 
 struct ItemModel: Codable {

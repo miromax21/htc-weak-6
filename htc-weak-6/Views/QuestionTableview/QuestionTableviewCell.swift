@@ -20,6 +20,6 @@ class QuestionTableviewCell: UITableViewCell {
         answersCount.text = "\(param.answerCount)"
         editDate.text = (param.lastEditDate != nil) ? "\(Date.init(timeIntervalSince1970: TimeInterval(param.lastEditDate!)).mediumDate())" : "\(Date.init(timeIntervalSince1970: TimeInterval(param.creationDate)).mediumDate())"
     }
-    
+
     
 }

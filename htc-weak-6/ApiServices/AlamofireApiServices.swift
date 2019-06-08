@@ -13,7 +13,7 @@ class AlamofireApiServices : GetQuestionsProtocol {
     var pageNumber : Int = 1
     var pageCount:Int
     var inProces:Bool = false
-    var hasMore:Bool = false
+    fileprivate var hasMore:Bool = false
     init(tag:String, pageCount: Int = 10) {
         self.tag = tag
         self.pageCount = pageCount
