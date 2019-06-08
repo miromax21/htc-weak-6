@@ -16,7 +16,7 @@ class ViewController: UIViewController {
     var tag: String = "swift"
     var property = Property()
     var player: AVPlayer?
-    
+    let pagingSpinner = UIActivityIndicatorView(style: .gray)
     fileprivate func addTagButton() {
         let setTagBarButton = UIBarButtonItem(title: NSLocalizedString("set tag", comment: "set tag bar button item text"), style: .done, target: self, action: #selector(goToSetTag))
         self.navigationItem.leftBarButtonItem = setTagBarButton
@@ -31,14 +31,14 @@ class ViewController: UIViewController {
         self.urlSession = AlamofireApiServices.init(tag: property.tags[0], pageCount: 10)
         //self.urlSession = URLSessionApiSrevices.init(tag:  property.tags[0], pageCount: 10)
         loadData(tagIndex: nil)
+        pagingSpinner.hidesWhenStopped = true
+        pagingSpinner.color = UIColor(red: 22.0/255.0, green: 106.0/255.0, blue: 176.0/255.0, alpha: 1.0)
+        tableView.tableFooterView = pagingSpinner
         
     }
     func setGestures(){
         let rightSwipeRecognizer = UISwipeGestureRecognizer(target: self, action: #selector(swiped))
         rightSwipeRecognizer.direction = UISwipeGestureRecognizer.Direction.right
-        
-//        let downSwipeRecognizer = UISwipeGestureRecognizer(target: self, action: #selector(downSpiped))
-//        downSwipeRecognizer.direction = UISwipeGestureRecognizer.Direction.down
         
         let pinchRecognizer = UIPinchGestureRecognizer()
         pinchRecognizer.addTarget(self, action: #selector(handlePinchGesture(_:)))
@@ -46,13 +46,21 @@ class ViewController: UIViewController {
         self.view.addGestureRecognizer(rightSwipeRecognizer)
         self.view.addGestureRecognizer(pinchRecognizer)
         
-        
-        let refreshControl = UIRefreshControl()
-        refreshControl.attributedTitle = NSAttributedString(string: "Pull to refresh")
-        refreshControl.addTarget(self, action: #selector(refresh), for: .valueChanged)
-        tableView.addSubview(refreshControl)
+        if #available(iOS 10.0, *) {
+            let refreshControl = UIRefreshControl()
+            let title = NSLocalizedString("downloading questions", comment: "downloading questions")
+            refreshControl.attributedTitle = NSAttributedString(string: title)
+            refreshControl.addTarget(self,
+                                     action: #selector(refreshTable(sender:)),
+                                     for: .valueChanged)
+            tableView.refreshControl = refreshControl
+        }
     }
     
+    @objc private func refreshTable(sender: UIRefreshControl) {
+        loadData(tagIndex: 0)
+        sender.endRefreshing()
+    }
     @objc func handlePinchGesture(_ gestureRecognizer: UIPinchGestureRecognizer) {
         if gestureRecognizer.state == .ended {
             guard let url = Bundle.main.url(forResource: "rington", withExtension: "mp3") else { return }
@@ -69,9 +77,6 @@ class ViewController: UIViewController {
         goToSetTag()
     }
     
-    @objc func refresh(_ gesture: UISwipeGestureRecognizer) {
-        loadData(tagIndex: 0)
-    }
     
     func loadData(tagIndex: Int?)  {
         self.items = []
@@ -119,24 +124,19 @@ extension ViewController: UITableViewDataSource, UITableViewDelegate{
         self.navigationController?.pushViewController(vc, animated: true)
     }
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        
-//        if indexPath.row == self.items.count {
-//            let cell = tableView.dequeueReusableCell(withIdentifier: "loadingCell", for: indexPath)
-//            return cell
-//        }
-        
         let cell = tableView.dequeueReusableCell(withIdentifier: QuestionTableviewCell.identifier) as! QuestionTableviewCell
         let model = self.items[indexPath.row]
         cell.configureCell(param:model)
         return cell
     }
+
     
     func scrollViewDidEndDragging(_ scrollView: UIScrollView, willDecelerate decelerate: Bool) {
         let maxPosition = scrollView.contentInset.top + scrollView.contentSize.height + scrollView.contentInset.bottom - scrollView.bounds.size.height;
         let currentPosition = scrollView.contentOffset.y + self.topLayoutGuide.length;
         
         if (currentPosition >= maxPosition){
-            activityIndicator.startAnimating()
+            self.pagingSpinner.startAnimating()
             self.urlSession.next { (newItems) in
                 guard let newItems = newItems else {return}
                 self.items += newItems
@@ -145,7 +145,7 @@ extension ViewController: UITableViewDataSource, UITableViewDelegate{
                 self.tableView.beginUpdates()
                 self.tableView.insertRows(at: indexPaths, with: .automatic)
                 self.tableView.endUpdates()
-                self.activityIndicator.stopAnimating()
+                self.pagingSpinner.stopAnimating()
             }
         }
     }
