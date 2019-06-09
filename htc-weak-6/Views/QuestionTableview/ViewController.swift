@@ -119,7 +119,7 @@ extension ViewController: UITableViewDataSource, UITableViewDelegate{
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         let vc = ShowDetailsController.getInstance() as! ShowDetailsController
         let model = self.items[indexPath.row]
-        vc.setUpParms(answers: model.answers, questionTitle: model.title, questionAsFirstAmongAnswers: Answer(body: model.title, owner: model.owner,creationDate: model.creationDate))
+        vc.setUpParms(question: model)
     
         self.navigationController?.pushViewController(vc, animated: true)
     }

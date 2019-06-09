@@ -8,13 +8,11 @@
 
 import UIKit
 class ShowDetailsController: UIViewController {
-    
+//    var question: ItemModel = ItemOwnerModel()
     var questionIndes:Int?
     var answers:[Answer]? = [Answer]()
+    var questionAuthor: ItemOwnerModel?
     var aquestionTitle: String? = ""
-    var scores:Int? = 0
-    var dateModel: Int? = 0
-    var funct : ((String) -> Void)?
     
     @IBOutlet weak var detailTable: UITableView!
     @IBOutlet weak var author: UILabel!
@@ -25,13 +23,15 @@ class ShowDetailsController: UIViewController {
         super.viewDidLoad()
         self.navigationItem.title = aquestionTitle
     }
-    func setUpParms(answers:[Answer]?, questionTitle: String?, questionAsFirstAmongAnswers:Answer){
-        if answers != nil{
-            self.answers = answers
+    func setUpParms(question:ItemModel){
+        if question.answers != nil{
+            self.answers = question.answers
         }
-        self.aquestionTitle = questionTitle
-        self.answers!.insert(questionAsFirstAmongAnswers, at: 0)
+        self.questionAuthor = question.owner
+        self.aquestionTitle = question.title
+        self.answers?.insert(Answer(body: question.title, owner: question.owner,creationDate: question.creationDate), at: 0)
     }
+
     override func viewWillAppear(_ animated: Bool) {
         
     }
@@ -46,15 +46,13 @@ extension ShowDetailsController:UITableViewDataSource, UITableViewDelegate{
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return answers?.count ?? 0
     }
-    
+
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: AnswerTableviewCell.identifier) as! AnswerTableviewCell
         let model = answers?[indexPath.row]
-        cell.configureCell(param: model)
+        print("\(self.questionAuthor!.userId!)++ \(model!.owner!.userId!)")
+        cell.configureCell(param: model,selected:self.questionAuthor?.userId == model?.owner?.userId )
         cell.accessoryType = (model?.owner?.isAccepted ?? false) ? .checkmark : .none
-        if indexPath.row == 0{
-            cell.backgroundColor = .yellow
-        }
         return cell
     }
     

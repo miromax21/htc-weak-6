@@ -8,12 +8,11 @@
 
 import UIKit
 class QuestionTableviewCell: UITableViewCell {
-    
+    //var selected : Bool = false
     @IBOutlet weak var question: UILabel!
     @IBOutlet weak var author: UILabel!
     @IBOutlet weak var answersCount: UILabel!
     @IBOutlet weak var editDate: UILabel!
-    
     func configureCell(param:ItemModel) {
         question.text  = param.title
         author.text = param.owner?.displayName ?? ""

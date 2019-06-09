@@ -90,11 +90,13 @@ struct ItemOwnerModel : Codable{
     var link: String?
     var reputation: Int?
     var isAccepted:Bool?
+    var userId: Int?
     enum CodingKeys : String, CodingKey {
         case displayName = "display_name"
         case link
         case reputation
         case isAccepted = "is_accepted"
+        case userId = "user_id"
     }
 
     init(from decoder: Decoder) throws {
@@ -103,6 +105,7 @@ struct ItemOwnerModel : Codable{
         self.link = try? container.decode(String.self, forKey: CodingKeys.link)
         self.reputation = try container.decode(Int.self, forKey: CodingKeys.reputation)
         self.isAccepted = try? container.decode(Bool.self, forKey: CodingKeys.isAccepted)
+        self.userId = try? container.decode(Int.self, forKey: CodingKeys.userId)
     }
 }
 

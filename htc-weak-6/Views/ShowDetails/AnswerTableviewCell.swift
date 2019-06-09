@@ -14,7 +14,11 @@ class AnswerTableviewCell: UITableViewCell {
     @IBOutlet weak var editDate: UILabel!
     @IBOutlet weak var answertext: UILabel!
     
-    func configureCell(param: Answer?) {
+    func configureCell(param: Answer?, selected: Bool) {
+        print(selected)
+        if selected{
+//self.backgroundColor = .red
+        }
         author.text = param?.owner?.displayName
         answersCount.text = param?.owner?.reputation != nil ?   String(describing: param!.owner!.reputation!) : "0"
         editDate.text = param?.creationDate != nil ? "\(Date.init(timeIntervalSince1970: TimeInterval(param!.creationDate!)).mediumDate())" : ""
