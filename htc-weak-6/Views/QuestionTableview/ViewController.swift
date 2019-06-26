@@ -8,15 +8,15 @@
 import UIKit
 import AVFoundation
 class ViewController: UIViewController {
-
+    
     @IBOutlet weak var activityIndicator: UIActivityIndicatorView!
     @IBOutlet weak var tableView: UITableView!
     var items = [ItemModel]()
     var urlSession: GetQuestionsProtocol!
-    var tag: String = "swift"
     var property = Property()
     var player: AVPlayer?
     let pagingSpinner = UIActivityIndicatorView(style: .gray)
+    
     fileprivate func addTagButton() {
         let setTagBarButton = UIBarButtonItem(title: NSLocalizedString("set tag", comment: "set tag bar button item text"), style: .done, target: self, action: #selector(goToSetTag))
         self.navigationItem.leftBarButtonItem = setTagBarButton
@@ -24,18 +24,30 @@ class ViewController: UIViewController {
     }
     
     override func viewDidLoad() {
-        
         super.viewDidLoad()
         addTagButton()
         setGestures()
-        self.urlSession = AlamofireApiServices.init(tag: property.tags[0], pageCount: 10)
-        //self.urlSession = URLSessionApiSrevices.init(tag:  property.tags[0], pageCount: 10)
-        loadData(tagIndex: nil)
+        self.urlSession = AlamofireApiServices.init(tag: property.tags[property.currentTagIndex], pageCount: property.itemsCountOnPage)
+        //self.urlSession = URLSessionApiSrevices.init(tag:  property.tags[property.currentTagIndex], pageCount: property.itemsCountOnPage)
+        loadData()
         pagingSpinner.hidesWhenStopped = true
+        tableView.tableFooterView = UIView()
+        tableView.tableFooterView?.backgroundColor = .lightGray
         pagingSpinner.color = UIColor(red: 22.0/255.0, green: 106.0/255.0, blue: 176.0/255.0, alpha: 1.0)
-        tableView.tableFooterView = pagingSpinner
+        tableView.tableFooterView?.addSubview(pagingSpinner)
+        tableView.tableFooterView?.isHidden = items.count == 0
+    }
+    
+    override func viewWillLayoutSubviews() {
+        guard let tableFooter = tableView.tableFooterView else {
+            return
+        }
+        tableFooter.frame = CGRect(x: 0, y: 0, width: self.view.bounds.width, height: 30)
+        pagingSpinner.center = tableFooter.center
+        tableView.tableFooterView = tableFooter
         
     }
+    // MARK: setGestures
     func setGestures(){
         let rightSwipeRecognizer = UISwipeGestureRecognizer(target: self, action: #selector(swiped))
         rightSwipeRecognizer.direction = UISwipeGestureRecognizer.Direction.right
@@ -58,7 +70,8 @@ class ViewController: UIViewController {
     }
     
     @objc private func refreshTable(sender: UIRefreshControl) {
-        loadData(tagIndex: 0)
+        sender.beginRefreshing()
+        loadData()
         sender.endRefreshing()
     }
     @objc func handlePinchGesture(_ gestureRecognizer: UIPinchGestureRecognizer) {
@@ -68,59 +81,96 @@ class ViewController: UIViewController {
             player = AVPlayer(playerItem: playerItem)
             player?.play()
             Timer.scheduledTimer(withTimeInterval: 5.0, repeats: false) { timer in
-                 self.player?.pause()
+                self.player?.pause()
             }
         }
     }
-    // Example Tabbar 5 pages
     @objc func swiped(_ gesture: UISwipeGestureRecognizer) {
         goToSetTag()
     }
     
     
-    func loadData(tagIndex: Int?)  {
-        self.items = []
-
+    func loadData()  {
         activityIndicator.startAnimating()
         self.tableView.alpha = 0
-        self.urlSession.getQuestions(tag: self.property.tags[tagIndex ?? 0]) { [weak self] (data) in
-            guard let strongSelf = self else {return}
+        self.urlSession.getQuestions(tag: self.property.tags[self.property.currentTagIndex]) { [unowned self] (data,error) in
             let appDelegate = UIApplication.shared.delegate as! ApDelegate
-            appDelegate.tagIndex =  tagIndex ?? 0
-            strongSelf.items = data
-            strongSelf.tableView.reloadData()
-            strongSelf.navigationItem.title = strongSelf.property.tags[appDelegate.tagIndex]
-            strongSelf.activityIndicator.stopAnimating()
+            appDelegate.tagIndex = self.property.currentTagIndex
+            guard let items = data else{
+                
+                let alertController = UIAlertController(title: "УУпс...)", message: error, preferredStyle: .alert)
+                let actionOk = UIAlertAction(title: "OK", style: .default) { (action:UIAlertAction) in
+                    self.goToSetTag()
+                }
+                let actionCancel = UIAlertAction(title: "Cancel", style: .default, handler: nil)
+                alertController.addAction(actionOk)
+                alertController.addAction(actionCancel)
+                self.present(alertController, animated: true, completion: nil)
+                
+                self.activityIndicator.stopAnimating()
+                UIView.animate(withDuration: 1.5, animations: {
+                    self.tableView.alpha = 1
+                })
+                return
+            }
+            
+            if let error = error{
+                let alertController = UIAlertController(title: error, message: nil, preferredStyle: .alert)
+                self.present(alertController, animated: true, completion: nil)
+                Timer.scheduledTimer(withTimeInterval: 2.5, repeats: false) { timer in
+                    alertController.dismiss(animated: true, completion: nil)
+                }
+                
+                
+                
+            }
+            self.items = items
+            self.tableView.reloadData()
+            self.navigationItem.title = self.property.tags[appDelegate.tagIndex]
+            self.activityIndicator.stopAnimating()
             UIView.animate(withDuration: 1.5, animations: {
-                strongSelf.tableView.alpha = 1
+                self.tableView.alpha = 1
             })
         }
     }
-
+    
+    func insertCells(newItems : [ItemModel])  {
+        self.items += newItems
+        
+        let indexPaths = (self.items.count - newItems.count ..< self.items.count).map { IndexPath(row: $0, section: 0) }
+        self.tableView.beginUpdates()
+        self.tableView.insertRows(at: indexPaths, with: .automatic)
+        self.tableView.endUpdates()
+        self.pagingSpinner.stopAnimating()
+    }
     
     @objc func goToSetTag()  {
+        //   self.property.currentTagIndex = Int.random(in: 1..<self.property.tags.count - 1)
+        //    loadData()
+        //return
         let storyboard = UIStoryboard(name: String(describing: SetTagViewController.self), bundle: nil)
         let vc = storyboard.instantiateInitialViewController() as! SetTagViewController
         vc.delegate = self
         vc.pickerData = self.property.tags
-       // vc.pickerView.selectedRow(inComponent: ApDelegate().tagIndex)
         self.present(vc, animated: true)
         
     }
+    
+    
 }
 
 // MARK: TableViewDelegate
 
 extension ViewController: UITableViewDataSource, UITableViewDelegate{
-
+    
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-       return self.items.count
+        return self.items.count
     }
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         let vc = ShowDetailsController.getInstance() as! ShowDetailsController
         let model = self.items[indexPath.row]
         vc.setUpParms(question: model)
-    
+        
         self.navigationController?.pushViewController(vc, animated: true)
     }
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
@@ -129,32 +179,27 @@ extension ViewController: UITableViewDataSource, UITableViewDelegate{
         cell.configureCell(param:model)
         return cell
     }
-
     
-    func scrollViewDidEndDragging(_ scrollView: UIScrollView, willDecelerate decelerate: Bool) {
-        let maxPosition = scrollView.contentInset.top + scrollView.contentSize.height + scrollView.contentInset.bottom - scrollView.bounds.size.height;
-        let currentPosition = scrollView.contentOffset.y + self.topLayoutGuide.length;
-        
-        if (currentPosition >= maxPosition - 15){
+    func tableView(_ tableView: UITableView, willDisplay cell: UITableViewCell, forRowAt indexPath: IndexPath) {
+        let outOfRange = items.count >= 30
+        tableView.tableFooterView?.isHidden = outOfRange
+        if indexPath.row == items.count - 1 && !outOfRange {
             self.pagingSpinner.startAnimating()
-            self.urlSession.next { (newItems) in
-                guard let newItems = newItems else {return}
-                self.items += newItems
-                
-                let indexPaths = (self.items.count - newItems.count ..< self.items.count).map { IndexPath(row: $0, section: 0) }
-                self.tableView.beginUpdates()
-                self.tableView.insertRows(at: indexPaths, with: .automatic)
-                self.tableView.endUpdates()
-                self.pagingSpinner.stopAnimating()
+            self.urlSession.next { (newItems, error) in
+                guard let newItems = newItems else {self.pagingSpinner.stopAnimating(); return}
+                self.insertCells(newItems: newItems)
             }
         }
+        
+        
     }
-
 }
 
 extension ViewController: SatTagDelegate{
     
     func setTag(tagIndex: Int) {
-        loadData(tagIndex: tagIndex)
+        self.property.currentTagIndex = tagIndex
+        loadData()
     }
 }
+

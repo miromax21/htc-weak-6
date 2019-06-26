@@ -8,6 +8,6 @@
 
 import Foundation
 protocol GetQuestionsProtocol {
-    func getQuestions(tag:String, completion: @escaping ([ItemModel]) -> ())
-    func next(completion: @escaping ([ItemModel]?) -> ())
+        func getQuestions(tag:String, completion: @escaping ([ItemModel]?, String?) -> ())
+        func next(completion: @escaping ([ItemModel]?, String?) -> ())
 }
