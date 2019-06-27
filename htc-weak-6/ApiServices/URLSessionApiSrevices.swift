@@ -8,7 +8,7 @@
 
 
 import Foundation
-class URLSessionApiSrevices: GetQuestionsProtocol {
+class URLSessionApiSrevices {//: GetQuestionsProtocol {
     var tag : String = ""
     var pageNumber : Int = 1
     var pageCount:Int

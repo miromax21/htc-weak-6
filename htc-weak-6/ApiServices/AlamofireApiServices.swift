@@ -24,6 +24,39 @@ class AlamofireApiServices : GetQuestionsProtocol {
     
     fileprivate let githubUrl = "https://api.stackexchange.com/2.2/questions?order=desc&sort=activity&site=stackoverflow&filter=!*0Orc(*JEOizSDbd.)b-4JciVz_ULBWOHfaWDAqfq"
     
+    func getGuestionse(tag:String, completion: @escaping (_ responce:Questionanswer) -> ()) {
+        self.tag = tag
+        inProces = true
+        
+        let url = URL(string: self.githubUrl + "&tagged=\(self.tag)&page=\(self.pageNumber)&pagesize=\(self.pageCount)")!
+        let ar = Alamofire.request(url)
+        self.getDataFromCacheByTimer(alamofireRequest: ar, url: url) { (items, error) in
+            completion(Questionanswer.success(items: items))
+        }
+        
+        DispatchQueue.global(qos: .background).async{
+            ar.responseJSON { response in
+                self.error = nil
+                var errors = [String]()
+                if let responseError = response.error {
+                    errors.append(responseError.localizedDescription)
+                    self.getDataFromCacheByURl(url: url, completion: { (items, error) in
+                        if let error = error{
+                            errors.append(error)
+                        }
+                        completion(Questionanswer.error(items: items, errorMessage: errors))
+                    })
+                }else{
+                    
+                    let completeItems = self.getModelByResponse(response: response)
+                    completion(Questionanswer.success(items: completeItems))
+                }
+                self.inProces = false
+            }
+        }
+    }
+    
+    
     func getQuestions(tag:String, completion: @escaping ([ItemModel]?,String?) -> ()){
         self.tag = tag
         inProces = true

@@ -28,6 +28,7 @@ class ViewController: UIViewController {
         addTagButton()
         setGestures()
         self.urlSession = AlamofireApiServices.init(tag: property.tags[property.currentTagIndex], pageCount: property.itemsCountOnPage)
+        
         //self.urlSession = URLSessionApiSrevices.init(tag:  property.tags[property.currentTagIndex], pageCount: property.itemsCountOnPage)
         loadData()
         pagingSpinner.hidesWhenStopped = true
@@ -93,38 +94,18 @@ class ViewController: UIViewController {
     func loadData()  {
         activityIndicator.startAnimating()
         self.tableView.alpha = 0
-        self.urlSession.getQuestions(tag: self.property.tags[self.property.currentTagIndex]) { [unowned self] (data,error) in
+        self.urlSession.getGuestionse(tag: self.property.tags[self.property.currentTagIndex]) { [unowned self]  (data:Questionanswer) in
             let appDelegate = UIApplication.shared.delegate as! ApDelegate
             appDelegate.tagIndex = self.property.currentTagIndex
-            guard let items = data else{
-                
-                let alertController = UIAlertController(title: "УУпс...)", message: error, preferredStyle: .alert)
-                let actionOk = UIAlertAction(title: "OK", style: .default) { (action:UIAlertAction) in
-                    self.goToSetTag()
-                }
-                let actionCancel = UIAlertAction(title: "Cancel", style: .default, handler: nil)
-                alertController.addAction(actionOk)
-                alertController.addAction(actionCancel)
-                self.present(alertController, animated: true, completion: nil)
-                
-                self.activityIndicator.stopAnimating()
-                UIView.animate(withDuration: 1.5, animations: {
-                    self.tableView.alpha = 1
-                })
-                return
+            switch data{
+                case .error(let items, let errorMessage):
+                    self.items = items ?? []
+                    let okFunk = items == nil ? self.goToSetTag() : Void()
+                    self.alertMessage(alerts: errorMessage, okFunc: okFunk)
+                case .success(let items):
+                    self.items = items ?? []
             }
             
-            if let error = error{
-                let alertController = UIAlertController(title: error, message: nil, preferredStyle: .alert)
-                self.present(alertController, animated: true, completion: nil)
-                Timer.scheduledTimer(withTimeInterval: 2.5, repeats: false) { timer in
-                    alertController.dismiss(animated: true, completion: nil)
-                }
-                
-                
-                
-            }
-            self.items = items
             self.tableView.reloadData()
             self.navigationItem.title = self.property.tags[appDelegate.tagIndex]
             self.activityIndicator.stopAnimating()
@@ -132,8 +113,27 @@ class ViewController: UIViewController {
                 self.tableView.alpha = 1
             })
         }
+
     }
-    
+    func alertMessage(alerts:[String], okFunc:Void)  {
+        var message = String()
+        for a in alerts{
+            message += "\(a)"
+        }
+        let alertController = UIAlertController(title: "УУпс...)", message: message, preferredStyle: .alert)
+        let actionOk = UIAlertAction(title: "OK", style: .default) { (action:UIAlertAction) in
+            okFunc
+        }
+        let actionCancel = UIAlertAction(title: "Cancel", style: .default, handler: nil)
+        alertController.addAction(actionOk)
+        alertController.addAction(actionCancel)
+        self.present(alertController, animated: true, completion: nil)
+        
+        self.activityIndicator.stopAnimating()
+        UIView.animate(withDuration: 1.5, animations: {
+            self.tableView.alpha = 1
+        })
+    }
     func insertCells(newItems : [ItemModel])  {
         self.items += newItems
         

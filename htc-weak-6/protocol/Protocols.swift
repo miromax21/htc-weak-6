@@ -10,4 +10,11 @@ import Foundation
 protocol GetQuestionsProtocol {
         func getQuestions(tag:String, completion: @escaping ([ItemModel]?, String?) -> ())
         func next(completion: @escaping ([ItemModel]?, String?) -> ())
+        func getGuestionse(tag:String, completion: @escaping (_ responce:Questionanswer) -> ())
 }
+enum Questionanswer{
+    case error(items:[ItemModel]?, errorMessage:[String])
+    case success(items:[ItemModel]?)
+}
+
+
