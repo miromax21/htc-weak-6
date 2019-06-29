@@ -100,8 +100,11 @@ class ViewController: UIViewController {
             switch data{
                 case .error(let items, let errorMessage):
                     self.items = items ?? []
-                    let okFunk = items == nil ? self.goToSetTag() : Void()
-                    self.alertMessage(alerts: errorMessage, okFunc: okFunk)
+                    self.alertMessage(alerts: errorMessage, okFunc: { [unowned self] in
+                        if items == nil{
+                            self.goToSetTag()
+                        }
+                    })
                 case .success(let items):
                     self.items = items ?? []
             }
@@ -115,14 +118,14 @@ class ViewController: UIViewController {
         }
 
     }
-    func alertMessage(alerts:[String], okFunc:Void)  {
+    func alertMessage(alerts:[String], okFunc:  @escaping ()->())  {
         var message = String()
         for a in alerts{
             message += "\(a)"
         }
         let alertController = UIAlertController(title: "УУпс...)", message: message, preferredStyle: .alert)
         let actionOk = UIAlertAction(title: "OK", style: .default) { (action:UIAlertAction) in
-            okFunc
+            okFunc()
         }
         let actionCancel = UIAlertAction(title: "Cancel", style: .default, handler: nil)
         alertController.addAction(actionOk)

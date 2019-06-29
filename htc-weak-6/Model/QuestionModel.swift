@@ -15,15 +15,16 @@ struct ServerDataModel: Codable {
 
 struct ItemModel: Codable {
     var owner: ItemOwnerModel?
-  //  var is_answered: Bool
+    //  var is_answered: Bool
     var answerCount: Int
     var score: Int?
     var title: String
     var lastEditDate: Int?
     var creationDate: Int
-//    var question_id:Int
+    //    var question_id:Int
     var isAnswered:Bool
     var answers: [Answer]?
+
     
     enum CodingKeys: String, CodingKey {
         case owner
@@ -45,17 +46,20 @@ struct ItemModel: Codable {
         self.creationDate = try container.decode(Int.self, forKey: .creationDate)
         self.answers = try? container.decode([Answer].self, forKey: .answers)
         self.isAnswered = try container.decode(Bool.self, forKey: .isAnswered)
+
     }
 }
 struct Answer: Codable  {
     var body: String?
     var owner: ItemOwnerModel?
     var creationDate:Int?
+    var voteCount:Int?
     
     enum CodingKeys: String, CodingKey {
         case body
         case owner
         case creationDate = "creation_date"
+        case voteCount = "up_vote_count"
     }
     init (body:String?,owner:ItemOwnerModel?,creationDate:Int?){
         self.body = body
@@ -70,6 +74,7 @@ struct Answer: Codable  {
         if self.body != nil{
             htmlToString(htmlStr: &self.body!)
         }
+        self.voteCount = try container.decode(Int?.self, forKey: .voteCount) ?? 0
     }
     func htmlToString(htmlStr:inout String){
         let scanner:Scanner = Scanner(string: htmlStr);
@@ -98,7 +103,7 @@ struct ItemOwnerModel : Codable{
         case isAccepted = "is_accepted"
         case userId = "user_id"
     }
-
+    
     init(from decoder: Decoder) throws {
         let container = try decoder.container(keyedBy: CodingKeys.self)
         self.displayName = try? container.decode(String.self, forKey: CodingKeys.displayName)

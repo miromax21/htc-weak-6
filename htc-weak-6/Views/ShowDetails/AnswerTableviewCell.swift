@@ -10,21 +10,17 @@ import UIKit
 class AnswerTableviewCell: UITableViewCell {
     @IBOutlet weak var answer: UILabel!
     @IBOutlet weak var author: UILabel!
-    @IBOutlet weak var answersCount: UILabel!
+    @IBOutlet weak var voteCount: UILabel!
     @IBOutlet weak var editDate: UILabel!
     @IBOutlet weak var answertext: UILabel!
     
     func configureCell(param: Answer?, selected: Bool) {
-        print(selected)
-        if selected{
-//self.backgroundColor = .red
-        }
+        self.backgroundColor = selected ? .yellow : .none
         author.text = param?.owner?.displayName
-        answersCount.text = param?.owner?.reputation != nil ?   String(describing: param!.owner!.reputation!) : "0"
+        voteCount.text = param?.voteCount != nil ?   String(describing: param!.voteCount!) : "0"
         editDate.text = param?.creationDate != nil ? "\(Date.init(timeIntervalSince1970: TimeInterval(param!.creationDate!)).mediumDate())" : ""
         answertext.text = param?.body
-        
-        
+
     }
     
 }

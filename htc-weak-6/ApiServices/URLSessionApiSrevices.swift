@@ -19,7 +19,7 @@ class URLSessionApiSrevices {//: GetQuestionsProtocol {
     fileprivate var hasMore:Bool = false
     fileprivate let cache = URLCache.shared
     fileprivate var dataTask: URLSessionDataTask?
-    fileprivate let githubUrl = "https://api.stackexchange.com/2.2/questions?order=desc&sort=activity&site=stackoverflow&filter=!*0Orc(*JEOizSDbd.)b-4JciVz_ULBWOHfaWDAqfq"
+    fileprivate let githubUrl = "https://api.stackexchange.com/2.2/questions?&order=desc&sort=activity&site=stackoverflow&filter=!ORaDWi4Mhp6sjoPZTP8qIzJT(WkfqZ.i*qY7roJ_Ubq"
     init(tag:String, pageCount: Int = 10) {
         self.tag = tag
         self.pageCount = pageCount

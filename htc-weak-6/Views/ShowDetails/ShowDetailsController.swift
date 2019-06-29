@@ -50,9 +50,9 @@ extension ShowDetailsController:UITableViewDataSource, UITableViewDelegate{
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: AnswerTableviewCell.identifier) as! AnswerTableviewCell
         let model = answers?[indexPath.row]
-        print("\(self.questionAuthor!.userId!)++ \(model!.owner!.userId!)")
         cell.configureCell(param: model,selected:self.questionAuthor?.userId == model?.owner?.userId )
         cell.accessoryType = (model?.owner?.isAccepted ?? false) ? .checkmark : .none
+        cell.configureCell(param: model, selected: indexPath.row == 0)
         return cell
     }
     

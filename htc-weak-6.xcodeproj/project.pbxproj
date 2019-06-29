@@ -160,6 +160,7 @@
 				1B815A4C227F22B1007ED3B2 /* QuestionTableview */,
 				1B815A45227EE1B1007ED3B2 /* ShowDetails */,
 				1B5BB0A6227DFE06003A3CC8 /* SetTag */,
+				1B3855E022787DFF0017CE00 /* Assets.xcassets */,
 			);
 			path = Views;
 			sourceTree = "<group>";
@@ -178,7 +179,6 @@
 			isa = PBXGroup;
 			children = (
 				1B3855DB22787DFD0017CE00 /* ViewController.swift */,
-				1B3855E022787DFF0017CE00 /* Assets.xcassets */,
 				1B815A4D227F22FC007ED3B2 /* QuestionTableviewCell.swift */,
 				1B93DB722292F25600DB4082 /* Property.swift */,
 			);

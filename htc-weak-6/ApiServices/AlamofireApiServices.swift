@@ -22,28 +22,34 @@ class AlamofireApiServices : GetQuestionsProtocol {
         self.pageCount = pageCount
     }
     
-    fileprivate let githubUrl = "https://api.stackexchange.com/2.2/questions?order=desc&sort=activity&site=stackoverflow&filter=!*0Orc(*JEOizSDbd.)b-4JciVz_ULBWOHfaWDAqfq"
+    fileprivate let githubUrl = "https://api.stackexchange.com/2.2/questions?&order=desc&sort=activity&site=stackoverflow&filter=!ORaDWi4Mhp6sjoPZTP8qIzJT(WkfqZ.i*qY7roJ_Ubq"
     
     func getGuestionse(tag:String, completion: @escaping (_ responce:Questionanswer) -> ()) {
+
         self.tag = tag
         inProces = true
-        
+        var errors = [String]()
         let url = URL(string: self.githubUrl + "&tagged=\(self.tag)&page=\(self.pageNumber)&pagesize=\(self.pageCount)")!
         let ar = Alamofire.request(url)
-        self.getDataFromCacheByTimer(alamofireRequest: ar, url: url) { (items, error) in
+        self.getDataFromCacheByTimer(alamofireRequest: ar, url: url) { (items) in
             completion(Questionanswer.success(items: items))
         }
-        
+        if(!NetworkReachabilityManager()!.isReachable ){
+            self.getDataFromCacheByURl(url: url, completion: { (items) in
+                errors.append(NSLocalizedString("network konnection error", comment: "etwork konnection error"))
+                completion(Questionanswer.error(items: items, errorMessage: errors))
+            })
+            return
+        }
         DispatchQueue.global(qos: .background).async{
             ar.responseJSON { response in
                 self.error = nil
-                var errors = [String]()
                 if let responseError = response.error {
                     errors.append(responseError.localizedDescription)
-                    self.getDataFromCacheByURl(url: url, completion: { (items, error) in
-                        if let error = error{
-                            errors.append(error)
-                        }
+                    self.getDataFromCacheByURl(url: url, completion: { (items) in
+//                        if let error = error{
+//                            errors.append(error)
+//                        }
                         completion(Questionanswer.error(items: items, errorMessage: errors))
                     })
                 }else{
@@ -63,8 +69,8 @@ class AlamofireApiServices : GetQuestionsProtocol {
         
         let url = URL(string: self.githubUrl + "&tagged=\(self.tag)&page=\(self.pageNumber)&pagesize=\(self.pageCount)")!
         let ar = Alamofire.request(url)
-        self.getDataFromCacheByTimer(alamofireRequest: ar, url: url) { (items, error) in
-            completion(items,error)
+        self.getDataFromCacheByTimer(alamofireRequest: ar, url: url) { (items) in
+            completion(items,nil)
         }
         
         DispatchQueue.global(qos: .background).async{
@@ -73,11 +79,8 @@ class AlamofireApiServices : GetQuestionsProtocol {
                 var completeItems : [ItemModel]?
                 if let error = response.error {
                     self.error = error.localizedDescription
-                    self.getDataFromCacheByURl(url: url, completion: { [unowned self] (items, error) in
+                    self.getDataFromCacheByURl(url: url, completion: { (items) in
                         completeItems = items
-                        if let  error = error{
-                            self.error = error
-                        }
                     })
                 }else{
                     completeItems = self.getModelByResponse(response: response)
@@ -112,21 +115,21 @@ class AlamofireApiServices : GetQuestionsProtocol {
         return items
     }
     
-    func getDataFromCacheByTimer(alamofireRequest:DataRequest, url:URL, completion: @escaping ([ItemModel]?,String?) -> ())  {
+    func getDataFromCacheByTimer(alamofireRequest:DataRequest, url:URL, completion: @escaping ([ItemModel]?) -> ())  {
         Timer.scheduledTimer(withTimeInterval: self.cacheInterval, repeats: false) { timer in
             if !self.inProces {return}
             alamofireRequest.cancel()
             DispatchQueue.main.async {
-                self.getDataFromCacheByURl(url: url, completion: { (items, error) in
-                    completion(items,error)
+                self.getDataFromCacheByURl(url: url, completion: { (items) in
+                    completion(items)
                 })
             }
             self.inProces = false
         }
     }
     
-    func getDataFromCacheByURl(url:URL, completion: @escaping ([ItemModel]?,String?) -> ()) {
+    func getDataFromCacheByURl(url:URL, completion: @escaping ([ItemModel]?) -> ()) {
         let data = self.cache.cachedResponse(for: URLRequest(url: url))?.data
-        completion(self.convertDataToModel(responceData: data), self.error)
+        completion(self.convertDataToModel(responceData: data))
     }
 }
