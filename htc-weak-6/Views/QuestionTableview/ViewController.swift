@@ -27,9 +27,9 @@ class ViewController: UIViewController {
         super.viewDidLoad()
         addTagButton()
         setGestures()
-        self.urlSession = AlamofireApiServices.init(tag: property.tags[property.currentTagIndex], pageCount: property.itemsCountOnPage)
+       // self.urlSession = AlamofireApiServices.init(tag: property.tags[property.currentTagIndex], pageCount: property.itemsCountOnPage)
         
-        //self.urlSession = URLSessionApiSrevices.init(tag:  property.tags[property.currentTagIndex], pageCount: property.itemsCountOnPage)
+        self.urlSession = URLSessionApiSrevices.init(tag:  property.tags[property.currentTagIndex], pageCount: property.itemsCountOnPage)
         loadData()
         pagingSpinner.hidesWhenStopped = true
         tableView.tableFooterView = UIView()
@@ -118,6 +118,7 @@ class ViewController: UIViewController {
         }
 
     }
+    
     func alertMessage(alerts:[String], okFunc:  @escaping ()->())  {
         var message = String()
         for a in alerts{
@@ -188,9 +189,17 @@ extension ViewController: UITableViewDataSource, UITableViewDelegate{
         tableView.tableFooterView?.isHidden = outOfRange
         if indexPath.row == items.count - 1 && !outOfRange {
             self.pagingSpinner.startAnimating()
-            self.urlSession.next { (newItems, error) in
-                guard let newItems = newItems else {self.pagingSpinner.stopAnimating(); return}
-                self.insertCells(newItems: newItems)
+            self.urlSession.next { [unowned self] (data) in
+                switch data{
+                case .error(let items, let errorMessage):
+                    self.alertMessage(alerts: errorMessage, okFunc: { [unowned self] in
+                        if items == nil{
+                            self.goToSetTag()
+                        }
+                    })
+                case .success(let items):
+                     self.insertCells(newItems: items!)
+                }
             }
         }
         

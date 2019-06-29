@@ -22,7 +22,7 @@ class AlamofireApiServices : GetQuestionsProtocol {
         self.pageCount = pageCount
     }
     
-    fileprivate let githubUrl = "https://api.stackexchange.com/2.2/questions?&order=desc&sort=activity&site=stackoverflow&filter=!ORaDWi4Mhp6sjoPZTP8qIzJT(WkfqZ.i*qY7roJ_Ubq"
+    fileprivate let githubUrl = "https://api.stackexchange.com/2.2/questions?order=desc&sort=activity&site=stackoverflow&filter=!*0Orc(*JEOizSDbd.)b-4JciVz_ULBWOHfaWDAqfq"
     
     func getGuestionse(tag:String, completion: @escaping (_ responce:Questionanswer) -> ()) {
 
@@ -47,9 +47,6 @@ class AlamofireApiServices : GetQuestionsProtocol {
                 if let responseError = response.error {
                     errors.append(responseError.localizedDescription)
                     self.getDataFromCacheByURl(url: url, completion: { (items) in
-//                        if let error = error{
-//                            errors.append(error)
-//                        }
                         completion(Questionanswer.error(items: items, errorMessage: errors))
                     })
                 }else{
@@ -63,38 +60,10 @@ class AlamofireApiServices : GetQuestionsProtocol {
     }
     
     
-    func getQuestions(tag:String, completion: @escaping ([ItemModel]?,String?) -> ()){
-        self.tag = tag
-        inProces = true
-        
-        let url = URL(string: self.githubUrl + "&tagged=\(self.tag)&page=\(self.pageNumber)&pagesize=\(self.pageCount)")!
-        let ar = Alamofire.request(url)
-        self.getDataFromCacheByTimer(alamofireRequest: ar, url: url) { (items) in
-            completion(items,nil)
-        }
-        
-        DispatchQueue.global(qos: .background).async{
-            ar.responseJSON { response in
-                self.error = nil
-                var completeItems : [ItemModel]?
-                if let error = response.error {
-                    self.error = error.localizedDescription
-                    self.getDataFromCacheByURl(url: url, completion: { (items) in
-                        completeItems = items
-                    })
-                }else{
-                    completeItems = self.getModelByResponse(response: response)
-                }
-                completion(completeItems, self.error)
-                self.inProces = false
-            }
-        }
-    }
-    
-    func next(completion: @escaping ([ItemModel]?, String?) -> ()) {
+    func next(completion: @escaping (_ responce:Questionanswer) -> ()) {
         guard !inProces || !hasMore else { return }
         pageNumber += 1
-        return getQuestions(tag: self.tag, completion: completion)
+        return getGuestionse(tag: self.tag, completion: completion)
     }
     
     func getModelByResponse(response:DataResponse<Any>) -> [ItemModel]?{
