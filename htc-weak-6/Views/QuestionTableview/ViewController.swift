@@ -94,7 +94,7 @@ class ViewController: UIViewController {
     func loadData()  {
         activityIndicator.startAnimating()
         self.tableView.alpha = 0
-        self.urlSession.getGuestionse(tag: self.property.tags[self.property.currentTagIndex]) { [unowned self]  (data:Questionanswer) in
+        self.urlSession.getQuestions(tag: self.property.tags[self.property.currentTagIndex]) { [unowned self]  (data:Questionanswer) in
             let appDelegate = UIApplication.shared.delegate as! ApDelegate
             appDelegate.tagIndex = self.property.currentTagIndex
             switch data{

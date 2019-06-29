@@ -15,6 +15,7 @@ class URLSessionApiSrevices: GetQuestionsProtocol {
     var pageCount:Int
     var inProces : Bool = false
     var error : String?
+
     var cacheInterval:Double = 5.0
     fileprivate var currentRequest : URLRequest?
     fileprivate var hasMore:Bool = false
@@ -26,7 +27,7 @@ class URLSessionApiSrevices: GetQuestionsProtocol {
         self.pageCount = pageCount
     }
 
-    func getGuestionse(tag:String, completion: @escaping (_ responce:Questionanswer) -> ()) {
+    func getQuestions(tag:String, completion: @escaping (_ responce:Questionanswer<ItemModel>) -> ()) {
         guard !inProces else { return }
         inProces = true
         let defaultSession = URLSession(configuration: .default)
@@ -58,10 +59,10 @@ class URLSessionApiSrevices: GetQuestionsProtocol {
         self.dataTask?.resume()
 
     }
-    func next(completion: @escaping (Questionanswer) -> ()) {
+    func next(completion: @escaping (Questionanswer<ItemModel>) -> ()) {
             guard !inProces || !hasMore else { return }
             pageNumber += 1
-            return getGuestionse(tag: self.tag, completion: completion)
+            return getQuestions(tag: self.tag, completion: completion)
     }
 
     

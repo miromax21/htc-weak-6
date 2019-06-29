@@ -9,6 +9,7 @@
 import Foundation
 import Alamofire
 class AlamofireApiServices : GetQuestionsProtocol {
+    
     var tag : String = ""
     var pageNumber : Int = 1
     var pageCount:Int
@@ -24,7 +25,7 @@ class AlamofireApiServices : GetQuestionsProtocol {
     
     fileprivate let githubUrl = "https://api.stackexchange.com/2.2/questions?order=desc&sort=activity&site=stackoverflow&filter=!*0Orc(*JEOizSDbd.)b-4JciVz_ULBWOHfaWDAqfq"
     
-    func getGuestionse(tag:String, completion: @escaping (_ responce:Questionanswer) -> ()) {
+    func getQuestions(tag:String, completion: @escaping (_ responce:Questionanswer<ItemModel>) -> ()) {
 
         self.tag = tag
         inProces = true
@@ -60,10 +61,10 @@ class AlamofireApiServices : GetQuestionsProtocol {
     }
     
     
-    func next(completion: @escaping (_ responce:Questionanswer) -> ()) {
+    func next(completion: @escaping (_ responce:Questionanswer<ItemModel>) -> ()) {
         guard !inProces || !hasMore else { return }
         pageNumber += 1
-        return getGuestionse(tag: self.tag, completion: completion)
+        return getQuestions(tag: self.tag, completion: completion)
     }
     
     func getModelByResponse(response:DataResponse<Any>) -> [ItemModel]?{
