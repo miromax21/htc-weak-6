@@ -24,7 +24,7 @@ class AlamofireApiServices : GetQuestionsProtocol {
     }
     
     fileprivate let githubUrl = "https://api.stackexchange.com/2.2/questions?order=desc&sort=activity&site=stackoverflow&filter=!*0Orc(*JEOizSDbd.)b-4JciVz_ULBWOHfaWDAqfq"
-    
+
     func getQuestions(tag:String, completion: @escaping (_ responce:Questionanswer<ItemModel>) -> ()) {
 
         self.tag = tag

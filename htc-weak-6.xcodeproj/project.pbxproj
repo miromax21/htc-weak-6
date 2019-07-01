@@ -21,7 +21,6 @@
 		1B815A40227ED948007ED3B2 /* AppButtons.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1B815A3F227ED948007ED3B2 /* AppButtons.swift */; };
 		1B815A43227EE123007ED3B2 /* UIViewControllerExtentions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1B815A42227EE123007ED3B2 /* UIViewControllerExtentions.swift */; };
 		1B815A47227EE1CB007ED3B2 /* ShowDetailsController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1B815A46227EE1CB007ED3B2 /* ShowDetailsController.swift */; };
-		1B815A4B227EF7D8007ED3B2 /* ShowDetailsController.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 1B815A4A227EE242007ED3B2 /* ShowDetailsController.storyboard */; };
 		1B815A4E227F22FC007ED3B2 /* QuestionTableviewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1B815A4D227F22FC007ED3B2 /* QuestionTableviewCell.swift */; };
 		1B93DB732292F25600DB4082 /* Property.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1B93DB722292F25600DB4082 /* Property.swift */; };
 		1B99C6E2228AF8CA00B7CFB5 /* AlamofireApiServices.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1B99C6E1228AF8CA00B7CFB5 /* AlamofireApiServices.swift */; };
@@ -29,6 +28,7 @@
 		1B99C6E7228AFB9D00B7CFB5 /* Protocols.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1B99C6E6228AFB9D00B7CFB5 /* Protocols.swift */; };
 		1BA13E18229ECC0500887CC9 /* rington.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 1BA13E17229EC7AD00887CC9 /* rington.mp3 */; };
 		1BC11D13229D793800DECDCF /* AnswerTableviewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1BC11D12229D793800DECDCF /* AnswerTableviewCell.swift */; };
+		1BD983B822C8DE66008AE91A /* ShowDetailsController.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 1BD983B622C8DE41008AE91A /* ShowDetailsController.storyboard */; };
 		695427C6EEF827369C15188B /* Pods_htc_weak_6.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C5BBE71062F29083F82C77D5 /* Pods_htc_weak_6.framework */; };
 /* End PBXBuildFile section */
 
@@ -49,7 +49,6 @@
 		1B815A3F227ED948007ED3B2 /* AppButtons.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppButtons.swift; sourceTree = "<group>"; };
 		1B815A42227EE123007ED3B2 /* UIViewControllerExtentions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIViewControllerExtentions.swift; sourceTree = "<group>"; };
 		1B815A46227EE1CB007ED3B2 /* ShowDetailsController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ShowDetailsController.swift; sourceTree = "<group>"; };
-		1B815A4A227EE242007ED3B2 /* ShowDetailsController.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = ShowDetailsController.storyboard; path = "/Users/maximmironov/Library/Autosave Information/htc-weak-6/htc-weak-6/Views/ShowDetails/ShowDetailsController.storyboard"; sourceTree = "<absolute>"; };
 		1B815A4D227F22FC007ED3B2 /* QuestionTableviewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = QuestionTableviewCell.swift; sourceTree = "<group>"; };
 		1B93DB722292F25600DB4082 /* Property.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Property.swift; sourceTree = "<group>"; };
 		1B99C6E1228AF8CA00B7CFB5 /* AlamofireApiServices.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AlamofireApiServices.swift; sourceTree = "<group>"; };
@@ -57,6 +56,7 @@
 		1B99C6E6228AFB9D00B7CFB5 /* Protocols.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Protocols.swift; sourceTree = "<group>"; };
 		1BA13E17229EC7AD00887CC9 /* rington.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = rington.mp3; sourceTree = "<group>"; };
 		1BC11D12229D793800DECDCF /* AnswerTableviewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AnswerTableviewCell.swift; sourceTree = "<group>"; };
+		1BD983B622C8DE41008AE91A /* ShowDetailsController.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = ShowDetailsController.storyboard; sourceTree = "<group>"; };
 		489A07E710CBAF86CEEFE244 /* Pods-htc-weak-6.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-htc-weak-6.debug.xcconfig"; path = "Target Support Files/Pods-htc-weak-6/Pods-htc-weak-6.debug.xcconfig"; sourceTree = "<group>"; };
 		A8E278F792E99E854DE1673F /* Pods-htc-weak-6.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-htc-weak-6.release.xcconfig"; path = "Target Support Files/Pods-htc-weak-6/Pods-htc-weak-6.release.xcconfig"; sourceTree = "<group>"; };
 		C5BBE71062F29083F82C77D5 /* Pods_htc_weak_6.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_htc_weak_6.framework; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -170,7 +170,7 @@
 			children = (
 				1BC11D12229D793800DECDCF /* AnswerTableviewCell.swift */,
 				1B815A46227EE1CB007ED3B2 /* ShowDetailsController.swift */,
-				1B815A4A227EE242007ED3B2 /* ShowDetailsController.storyboard */,
+				1BD983B622C8DE41008AE91A /* ShowDetailsController.storyboard */,
 			);
 			path = ShowDetails;
 			sourceTree = "<group>";
@@ -288,7 +288,7 @@
 				1B3855E422787DFF0017CE00 /* LaunchScreen.storyboard in Resources */,
 				1B3855E122787DFF0017CE00 /* Assets.xcassets in Resources */,
 				1B3855DF22787DFD0017CE00 /* Main.storyboard in Resources */,
-				1B815A4B227EF7D8007ED3B2 /* ShowDetailsController.storyboard in Resources */,
+				1BD983B822C8DE66008AE91A /* ShowDetailsController.storyboard in Resources */,
 				1BA13E18229ECC0500887CC9 /* rington.mp3 in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

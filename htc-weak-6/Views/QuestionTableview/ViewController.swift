@@ -118,7 +118,7 @@ class ViewController: UIViewController {
         }
 
     }
-    
+
     func alertMessage(alerts:[String], okFunc:  @escaping ()->())  {
         var message = String()
         for a in alerts{

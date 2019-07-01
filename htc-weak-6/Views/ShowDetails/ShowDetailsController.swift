@@ -8,7 +8,7 @@
 
 import UIKit
 class ShowDetailsController: UIViewController {
-//    var question: ItemModel = ItemOwnerModel()
+    //var question: ItemModel = ItemOwnerModel()
     var questionIndes:Int?
     var answers:[Answer]? = [Answer]()
     var questionAuthor: ItemOwnerModel?

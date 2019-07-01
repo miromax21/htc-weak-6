@@ -95,6 +95,7 @@
                                             <outlet property="author" destination="AtN-UA-NO5" id="xIO-ia-31K"/>
                                             <outlet property="editDate" destination="uPQ-d4-GVX" id="fOo-Bb-8gx"/>
                                             <outlet property="question" destination="LJ5-07-DVu" id="hGJ-xr-lqo"/>
+                                            <segue destination="VvN-yY-LMM" kind="showDetail" id="E38-u4-eVs"/>
                                         </connections>
                                     </tableViewCell>
                                     <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" selectionStyle="blue" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="loadingCell" rowHeight="95" id="4TI-9z-AyN" userLabel="loaderCell" customClass="QuestionTableviewCell" customModule="htc_weak_6" customModuleProvider="target">
@@ -146,6 +147,14 @@
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="1144.9275362318842" y="42.857142857142854"/>
+        </scene>
+        <!--ShowDetailsController-->
+        <scene sceneID="E7W-xl-ni2">
+            <objects>
+                <viewControllerPlaceholder storyboardName="ShowDetailsController" referencedIdentifier="ShowDetailsController" id="VvN-yY-LMM" sceneMemberID="viewController"/>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="T3V-fH-mp7" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="1953" y="-64"/>
         </scene>
         <!--Navigation Controller-->
         <scene sceneID="f3r-z8-InF">

@@ -6,11 +6,11 @@
       <BreakpointProxy
          BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
          <BreakpointContent
-            shouldBeEnabled = "No"
+            shouldBeEnabled = "Yes"
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "htc-weak-6/Views/ShowDetails/ShowDetailsController.swift"
-            timestampString = "583512597.560984"
+            timestampString = "583590450.603817"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
             startingLineNumber = "51"
@@ -22,11 +22,11 @@
       <BreakpointProxy
          BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
          <BreakpointContent
-            shouldBeEnabled = "No"
+            shouldBeEnabled = "Yes"
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "htc-weak-6/Views/ShowDetails/ShowDetailsController.swift"
-            timestampString = "583512597.561066"
+            timestampString = "583590450.604359"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
             startingLineNumber = "53"
@@ -42,7 +42,7 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "htc-weak-6/ApiServices/URLSessionApiSrevices.swift"
-            timestampString = "583515316.3431849"
+            timestampString = "583516174.263698"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
             startingLineNumber = "79"
@@ -58,7 +58,7 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "htc-weak-6/ApiServices/URLSessionApiSrevices.swift"
-            timestampString = "583515316.343267"
+            timestampString = "583516174.263795"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
             startingLineNumber = "74"
@@ -74,7 +74,7 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "htc-weak-6/ApiServices/URLSessionApiSrevices.swift"
-            timestampString = "583515316.343336"
+            timestampString = "583516174.263865"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
             startingLineNumber = "31"
@@ -90,7 +90,7 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "htc-weak-6/ApiServices/URLSessionApiSrevices.swift"
-            timestampString = "583515316.343402"
+            timestampString = "583516174.263931"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
             startingLineNumber = "38"
@@ -106,12 +106,168 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "htc-weak-6/ApiServices/URLSessionApiSrevices.swift"
-            timestampString = "583515316.343469"
+            timestampString = "583516174.263997"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
             startingLineNumber = "41"
             endingLineNumber = "41"
             landmarkName = "getQuestions(tag:completion:)"
+            landmarkType = "7">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            shouldBeEnabled = "Yes"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "htc-weak-6/Views/ShowDetails/ShowDetailsController.swift"
+            timestampString = "583590450.604816"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "12"
+            endingLineNumber = "12"
+            landmarkName = "ShowDetailsController"
+            landmarkType = "3">
+            <Locations>
+               <Location
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "htc_weak_6.ShowDetailsController.questionIndes.getter : Swift.Optional&lt;Swift.Int&gt;"
+                  moduleName = "htc-weak-6"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/maximmironov/Documents/ios%20projects/htc-weak-6/htc-weak-6/Views/ShowDetails/ShowDetailsController.swift"
+                  timestampString = "583646083.653654"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "12"
+                  endingLineNumber = "12"
+                  offsetFromSymbolStart = "113">
+               </Location>
+               <Location
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "htc_weak_6.ShowDetailsController.questionIndes.setter : Swift.Optional&lt;Swift.Int&gt;"
+                  moduleName = "htc-weak-6"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/maximmironov/Documents/ios%20projects/htc-weak-6/htc-weak-6/Views/ShowDetails/ShowDetailsController.swift"
+                  timestampString = "583646083.655849"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "12"
+                  endingLineNumber = "12"
+                  offsetFromSymbolStart = "142">
+               </Location>
+               <Location
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "htc_weak_6.ShowDetailsController.questionIndes.modify : Swift.Optional&lt;Swift.Int&gt;"
+                  moduleName = "htc-weak-6"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/maximmironov/Documents/ios%20projects/htc-weak-6/htc-weak-6/Views/ShowDetails/ShowDetailsController.swift"
+                  timestampString = "583646083.658458"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "0"
+                  endingLineNumber = "0"
+                  offsetFromSymbolStart = "18">
+               </Location>
+               <Location
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "htc_weak_6.ShowDetailsController.questionIndes.modify : Swift.Optional&lt;Swift.Int&gt; with unmangled suffix &quot;.resume.0&quot;"
+                  moduleName = "htc-weak-6"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/maximmironov/Documents/ios%20projects/htc-weak-6/htc-weak-6/Views/ShowDetails/ShowDetailsController.swift"
+                  timestampString = "583646083.6607929"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "12"
+                  endingLineNumber = "12"
+                  offsetFromSymbolStart = "4">
+               </Location>
+               <Location
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "htc_weak_6.ShowDetailsController.init(nibName: Swift.Optional&lt;Swift.String&gt;, bundle: Swift.Optional&lt;__C.NSBundle&gt;) -&gt; htc_weak_6.ShowDetailsController"
+                  moduleName = "htc-weak-6"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/maximmironov/Documents/ios%20projects/htc-weak-6/htc-weak-6/Views/ShowDetails/ShowDetailsController.swift"
+                  timestampString = "583646083.664502"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "12"
+                  endingLineNumber = "12"
+                  offsetFromSymbolStart = "217">
+               </Location>
+               <Location
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "htc_weak_6.ShowDetailsController.init(coder: __C.NSCoder) -&gt; Swift.Optional&lt;htc_weak_6.ShowDetailsController&gt;"
+                  moduleName = "htc-weak-6"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/maximmironov/Documents/ios%20projects/htc-weak-6/htc-weak-6/Views/ShowDetails/ShowDetailsController.swift"
+                  timestampString = "583646083.6670181"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "12"
+                  endingLineNumber = "12"
+                  offsetFromSymbolStart = "137">
+               </Location>
+            </Locations>
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            shouldBeEnabled = "Yes"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "htc-weak-6/Views/ShowDetails/ShowDetailsController.swift"
+            timestampString = "583590450.605149"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "27"
+            endingLineNumber = "27"
+            landmarkName = "setUpParms(question:)"
+            landmarkType = "7">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            shouldBeEnabled = "Yes"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "htc-weak-6/Views/ShowDetails/ShowDetailsController.swift"
+            timestampString = "583590450.605468"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "47"
+            endingLineNumber = "47"
+            landmarkName = "tableView(_:numberOfRowsInSection:)"
+            landmarkType = "7">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            shouldBeEnabled = "Yes"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "htc-weak-6/Views/QuestionTableview/ViewController.swift"
+            timestampString = "583590532.861421"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "181"
+            endingLineNumber = "181"
+            landmarkName = "tableView(_:cellForRowAt:)"
             landmarkType = "7">
          </BreakpointContent>
       </BreakpointProxy>

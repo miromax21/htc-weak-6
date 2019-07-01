@@ -13,7 +13,7 @@
         <!--Show Details Controller-->
         <scene sceneID="HxX-Ky-Kjp">
             <objects>
-                <viewController restorationIdentifier="ShowDetailsController" storyboardIdentifier="ShowDetailsController" id="sOu-ed-TQT" customClass="ShowDetailsController" customModule="htc_weak_6" sceneMemberID="viewController">
+                <viewController restorationIdentifier="ShowDetailsController" storyboardIdentifier="ShowDetailsController" id="sOu-ed-TQT" customClass="ShowDetailsController" customModule="htc_weak_6" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="anc-Yl-EYW">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -88,11 +88,11 @@
                                             </constraints>
                                         </tableViewCellContentView>
                                         <connections>
-                                            <outlet property="answer" destination="IJZ-LU-Min" id="yhf-sn-RkU"/>
+                                            <outlet property="answer" destination="IJZ-LU-Min" id="aeG-aP-T7l"/>
                                             <outlet property="answersCount" destination="pHj-6Z-8t5" id="Wr4-hS-BRH"/>
-                                            <outlet property="answertext" destination="IJZ-LU-Min" id="Wr4-9E-nh4"/>
-                                            <outlet property="author" destination="Bob-jn-VQu" id="Lzl-w6-B1g"/>
+                                            <outlet property="author" destination="Bob-jn-VQu" id="AAR-hR-uq8"/>
                                             <outlet property="editDate" destination="9P4-Wu-s2Y" id="uvl-HF-obp"/>
+                                            <outlet property="voteCount" destination="pHj-6Z-8t5" id="BMs-DO-8VB"/>
                                         </connections>
                                     </tableViewCell>
                                 </prototypes>
