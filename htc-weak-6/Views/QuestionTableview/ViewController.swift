@@ -15,6 +15,7 @@ class ViewController: UIViewController {
     var urlSession: GetQuestionsProtocol!
     var property = Property()
     var player: AVPlayer?
+    var alertdataFromCacheAbout = false
     let pagingSpinner = UIActivityIndicatorView(style: .gray)
     
     fileprivate func addTagButton() {
@@ -27,9 +28,9 @@ class ViewController: UIViewController {
         super.viewDidLoad()
         addTagButton()
         setGestures()
-       // self.urlSession = AlamofireApiServices.init(tag: property.tags[property.currentTagIndex], pageCount: property.itemsCountOnPage)
+        self.urlSession = AlamofireApiServices.init(tag: property.tags[property.currentTagIndex], pageCount: property.itemsCountOnPage)
         
-        self.urlSession = URLSessionApiSrevices.init(tag:  property.tags[property.currentTagIndex], pageCount: property.itemsCountOnPage)
+       // self.urlSession = URLSessionApiSrevices.init(tag:  property.tags[property.currentTagIndex], pageCount: property.itemsCountOnPage)
         loadData()
         pagingSpinner.hidesWhenStopped = true
         tableView.tableFooterView = UIView()
@@ -40,9 +41,11 @@ class ViewController: UIViewController {
     }
     
     override func viewWillLayoutSubviews() {
+        
         guard let tableFooter = tableView.tableFooterView else {
             return
         }
+        
         tableFooter.frame = CGRect(x: 0, y: 0, width: self.view.bounds.width, height: 30)
         pagingSpinner.center = tableFooter.center
         tableView.tableFooterView = tableFooter
@@ -50,6 +53,7 @@ class ViewController: UIViewController {
     }
     // MARK: setGestures
     func setGestures(){
+        
         let rightSwipeRecognizer = UISwipeGestureRecognizer(target: self, action: #selector(swiped))
         rightSwipeRecognizer.direction = UISwipeGestureRecognizer.Direction.right
         
@@ -71,11 +75,14 @@ class ViewController: UIViewController {
     }
     
     @objc private func refreshTable(sender: UIRefreshControl) {
+        
         sender.beginRefreshing()
         loadData()
         sender.endRefreshing()
+        
     }
     @objc func handlePinchGesture(_ gestureRecognizer: UIPinchGestureRecognizer) {
+        
         if gestureRecognizer.state == .ended {
             guard let url = Bundle.main.url(forResource: "rington", withExtension: "mp3") else { return }
             let playerItem = AVPlayerItem(url: url)
@@ -85,6 +92,7 @@ class ViewController: UIViewController {
                 self.player?.pause()
             }
         }
+        
     }
     @objc func swiped(_ gesture: UISwipeGestureRecognizer) {
         goToSetTag()
@@ -92,6 +100,7 @@ class ViewController: UIViewController {
     
     
     func loadData()  {
+        
         activityIndicator.startAnimating()
         self.tableView.alpha = 0
         self.urlSession.getQuestions(tag: self.property.tags[self.property.currentTagIndex]) { [unowned self]  (data:Questionanswer) in
@@ -100,11 +109,14 @@ class ViewController: UIViewController {
             switch data{
                 case .error(let items, let errorMessage):
                     self.items = items ?? []
-                    self.alertMessage(alerts: errorMessage, okFunc: { [unowned self] in
-                        if items == nil{
-                            self.goToSetTag()
-                        }
-                    })
+                    if self.alertdataFromCacheAbout == false{
+                        self.alertMessage(alerts: errorMessage, okFunc: { [unowned self] in
+                            if items == nil{
+                                self.goToSetTag()
+                            }
+                            self.alertdataFromCacheAbout = true
+                        })
+                    }
                 case .success(let items):
                     self.items = items ?? []
             }
@@ -120,15 +132,16 @@ class ViewController: UIViewController {
     }
 
     func alertMessage(alerts:[String], okFunc:  @escaping ()->())  {
+        
         var message = String()
-        for a in alerts{
-            message += "\(a)"
+        for alert in alerts{
+            message += "\(alert)"
         }
-        let alertController = UIAlertController(title: "УУпс...)", message: message, preferredStyle: .alert)
+        let alertController = UIAlertController(title:NSLocalizedString("УУпс...)", comment: "no internet connection"), message: message, preferredStyle: .alert)
         let actionOk = UIAlertAction(title: "OK", style: .default) { (action:UIAlertAction) in
             okFunc()
         }
-        let actionCancel = UIAlertAction(title: "Cancel", style: .default, handler: nil)
+        let actionCancel = UIAlertAction(title: NSLocalizedString("cancel", comment: "alert cancel button text"), style: .default, handler: nil)
         alertController.addAction(actionOk)
         alertController.addAction(actionCancel)
         self.present(alertController, animated: true, completion: nil)
@@ -138,7 +151,9 @@ class ViewController: UIViewController {
             self.tableView.alpha = 1
         })
     }
+    
     func insertCells(newItems : [ItemModel])  {
+        
         self.items += newItems
         
         let indexPaths = (self.items.count - newItems.count ..< self.items.count).map { IndexPath(row: $0, section: 0) }
@@ -149,9 +164,7 @@ class ViewController: UIViewController {
     }
     
     @objc func goToSetTag()  {
-        //   self.property.currentTagIndex = Int.random(in: 1..<self.property.tags.count - 1)
-        //    loadData()
-        //return
+
         let storyboard = UIStoryboard(name: String(describing: SetTagViewController.self), bundle: nil)
         let vc = storyboard.instantiateInitialViewController() as! SetTagViewController
         vc.delegate = self
@@ -159,7 +172,6 @@ class ViewController: UIViewController {
         self.present(vc, animated: true)
         
     }
-    
     
 }
 
@@ -185,24 +197,28 @@ extension ViewController: UITableViewDataSource, UITableViewDelegate{
     }
     
     func tableView(_ tableView: UITableView, willDisplay cell: UITableViewCell, forRowAt indexPath: IndexPath) {
-        let outOfRange = items.count >= 30
+        let outOfRange = items.count >= property.maxDownloadItemsCount
         tableView.tableFooterView?.isHidden = outOfRange
         if indexPath.row == items.count - 1 && !outOfRange {
             self.pagingSpinner.startAnimating()
             self.urlSession.next { [unowned self] (data) in
                 switch data{
                 case .error(let items, let errorMessage):
-                    self.alertMessage(alerts: errorMessage, okFunc: { [unowned self] in
-                        if items == nil{
-                            self.goToSetTag()
-                        }
-                    })
+                    if self.alertdataFromCacheAbout == false{
+                        self.alertMessage(alerts: errorMessage, okFunc: { [unowned self] in
+                            if items == nil{
+                                self.goToSetTag()
+                            }
+                        })
+                    }else{
+                      //  self.goToSetTag()
+                    }
                 case .success(let items):
                      self.insertCells(newItems: items!)
                 }
             }
         }
-        
+
         
     }
 }

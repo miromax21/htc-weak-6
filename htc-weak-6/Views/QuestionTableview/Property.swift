@@ -10,6 +10,7 @@ import Foundation
 struct Property {
     var pageNumber: Int = 1
     var tags: [String] = ["swift", "ios", "xcode", "cocoa-touch", "iphone"]
-    var currentTagIndex:Int = 0
+    var currentTagIndex: Int = 0
     var itemsCountOnPage: Int = 10
+    var maxDownloadItemsCount: Int = 30
 }

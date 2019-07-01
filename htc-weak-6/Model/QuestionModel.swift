@@ -7,13 +7,16 @@
 //
 
 import Foundation
+
 struct ServerDataModel: Codable {
+    
     var items: [ItemModel]?
     var has_more: Bool
-    var total: Int
+   // var total: Int
 }
 
 struct ItemModel: Codable {
+    
     var owner: ItemOwnerModel?
     //  var is_answered: Bool
     var answerCount: Int
@@ -36,10 +39,11 @@ struct ItemModel: Codable {
         case answers
         case isAnswered  = "is_answered"
     }
+    
     init(from decoder: Decoder) throws {
         let container = try decoder.container(keyedBy: CodingKeys.self)
         self.owner = try container.decode(ItemOwnerModel.self, forKey: .owner)
-        self.answerCount = try container.decode(Int.self, forKey: .answerCount)
+        self.answerCount = try! container.decode(Int.self, forKey: .answerCount) 
         self.score = try? container.decode(Int.self, forKey: .score)
         self.title = try container.decode(String.self, forKey: .title)
         self.lastEditDate = try? container.decode(Int.self, forKey: .lastEditDate)
@@ -50,6 +54,7 @@ struct ItemModel: Codable {
     }
 }
 struct Answer: Codable  {
+    
     var body: String?
     var owner: ItemOwnerModel?
     var creationDate:Int?
@@ -61,11 +66,13 @@ struct Answer: Codable  {
         case creationDate = "creation_date"
         case voteCount = "up_vote_count"
     }
+    
     init (body:String?,owner:ItemOwnerModel?,creationDate:Int?){
         self.body = body
         self.owner = owner
         self.creationDate = creationDate
     }
+    
     init(from decoder: Decoder) throws {
         let container = try decoder.container(keyedBy: CodingKeys.self)
         self.owner = try container.decode(ItemOwnerModel.self, forKey: .owner)
@@ -77,8 +84,10 @@ struct Answer: Codable  {
         self.voteCount = try container.decode(Int?.self, forKey: .voteCount) ?? 0
     }
     func htmlToString(htmlStr:inout String){
+        
         let scanner:Scanner = Scanner(string: htmlStr);
         var text:NSString? = nil;
+        
         while scanner.isAtEnd == false {
             scanner.scanUpTo("<", into: nil);
             scanner.scanUpTo(">", into: &text);
@@ -91,11 +100,13 @@ struct Answer: Codable  {
     }
 }
 struct ItemOwnerModel : Codable{
+    
     var displayName: String?
     var link: String?
     var reputation: Int?
     var isAccepted:Bool?
     var userId: Int?
+    
     enum CodingKeys : String, CodingKey {
         case displayName = "display_name"
         case link

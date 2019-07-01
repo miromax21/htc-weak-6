@@ -16,5 +16,3 @@ enum Questionanswer<T>{
     case error(items:[T]?, errorMessage:[String])
     case success(items:[T]?)
 }
-
-

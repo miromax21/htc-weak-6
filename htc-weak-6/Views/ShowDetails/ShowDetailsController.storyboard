@@ -53,14 +53,14 @@
                                                     <nil key="textColor"/>
                                                     <nil key="highlightedColor"/>
                                                 </label>
-                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="IJZ-LU-Min">
-                                                    <rect key="frame" x="15" y="76" width="384" height="20.5"/>
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Bob-jn-VQu">
+                                                    <rect key="frame" x="81" y="13.5" width="271" height="21"/>
                                                     <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                                     <nil key="textColor"/>
                                                     <nil key="highlightedColor"/>
                                                 </label>
-                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Bob-jn-VQu">
-                                                    <rect key="frame" x="81" y="13.5" width="271" height="21"/>
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="IJZ-LU-Min">
+                                                    <rect key="frame" x="15" y="76" width="384" height="20.5"/>
                                                     <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                                     <nil key="textColor"/>
                                                     <nil key="highlightedColor"/>
@@ -90,15 +90,16 @@
                                         <connections>
                                             <outlet property="answer" destination="IJZ-LU-Min" id="aeG-aP-T7l"/>
                                             <outlet property="answersCount" destination="pHj-6Z-8t5" id="Wr4-hS-BRH"/>
+                                            <outlet property="answertext" destination="IJZ-LU-Min" id="c9f-q1-qKM"/>
                                             <outlet property="author" destination="Bob-jn-VQu" id="AAR-hR-uq8"/>
                                             <outlet property="editDate" destination="9P4-Wu-s2Y" id="uvl-HF-obp"/>
-                                            <outlet property="voteCount" destination="pHj-6Z-8t5" id="BMs-DO-8VB"/>
+                                            <outlet property="voteCount" destination="pHj-6Z-8t5" id="Thv-oB-oqh"/>
                                         </connections>
                                     </tableViewCell>
                                 </prototypes>
                                 <connections>
-                                    <outlet property="dataSource" destination="sOu-ed-TQT" id="66C-gB-p9g"/>
-                                    <outlet property="delegate" destination="sOu-ed-TQT" id="iUw-Vr-Rg9"/>
+                                    <outlet property="dataSource" destination="sOu-ed-TQT" id="dSc-0I-HUK"/>
+                                    <outlet property="delegate" destination="sOu-ed-TQT" id="nrN-wA-p0s"/>
                                 </connections>
                             </tableView>
                         </subviews>
@@ -118,7 +119,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="cd2-cN-XdS" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-559" y="-426"/>
+            <point key="canvasLocation" x="-803" y="-441"/>
         </scene>
     </scenes>
 </document>
