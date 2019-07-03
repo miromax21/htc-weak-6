@@ -198,7 +198,9 @@ extension ViewController: UITableViewDataSource, UITableViewDelegate{
                         }
                     })
                 case .success(let items):
-                     self.insertCells(newItems: items!)
+                    if items != nil{
+                        self.insertCells(newItems: items!)
+                    }
                 }
             }
         }

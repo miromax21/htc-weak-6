@@ -17,7 +17,7 @@ class AnswerTableviewCell: UITableViewCell {
     func configureCell(param: Answer?, selected: Bool) {
         self.backgroundColor = selected ? .yellow : .none
         author.text = param?.owner?.displayName
-        voteCount.text = param?.voteCount != nil ?   String(describing: param!.voteCount!) : "0"
+     //   voteCount.text = param?.voteCount != nil ?   String(describing: param!.voteCount!) : "0"
         editDate.text = param?.creationDate != nil ? "\(Date.init(timeIntervalSince1970: TimeInterval(param!.creationDate!)).mediumDate())" : ""
         answertext.text = param?.body
 
