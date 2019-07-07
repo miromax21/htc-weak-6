@@ -92,6 +92,7 @@
                                             <outlet property="answertext" destination="IJZ-LU-Min" id="Wr4-9E-nh4"/>
                                             <outlet property="author" destination="Bob-jn-VQu" id="Lzl-w6-B1g"/>
                                             <outlet property="editDate" destination="9P4-Wu-s2Y" id="uvl-HF-obp"/>
+                                            <outlet property="voteCount" destination="pHj-6Z-8t5" id="VXg-ON-cXY"/>
                                         </connections>
                                     </tableViewCell>
                                 </prototypes>

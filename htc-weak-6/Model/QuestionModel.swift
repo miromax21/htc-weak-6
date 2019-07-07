@@ -53,7 +53,7 @@ struct Answer: Codable  {
     var body: String?
     var owner: ItemOwnerModel?
     var creationDate:Int?
-    var voteCount:Int?
+    var voteCount:Int? = 0
     
     enum CodingKeys: String, CodingKey {
         case body

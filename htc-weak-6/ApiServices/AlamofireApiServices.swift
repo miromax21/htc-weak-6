@@ -42,6 +42,8 @@ class AlamofireApiServices : GetQuestionsProtocol {
             })
             return
         }
+        
+        
         DispatchQueue.global(qos: .background).async{
             ar.responseJSON { response in
                 self.error = nil

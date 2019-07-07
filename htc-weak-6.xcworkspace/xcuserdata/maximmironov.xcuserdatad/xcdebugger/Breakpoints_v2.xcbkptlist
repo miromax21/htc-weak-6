@@ -10,7 +10,7 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "htc-weak-6/Views/ShowDetails/ShowDetailsController.swift"
-            timestampString = "583826822.235873"
+            timestampString = "584190640.538963"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
             startingLineNumber = "51"
@@ -26,7 +26,7 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "htc-weak-6/Views/ShowDetails/ShowDetailsController.swift"
-            timestampString = "583826822.236619"
+            timestampString = "584190640.539042"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
             startingLineNumber = "53"
@@ -112,6 +112,22 @@
             startingLineNumber = "41"
             endingLineNumber = "41"
             landmarkName = "getQuestions(tag:completion:)"
+            landmarkType = "7">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            shouldBeEnabled = "No"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "htc-weak-6/Views/ShowDetails/AnswerTableviewCell.swift"
+            timestampString = "584190640.539243"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "19"
+            endingLineNumber = "19"
+            landmarkName = "configureCell(param:selected:)"
             landmarkType = "7">
          </BreakpointContent>
       </BreakpointProxy>
